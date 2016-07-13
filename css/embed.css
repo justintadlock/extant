@@ -1,0 +1,192 @@
+
+html { font-size: 16px; }
+
+body { font-family: 'Roboto', sans-serif; line-height: 1.5; }
+
+.wp-embed p { margin: 0 0 1.5rem; }
+
+img { max-width: 100%; height: auto; }
+
+.wp-embed > a img,
+a .svg-featured {
+	/* Using box-shadow so that the image will fit just outside the container. */
+	box-shadow: 0 0 0 9px #fff, 0 0 0 10px #eee, 0 0 0 12px #fafafa;
+}
+	.wp-embed > a:hover img,
+	.wp-embed > a:focus img,
+	a:hover .svg-featured,
+	a:focus .svg-featured {
+		/* Note rgba() color is the same as #c02942 */
+		box-shadow: 0 0 0 9px #fff,
+                          0 0 0 10px rgba( 192, 41, 66, 0.25 ),
+                          0 0 0 12px rgba( 192, 41, 66, 0.05 );
+	}
+.svg-featured {
+	max-width: 213px;
+	height: auto;
+	margin-bottom: 0.75rem;
+}
+
+	.format-aside .svg-featured    { background: #f7f7f7; }
+	.format-audio .svg-featured    { background: #ecd078; }
+	.format-chat .svg-featured     { background: #c02942; }
+	.format-gallery .svg-featured  { background: #d99443; }
+	.format-image .svg-featured    { background: #9f43d9; }
+	.format-link .svg-featured     { background: #111111; }
+	.format-quote .svg-featured    { background: #53777a; }
+	.format-standard .svg-featured { background: #f8f8f8; }
+	.format-status .svg-featured   { background: #d95b43; }
+	.format-video .svg-featured    { background: #542437; }
+
+	.attachment .svg-featured        { background: #9f43d9; }
+	.download .svg-featured,
+	.type-download .svg-featured     { background: #436dd9; }
+	.page .svg-featured              { background: #666666; }
+	.portfolio_project .svg-featured { background: #43b4d9; }
+
+.svg-featured text {
+	font-family: FontAwesome;
+	font-size:   72px;
+	line-height: 1;
+	vertical-align:middle;
+	fill:#fff;
+}
+
+.post-thumbnail { max-width: 213px; }
+
+.wp-embedded-content { width: 100%; }
+
+.wp-embed {
+	width:      100%;
+	padding:    1.5rem 1.5rem 0;
+	background: #fff;
+	border:     1px solid #f2f2f2;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1rem;
+	color: #666;
+}
+
+
+.wp-embed-footer {
+	width: calc( 100% + 3rem );
+	margin: 0 0 0 -1.5rem;
+	padding: 0.75rem 1.5rem;
+	border-top: 1px solid #f2f2f2;
+	box-sizing: border-box;
+}
+
+/*
+	.wp-embed > .featured-media {
+		width: calc( 100% + 3rem );
+		margin: -1.5rem 0 0 -1.5rem;
+	}
+
+		.featured-media img { margin-bottom: 1.5rem; }
+*/
+
+	.wp-embed .wp-embed-heading,
+	.wp-embed-site-title {
+		font-family: 'Roboto Slab', serif;
+		font-weight: 700;
+		line-height: 1.5;
+	}
+
+	.wp-embed .wp-embed-heading {
+		font-size: 1.125rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.wp-embed-site-title {
+		font-size: 1rem;
+		text-transform: uppercase;
+	}
+
+	.wp-embed-site-title a { color: #333; }
+
+	.wp-embed-site-title a:hover,
+	.wp-embed-site-title a:focus { color: #c02942; }
+
+	.wp-embed .post-thumbnail,
+	.svg-featured {
+		float: left;
+		margin: 0 1.5rem 1.5rem 0;
+	}
+
+	.format-quote blockquote {
+		overflow: hidden;
+		position: relative;
+		width: calc( 100% + 3rem );
+		margin: -1.5rem 0 0 -1.5rem;
+		padding: 1.5rem 1.5rem 0;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 400;
+		font-style: normal;
+		font-size: 1.125rem;
+		color: #fff;
+		background: #53777a;
+		border: none;
+		box-sizing: border-box;
+	}
+
+		.format-quote cite {
+			font-size: 1rem;
+			color: #97c0c3;
+		}
+
+	.format-status .wp-embed-content {
+		overflow: hidden;
+		width: calc( 100% + 3rem );
+		margin: -1.5rem 0 0 -1.5rem;
+		padding: 1.5rem 1.5rem 0;
+		color: #fff;
+		background: #d95b43;
+		box-sizing: border-box;
+	}
+
+	.format-aside .wp-embed-content {
+		overflow: hidden;
+		width: calc( 100% + 3rem );
+		margin: -1.5rem 0 0 -1.5rem;
+		padding: 1.5rem 1.5rem 0;
+		background: #f7f7f7;
+		box-sizing: border-box;
+	}
+
+
+.avatar-wrap {
+	overflow:      hidden;
+	position:      relative;
+	display:       inline-block;
+	width:         38px;
+	height:        38px;
+	padding:       0;
+	box-shadow:    0 0 1px #999;
+	border:        2px solid #fff;
+	border-radius: 3px;
+
+	    -ms-transform: rotate( 45deg );
+	-webkit-transform: rotate( 45deg );
+	        transform: rotate( 45deg );
+}
+
+		.format-status .avatar-wrap {
+			float: left;
+			margin: 0 1.5rem 0.75rem 0;
+			box-shadow: 0 0 1px #333;
+			border: 4px solid #333;
+		}
+
+	.avatar-wrap .avatar {
+		position:      absolute;
+		top:           -8px;
+		left:          -8px;
+		max-width:     54px;
+		width:         54px;
+		height:        54px;
+		border-radius: 3px;
+
+		    -ms-transform: rotate( -45deg );
+		-webkit-transform: rotate( -45deg );
+		        transform: rotate( -45deg );
+	}
