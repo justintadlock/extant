@@ -22,6 +22,42 @@ function extant_get_header_icon() {
 }
 
 /**
+ * Returns the primary icon theme mod.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function extant_get_menu_primary_icon() {
+
+	return hybrid_get_theme_mod( 'menu_primary_icon', 'icon-bars' );
+}
+
+/**
+ * Returns the secondary menu icon theme mod.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function extant_get_menu_secondary_icon() {
+
+	return hybrid_get_theme_mod( 'menu_secondary_icon', 'icon-circle-o' );
+}
+
+/**
+ * Returns the search menu icon theme mod.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function extant_get_menu_search_icon() {
+
+	return hybrid_get_theme_mod( 'menu_search_icon', 'icon-search' );
+}
+
+/**
  * Conditional tag to check if the header icon should always display.  By default,
  * it's only meant to display on mobile (<= 480px).
  *

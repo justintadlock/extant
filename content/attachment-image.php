@@ -72,7 +72,7 @@
 			array(
 				'size'         => 'extant-large',
 				'srcset_sizes' => array( 'extant-large-2x' => '2x' ),
-				'order'        => array( 'featured', 'default' ),
+				'order'        => array( 'featured' ),
 				'min_width'    => 750,
 				'before'       => '<div class="featured-media">',
 				'after'        => '</div>',
@@ -83,7 +83,7 @@
 		<?php echo $image ? $image : extant_get_featured_fallback(); ?>
 
 		<header class="entry-header">
-			<?php the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . get_permalink() . '" rel="bookmark" itemprop="url">', '</a></h2>' ); ?>
+			<?php the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . esc_url( get_permalink() ) . '" rel="bookmark" itemprop="url">', '</a></h2>' ); ?>
 		</header><!-- .entry-header -->
 
 	</article><!-- .entry -->

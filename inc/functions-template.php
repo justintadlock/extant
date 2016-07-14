@@ -10,14 +10,32 @@
  */
 
 /**
+ * Wrapper function for checking if a post is sticky.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return bool
+ */
+function extant_is_sticky() {
+
+	if ( function_exists( 'ccp_is_project_archive' ) && ccp_is_project_archive() && ccp_is_project_sticky() )
+		return true;
+
+	else if ( is_home() && is_sticky() )
+		return true;
+
+	return false;
+}
+
+/**
  * Prints the the post format permalink.
  *
  * @since  1.0.0
  * @access public
  * @return void
  */
-function stargazer_post_format_permalink() {
-	echo stargazer_get_post_format_permalink();
+function extant_post_format_permalink() {
+	echo extant_get_post_format_permalink();
 }
 
 /**
@@ -27,7 +45,7 @@ function stargazer_post_format_permalink() {
  * @access public
  * @return string
  */
-function stargazer_get_post_format_permalink() {
+function extant_get_post_format_permalink() {
 
 	$format = get_post_format();
 

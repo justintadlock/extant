@@ -33,10 +33,10 @@
 
 		<?php $image = get_the_image(
 			array(
-				'size'         => is_sticky() ? 'extant-xlarge' : 'extant-large',
-				'srcset_sizes' => array( is_sticky() ? 'extant-xlarge-2x' : 'extant-large-2x' => '2x' ),
-				'order'        => array( 'featured', 'default' ),
-				'min_width'    => is_home() && is_sticky() ? 950 : 750,
+				'size'         => extant_is_sticky() ? 'extant-xlarge' : 'extant-large',
+				'srcset_sizes' => array( extant_is_sticky() ? 'extant-xlarge-2x' : 'extant-large-2x' => '2x' ),
+				'order'        => array( 'featured' ),
+				'min_width'    => extant_is_sticky() ? 950 : 750,
 				'before'       => '<div class="featured-media">',
 				'after'        => $gallery_count . '</div>',
 				'echo'         => false
@@ -47,7 +47,7 @@
 
 		<header class="entry-header">
 
-			<?php the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . get_permalink() . '" rel="bookmark" itemprop="url">', '</a></h2>' ); ?>
+			<?php the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . esc_url( get_permalink() ) . '" rel="bookmark" itemprop="url">', '</a></h2>' ); ?>
 
 			<div class="entry-byline">
 				<?php hybrid_post_format_link(); ?>

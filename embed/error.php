@@ -1,11 +1,11 @@
 <div class="wp-embed">
 
 	<p class="wp-embed-heading">
-		<?php _e( 'Nothing found', 'stargazer' ); ?>
+		<?php _e( 'Nothing found', 'extant' ); ?>
 	</p>
 
 	<div class="wp-embed-content">
-		<?php echo wpautop( __( 'Apologies, but no entries were found.', 'stargazer' ) ); ?>
+		<?php echo wpautop( __( 'Apologies, but no entries were found.', 'extant' ) ); ?>
 	</div><!-- .wp-embed-content -->
 
 	<?php do_action( 'embed_content' ); ?>
