@@ -27,6 +27,19 @@ function hybrid_get_theme_mod( $name, $default = false ) {
 }
 
 /**
+ * Checks if the current layout matches the layout to check against.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $layout
+ * @return bool
+ */
+function hybrid_is_layout( $layout ) {
+
+	return $layout === hybrid_get_theme_layout();
+}
+
+/**
  * Searches for and attempts to find a specific stylesheet.
  *
  * @since  1.0.0

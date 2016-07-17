@@ -28,6 +28,63 @@ function extant_is_sticky() {
 }
 
 /**
+ * Returns the featured image size to use.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function extant_get_featured_size() {
+
+	if ( extant_is_sticky() )
+		return 'extant-sticky';
+
+	return extant_is_landscape() ? 'extant-landscape' : 'extant-portrait';
+}
+
+/**
+ * Returns the featured image 2x size to use.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function extant_get_featured_size_2x() {
+
+	return sprintf( '%s-2x', extant_get_featured_size() );
+}
+
+/**
+ * Returns the featured image size required min. width.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return int
+ */
+function extant_get_featured_min_width() {
+
+	if ( extant_is_sticky() )
+		return 950;
+
+	return extant_is_landscape() ? 750 : 380;
+}
+
+/**
+ * Returns the featured image size recommended height.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return int
+ */
+function extant_get_featured_rec_height() {
+
+	if ( extant_is_sticky() )
+		return 422;
+
+	return extant_is_landscape() ? 422 : 506;
+}
+
+/**
  * Prints the the post format permalink.
  *
  * @since  1.0.0
@@ -111,13 +168,19 @@ function extant_get_comment_parent_link( $args = array() ) {
  */
 function extant_get_featured_fallback() {
 
-	$svg = '<div class="featured-media"><a href="' . esc_url( get_permalink() ) . '">
-		<?xml version="1.0"?>
-		<svg class="svg-featured" width="950" height="535" viewBox="0 0 950 535">
-			<rect class="svg-shape" x="400" y="192.5" rx="8" ry="8" width="150" height="150" transform="rotate(45 475 267.5)" />
-			<text class="svg-icon" x="475" y="267.5" text-anchor="middle" alignment-baseline="central">' . extant_get_featured_svg_icon() . '</text>
-		</svg>
-	</a></div>';
+	$svg = sprintf(
+		'<div class="featured-media"><a href="%s">
+			<?xml version="1.0"?>
+			<svg class="svg-featured" width="%s" height="%s" viewBox="0 0 950 534">
+				<rect class="svg-shape" x="400" y="192.5" rx="8" ry="8" width="150" height="150" transform="rotate(45 475 267.5)" />
+				<text class="svg-icon" x="475" y="267.5" text-anchor="middle" alignment-baseline="central">%s</text>
+			</svg>
+		</a></div>',
+		esc_url( get_permalink() ),
+		esc_attr( extant_get_featured_min_width() ),
+		esc_attr( extant_get_featured_rec_height() ),
+		extant_get_featured_svg_icon()
+	);
 
 	return apply_filters( 'extant_get_featured_fallback', $svg );
 }
@@ -131,49 +194,61 @@ function extant_get_featured_fallback() {
  */
 function extant_get_featured_svg_icon() {
 
-	$options = extant_get_featured_svg_icons();
-	$icon    = $options['standard'];
+	$options   = extant_map_featured_icons();
+	$icon      = $options['standard'];
+	$type      = get_post_type();
 
-	$type   = get_post_type();
-	$format = post_type_supports( $type, 'post-formats' ) ? get_post_format() : '';
+	$icon_keys = array( $type );
 
-	if ( $format && isset( $options[ "{$type}-{$format}" ] ) )
-		$icon = $options[ "{$type}-{$format}" ];
+	if ( post_type_supports( $type, 'post-formats' ) ) {
 
-	else if ( $format && isset( $options[ $format ] ) )
-		$icon = $options[ $format ];
+		$format = get_post_format() ? : 'standard';
 
-	else if ( isset( $options[ $type ] ) )
-		$icon = $options[ $type ];
+		$icon_keys[] = "{$type}-{$format}";
+		$icon_keys[] = $format;
+	}
+
+	foreach ( $icon_keys as $i ) {
+
+		if ( isset( $options[ $i ] ) ) {
+
+			$icon = $options[ $i ];
+			break;
+		}
+	}
 
 	return apply_filters( 'extant_featured_svg_icon', extant_get_font_icon_html( $icon ) );
 }
 
 /**
- * Returns an array of possible featured SVG fallback icons.
+ * Maps post the post format or type to a specific font icon class.
  *
  * @since  1.0.0
  * @access public
  * @return array
  */
-function extant_get_featured_svg_icons() {
+function extant_map_featured_icons() {
 
 	$icons = array(
-		'aside'             => 'icon-paperclip',
+		// Post type.
 		'attachment'        => 'icon-image',
+		'download'          => 'icon-download',
+		'page'              => 'icon-file-text-o',
+		'portfolio_project' => 'icon-image',
+
+		// Post format.
+		'aside'             => 'icon-paperclip',
 		'audio'             => 'icon-volume-up',
 		'chat'              => 'icon-comments',
-		'download'          => 'icon-download',
 		'gallery'           => 'icon-image',
 		'image'             => 'icon-camera-retro',
 		'link'              => 'icon-link',
-		'page'              => 'icon-file-text-o',
-		'portfolio_project' => 'icon-image',
 		'quote'             => 'icon-quote-right',
 		'standard'          => 'icon-pencil',
 		'status'            => 'icon-map-pin',
 		'video'             => 'icon-play-circle'
 	);
 
-	return apply_filters( 'extant_featured_svg_icons', $icons );
+	// Developers, array key can be `{$type}-{$format}`, `{$format}`, or `{$type}`.
+	return apply_filters( 'extant_map_featured_icons', $icons );
 }

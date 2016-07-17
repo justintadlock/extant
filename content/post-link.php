@@ -30,10 +30,10 @@
 
 		<?php $image = get_the_image(
 			array(
-				'size'         => extant_is_sticky() ? 'extant-xlarge' : 'extant-large',
-				'srcset_sizes' => array( extant_is_sticky() ? 'extant-xlarge-2x' : 'extant-large-2x' => '2x' ),
+				'size'         => extant_get_featured_size(),
+				'srcset_sizes' => array( extant_get_featured_size_2x() => '2x' ),
 				'order'        => array( 'featured' ),
-				'min_width'    => extant_is_sticky() ? 950 : 750,
+				'min_width'    => extant_get_featured_min_width(),
 				'before'       => '<div class="featured-media">',
 				'after'        => '</div>',
 				'echo'         => false
@@ -47,8 +47,6 @@
 		</header><!-- .entry-header -->
 
 		<footer class="entry-footer">
-			<?php hybrid_post_format_link(); ?>
-			<span class="sep"><?php _ex( '&middot;', 'post meta separator', 'extant' ); ?></span>
 			<a class="entry-permalink" href="<?php the_permalink(); ?>" rel="bookmark" itemprop="url"><time <?php hybrid_attr( 'entry-published' ); ?>><?php echo get_the_date(); ?></time></a>
 			<span class="sep"><?php _ex( '&middot;', 'post meta separator', 'extant' ); ?></span>
 			<?php comments_popup_link( false, false, false, 'comments-link' ); ?>

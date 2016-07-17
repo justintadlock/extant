@@ -96,18 +96,53 @@ body.layout-type-boxed { background: #eee; }
 			padding-left:  3rem;
 		}
 
-		.plural .odd,
-		.plural .even {
+		.plural .entry-title { font-size: 1rem; }
+
+		.layout-grid-landscape .odd,
+		.layout-grid-landscape .even {
 			width: calc( 50% - 20px );
 		}
-.plural .entry-title { font-size: 1rem; }
 
-		.plural .odd {
+		.layout-grid-portrait .one,
+		.layout-grid-portrait .two,
+		.layout-grid-portrait .three {
+			width: 29%;
+		}
+
+		.layout-grid-landscape .odd,
+		.layout-grid-portrait .one {
 			float: left;
 			clear: both;
 		}
 
-		.plural .even {
+		.layout-grid-landscape .even,
+		.layout-grid-portrait .three {
+			float: right;
+			clear: none;
+		}
+
+		.layout-grid-portrait .two {
+			float: left;
+			clear: none;
+			margin-left: 6.5%;
+		}
+	}
+
+	@media only screen and ( min-width: 380px ) and ( max-width: 640px ) {
+
+		.plural.layout-grid-portrait .entry-title { font-size: 1.125rem; }
+
+		.plural.layout-grid-portrait .odd,
+		.plural.layout-grid-portrait .even {
+			width: calc( 50% - 20px );
+		}
+
+		.plural.layout-grid-portrait .odd {
+			float: left;
+			clear: both;
+		}
+
+		.plural.layout-grid-portrait .even {
 			float: right;
 			clear: none;
 		}
@@ -616,8 +651,9 @@ a .svg-featured {
 		fill:            #fff;
 	}
 
-.entry .extant-large,
-.entry .extant-xlarge {
+.entry .extant-sticky,
+.entry .extant-landscape,
+.entry .extant-portrait {
 	display: block;
 	margin: 0 auto 1.5rem;
 }
@@ -1229,6 +1265,9 @@ a .svg-featured {
 	}
 
 		.sticky .entry-byline { color: #fff; }
+
+		/* No comments / comments off */
+		span.comments-link { display: none; }
 
 		.sticky .entry-title { font-size: 2rem; font-size: 2rem;
 display: block; /* can't use inline or inline-block */

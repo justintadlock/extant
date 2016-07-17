@@ -80,6 +80,9 @@ jQuery( window ).ready( function() {
 		}
 	);
 
+	// Hide separator for no comments span.
+	jQuery( 'span.comments-link' ).prev( '.sep' ).hide();
+
 	// Classes for pagination list items.
 	jQuery( '.nav-links li .prev' ).parent().addClass( 'nav-item-prev' );
 	jQuery( '.nav-links li .next' ).parent().addClass( 'nav-item-next' );

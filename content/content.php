@@ -15,10 +15,10 @@
 
 		<?php $image = get_the_image(
 			array(
-				'size'         => 'extant-large',
-				'srcset_sizes' => array( 'extant-large-2x' => '2x' ),
+				'size'         => extant_get_featured_size(),
+				'srcset_sizes' => array( extant_get_featured_size_2x() => '2x' ),
 				'order'        => array( 'featured' ),
-				'min_width'    => is_home() && is_sticky() ? 950 : 750,
+				'min_width'    => extant_get_featured_min_width(),
 				'before'       => '<div class="featured-media">',
 				'after'        => '</div>',
 				'echo'         => false

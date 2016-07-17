@@ -74,7 +74,23 @@ function extant_post_class( $classes ) {
 	} else  if (  ! is_singular() && ! is_sticky() ) {
 		static $extant_post_alt;
 		++$extant_post_alt;
+
 		$classes[] = ( $extant_post_alt % 2 ) ? 'odd' : 'even';
+
+		if ( extant_is_portrait() && ! is_singular() && ! is_sticky() ) {
+
+			$remainder = $extant_post_alt % 3;
+
+			if ( 1 === $remainder )
+				$classes[] = 'one';
+
+			if ( 2 === $remainder )
+				$classes[] = 'two';
+
+			else if ( ! $remainder )
+				$classes[] = 'three';
+		}
+
 	}
 
 	return $classes;

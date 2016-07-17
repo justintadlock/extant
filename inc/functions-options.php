@@ -10,6 +10,30 @@
  */
 
 /**
+ * Checks whether the chosen layout is the 'grid-landscape' layout.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return bool
+ */
+function extant_is_landscape() {
+
+	return hybrid_is_layout( 'grid-landscape' );
+}
+
+/**
+ * Checks whether the chosen layout is the 'grid-portrait' layout.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return bool
+ */
+function extant_is_portrait() {
+
+	return hybrid_is_layout( 'grid-portrait' );
+}
+
+/**
  * Returns the header icon theme mod.
  *
  * @since  1.0.0
