@@ -50,16 +50,13 @@ function hybrid_is_layout( $layout ) {
  */
 function hybrid_get_stylesheet_uri( $name, $where = 'stylesheet' ) {
 
-	$style_uri = '';
-	$suffix    = hybrid_get_min_suffix();
-	$dir       = 'template' === $where ? trailingslashit( get_template_directory() )     : trailingslashit( get_stylesheet_directory() );
-	$uri       = 'template' === $where ? trailingslashit( get_template_directory_uri() ) : trailingslashit( get_stylesheet_directory_uri() );
+	$suffix = hybrid_get_min_suffix();
+	$path   = 'template' === $where ? '%1$s/css' : '%2$s/css';
 
-	if ( $suffix && file_exists( "{$dir}css/{$name}{$suffix}.css" ) )
-		$style_uri = "{$uri}css/{$name}{$suffix}.css";
+	$dir = trailingslashit( sprintf( $path, get_template_directory(),     get_stylesheet_directory()     ) );
+	$uri = trailingslashit( sprintf( $path, get_template_directory_uri(), get_stylesheet_directory_uri() ) );
 
-	else if ( file_exists( "{$dir}css/{$name}.css" ) )
-		$style_uri = "{$uri}css/{$name}.css";
+	$style_uri = $suffix && file_exists( "{$dir}{$name}{$suffix}.css" ) ? "{$uri}{$name}{$suffix}.css" : "{$uri}{$name}.css";
 
 	return apply_filters( "hybrid_{$name}_stylesheet_uri", $style_uri, $dir, $uri );
 }
