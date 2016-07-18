@@ -32,15 +32,20 @@ function hybrid_register_font( $handle, $args = array() ) {
 	$args = wp_parse_args(
 		$args,
 		array(
+			// Arguments for https://developers.google.com/fonts/docs/getting_started
 			'family'  => array(),
 			'subset'  => array(),
+			'text'    => '',
+			'effect'  => array(),
+
+			// Arguments for `wp_register_style()`.
 			'depends' => array(),
 			'version' => false,
 			'media'   => 'all'
 		)
 	);
 
-	$url = hybrid_get_font_url( $handle, $args['family'], $args['subset'] );
+	$url = hybrid_get_font_url( $handle, $args );
 
 	return wp_register_style( "{$handle}-font", $url, $args['depends'], $args['version'], $args['media'] );
 }
@@ -139,27 +144,34 @@ function hybrid_font_is_enqueued( $handle ) {
  * @since  1.0.0
  * @access public
  * @param  string  $handle
- * @param  array   $family
- * @param  array   $subset
+ * @param  array   $args
  * @return void
  */
-function hybrid_get_font_url( $handle, $family, $subset ) {
+function hybrid_get_font_url( $handle, $args ) {
 
-	$url    = '';
-	$args   = array();
+	$font_url   = '';
+	$query_args = array();
 
-	$family = apply_filters( "{$handle}_font_family", $family );
-	$subset = apply_filters( "{$handle}_font_subset", $subset );
+	$family = apply_filters( "{$handle}_font_family", $args['family'] );
+	$subset = apply_filters( "{$handle}_font_subset", $args['subset'] );
+	$text   = apply_filters( "{$handle}_font_text",   $args['text']   );
+	$effect = apply_filters( "{$handle}_font_effect", $args['effect']   );
 
 	if ( $family ) {
 
-		$args['family'] = urlencode( implode( '|', $family ) );
+		$query_args['family'] = urlencode( implode( '|', (array) $family ) );
 
 		if ( $subset )
-			$args['subset'] = urlencode( implode( ',', $subset ) );
+			$query_args['subset'] = urlencode( implode( ',', (array) $subset ) );
 
-		$url = add_query_arg( $args, 'https://fonts.googleapis.com/css' );
+		if ( $text )
+			$query_args['text'] = urlencode( $text );
+
+		if ( $effect )
+			$query_args['effect'] = urlencode( implode( '|', (array) $effect ) );
+
+		$font_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
 	}
 
-	return apply_filters( "{$handle}_font_url", $url, $family, $subset );
+	return apply_filters( "{$handle}_font_url", $font_url, $args, $query_args );
 }
