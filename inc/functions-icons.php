@@ -51,7 +51,36 @@ function extant_get_font_icon_css( $name ) {
 
 	$icon = extant_get_font_icon_code( $name );
 
-	return $icon ? "\{$icon}" : '';
+	return $icon ? "\\{$icon}" : '';
+}
+
+/**
+ * Checks if a font icon exists.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $name
+ * @return bool
+ */
+function extant_font_icon_exists( $name ) {
+
+	$name = extant_get_font_icons();
+
+	return isset( $icons[ $name ] );
+}
+
+/**
+ * Validation function for font icons.  Checks if the icon exists.  If so,
+ * it returns the icon.  Else, it returns the fallback.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $icon
+ * @return string
+ */
+function extant_validate_font_icon( $icon ) {
+
+	return extant_font_icon_exists( $icon ) ? $icon : '';
 }
 
 /**

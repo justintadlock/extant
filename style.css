@@ -565,7 +565,7 @@ td { border-color: #f2f2f2; }
 		button:hover,
 		.edd-page a.edd-submit.button:focus,
 		.edd-page a.edd-submit.button:hover,
-		.menu-toggle button:hover,
+		.menu-toggle-primary button:hover,
 		.media-info-toggle:hover {
 			background:      #333;
 			text-decoration: underline;
@@ -754,7 +754,7 @@ a .svg-featured {
 
 /* Menus */
 .site-title a::before,
-.menu-toggle button::after,
+.menu-toggle-primary button::after,
 .menu-toggle-secondary button::after,
 .menu-toggle-search button::after,
 .menu li a::after,
@@ -803,96 +803,57 @@ a .svg-featured {
 		font-size: 24px;
 	}
 
+
 		.rtl .site-title a::before { padding: 0 0 5px 8px; }
 		.ltr .site-title a::before { padding: 0 8px 5px 0; }
 
+	@media only screen and ( min-width: 481px ) {
+
+		.hide-header-icon .site-title a::before { content: ''; padding: 0; }
+	}
 
 	/* Menu Primary */
 
-	.menu-toggle button::after {
-		content:   '\f0c9';
+	.menu-toggle-primary button::after {
 		font-size: 24px;
 		text-decoration: none;
 	}
 
 	.menu-toggle-secondary button::after {
-		content: "\f291";
-		content: '\f10c';
 		font-size: 24px;
 		text-decoration: none;
 	}
 
 	.menu-toggle-search button::after {
-		content: "\f002";
 		font-size: 24px;
 		text-decoration: none;
 	}
 
-	li .board-link,
-	li .board-link:hover,
-	li .board-link:focus,
-	li .board-user-link,
-	li .board-user-link:hover,
-	li .board-user-link:focus,
-	li .cart-link,
-	li .cart-link:hover,
-	li .cart-link:focus,
-	li .secondary-link,
-	li .secondary-link:hover,
-	li .secondary-link:focus {
-		background: none;
-	}
 
-		li .board-link:hover::after,
-		li .board-link:focus::after,
-		li .board-user-link:hover::after,
-		li .board-user-link:focus::after,
-		li .cart-link:hover::after,
-		li .cart-link:focus::after,
-		li .secondary-link:hover::after,
-		li .secondary-link:focus::after {
-			color: #fff;
-			background: #333;
-		}
-
-	li .secondary-link::after {
-		content: "\f513";
-		padding: 14px 1.5rem;
-		font-size: 26px;
-	}
-
-		.menu-toggle,
+		.menu-toggle-primary,
 		.menu-toggle-secondary,
 		.menu-toggle-search {
 			width: 84px;
 			height: 54px;
 		}
-		.menu-toggle button,
+		.menu-toggle-primary button,
 		.menu-toggle-secondary button,
 		.menu-toggle-search button {
 			width: 100%;
 			height: 100%;
 		}
 
-		.menu-open .menu-toggle button::after,
-		.menu-secondary-open .menu-toggle-secondary button::after,
-		.menu-search-open .menu-toggle-search button::after {
-			content: '\f00d';
-			/*font-size: 30px;*/
-		}
 
 	@media only screen and ( min-width: 480px ) {
-		/*
-		.menu-toggle button::after { padding-left: 10px; }
-		*/
-		.menu-open .menu-toggle button::after,
+
+		.menu-primary-open .menu-toggle-primary button::after,
 		.menu-secondary-open .menu-toggle-secondary button::after { padding-left: 3px; padding-right: 4px; }
 	}
 
-		.menu-open.ltr .menu-toggle button::after,
+		.menu-primary-open.ltr .menu-toggle-primary button::after,
 		.menu-secondary-open.ltr .menu-toggle-secondary button::after,
 		.menu-search-open.rtl .menu-toggle-search button::after { content: '\f00d'; }
-		.menu-open.rtl .menu-toggle button::after,
+		.menu-primary-open.rtl .menu-toggle-primary button::after,
 		.menu-secondary-open.rtl .menu-toggle-secondary button::after,
 		.menu-search-open.ltr .menu-toggle-search button::after { content: '\f00d'; }
 
@@ -1071,22 +1032,22 @@ a .svg-featured {
 }
 
 .site-description,
-.menu-toggle .menu-name {
+.menu-toggle-primary .menu-name {
 	position: absolute;
 	top:      -9999em;
 }
 
 	.ltr .site-description,
-	.ltr .menu-toggle .menu-name { left:  -9999em; }
+	.ltr .menu-toggle-primary .menu-name { left:  -9999em; }
 
 	.rtl .site-description,
-	.rtl .menu-toggle .menu-name { right: -9999em; }
+	.rtl .menu-toggle-primary .menu-name { right: -9999em; }
 
 @media only screen and ( min-width: 480px ) {
 
-	.menu-toggle .menu-name { position: relative; top: 0; }
-	.ltr .menu-toggle .menu-name { left: 0; }
-	.rtl .menu-toggle .menu-name  { right: 0; }
+	.menu-toggle-primary .menu-name { position: relative; top: 0; }
+	.ltr .menu-toggle-primary .menu-name { left: 0; }
+	.rtl .menu-toggle-primary .menu-name  { right: 0; }
 }
 
 @media only screen and ( min-width: 768px ) {
@@ -1769,7 +1730,7 @@ ol.comment-list {
 	.menu-super > ul > li:first-of-type { border-left: none; }
 
 
-.menu-toggle,
+.menu-toggle-primary,
 .menu-toggle-secondary,
 .menu-toggle-search {
 	display: inline-block;
@@ -1777,7 +1738,7 @@ ol.comment-list {
 	text-align: center;
 }
 
-.menu-toggle button,
+.menu-toggle-primary button,
 .menu-toggle-secondary button,
 .menu-toggle-search button {
 	margin:     0;
@@ -1795,7 +1756,7 @@ ol.comment-list {
 			        transition: none;
 }
 
-		.menu-toggle button,
+		.menu-toggle-primary button,
 		.menu-toggle-secondary button,
 		.menu-toggle-search button,
 		li .board-link::after,
@@ -1804,9 +1765,9 @@ ol.comment-list {
 			padding-right: 1.5rem;
 		}
 
-	.menu-toggle button:hover,
-	.menu-toggle button:focus,
-	.menu-open .menu-toggle button,
+	.menu-toggle-primary button:hover,
+	.menu-toggle-primary button:focus,
+	.menu-primary-open .menu-toggle-primary button,
 	.menu-toggle-secondary button:hover,
 	.menu-toggle-secondary button:focus,
 	.menu-secondary-open .menu-toggle-secondary button,
@@ -1819,7 +1780,7 @@ ol.comment-list {
 
 	@media screen and ( max-width: 480px ) {
 
-		.menu-open .below-site-header,
+		.menu-primary-open .below-site-header,
 		.menu-secondary-open .below-site-header,
 		.menu-search-open .below-site-header { margin-left: -100%;
 			transition: all .4s ease-in-out 0s;
@@ -1831,19 +1792,19 @@ ol.comment-list {
 			transition: normal;
 	}
 
-	body.menu-open,
+	body.menu-primary-open,
 	body.menu-secondary-open,
 	body.menu-search-open {
 		overflow-y: scroll;
 		width: 100%;
 	}
 
-	.menu-open .below-site-header,
+	.menu-primary-open .below-site-header,
 	.menu-secondary-open .below-site-header,
 	.menu-search-open .below-site-header { position: fixed; z-index: 90;
 		width: 100%; height: 100%; }
 
-	.menu-open .overlay,
+	.menu-primary-open .overlay,
 	.menu-secondary-open .overlay,
 	.menu-search-open .overlay {
 		width: 100%; height: 100%;
@@ -1898,7 +1859,7 @@ ol.comment-list {
 
 
 
-	.menu-open .menu-primary > .wrap,
+	.menu-primary-open .menu-primary > .wrap,
 	.menu-secondary-open .menu-secondary > .wrap,
 	.menu-search-open .menu-search > .search-form {
 		right: 0;

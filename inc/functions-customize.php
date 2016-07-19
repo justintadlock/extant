@@ -22,73 +22,136 @@ add_action( 'customize_register', 'extant_customize_register' );
  */
 function extant_customize_register( $wp_customize ) {
 
+	// Load custom controls.
+	require_once( extant_theme()->dir_path . 'inc/customize/control-select-icon.php' );
+
 	// Enqueue scripts and styles for the preview.
 	add_action( 'customize_preview_init', 'extant_customize_preview_enqueue' );
 
 	// Enqueue scripts and styles for the controls.
-	add_action( 'customize_controls_print_styles', 'extant_customize_controls_enqueue' );
+	add_action( 'customize_controls_enqueue_scripts', 'extant_customize_controls_register_scripts', 0 );
+
+	// Register custom control types.
+	$wp_customize->register_control_type( 'Extant_Customize_Control_Select_Icon' );
 
 	// Enable live preview for WordPress theme features.
 	$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
 
-	/*$wp_customize->add_setting(
-		'display_header_icon',
-		array(
-			'default' => true,
-			// 'sanitize_callback' =>
-			'transport' => 'postMessage'
-		)
-	);*/
+	/* === Sections === */
 
-	/* Adds the header icon setting. */
+	$wp_customize->add_section(
+		'icons',
+		array( 'title' => __( 'Icons', 'extant' ) )
+	);
+
+	/* === Settings === */
+
+	$wp_customize->add_setting(
+		'show_header_icon',
+		array(
+			'default'           => extant_show_header_icon(),
+			'sanitize_callback' => 'wp_validate_boolean',
+			'transport'         => 'postMessage'
+		)
+	);
+
 	$wp_customize->add_setting(
 		'header_icon',
 		array(
-			'default'              => 'icon-home',
-			'sanitize_callback'    => 'esc_attr',
-			'sanitize_js_callback' => 'esc_attr',
-			'transport'            => 'postMessage',
+			'default'            => extant_get_header_icon(),
+			'sanitize_callback'  => 'extant_validate_font_icon',
+			'transport'          => 'postMessage',
 		)
 	);
 
-	// Adds the display header icon control.
-	/*$wp_customize->add_control(
-		'display_header_icon',
+	$wp_customize->add_setting(
+		'menu_primary_icon',
 		array(
-			'label'    => esc_html__( 'Display Header Icon', 'extant' ),
-			'section'  => 'title_tagline',
-			'type'     => 'checkbox',
+			'default'            => extant_get_menu_primary_icon(),
+			'sanitize_callback'  => 'extant_validate_font_icon',
+			'transport'          => 'postMessage',
 		)
-	);*/
+	);
 
-	// Adds the header icon control.
+	$wp_customize->add_setting(
+		'menu_secondary_icon',
+		array(
+			'default'            => extant_get_menu_secondary_icon(),
+			'sanitize_callback'  => 'extant_validate_font_icon',
+			'transport'          => 'postMessage',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'menu_search_icon',
+		array(
+			'default'            => extant_get_menu_search_icon(),
+			'sanitize_callback'  => 'extant_validate_font_icon',
+			'transport'          => 'postMessage',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'menu_close_icon',
+		array(
+			'default'            => extant_get_menu_close_icon(),
+			'sanitize_callback'  => 'extant_validate_font_icon',
+			'transport'          => 'postMessage',
+		)
+	);
+
+	/* === Controls === */
+
 	$wp_customize->add_control(
-		'header_icon',
+		'show_header_icon',
 		array(
-			'label'    => esc_html__( 'Header Icon', 'extant' ),
-			'section'  => 'title_tagline',
-			'type'     => 'select',
-			'choices'  => extant_get_header_icon_choices()
+			'label'       => esc_html__( 'Always Display Header Icon', 'extant' ),
+			'description' => __( 'Icon is only shown on mobile devices by default.', 'extant' ),
+			'section'     => 'icons',
+			'type'        => 'checkbox'
 		)
 	);
-}
 
-/**
- * Returns an array of header icons for use with the 'header_icon' theme option.
- *
- * @since  1.0.0
- * @access public
- * @return array
- */
-function extant_get_header_icon_choices() {
+	$wp_customize->add_control(
+		new Extant_Customize_Control_Select_Icon(
+			$wp_customize,
+			'header_icon',
+			array( 'label' => esc_html__( 'Header Icon', 'extant' ) )
+		)
+	);
 
-	$icons = array( '' => '' );
+	$wp_customize->add_control(
+		new Extant_Customize_Control_Select_Icon(
+			$wp_customize,
+			'menu_primary_icon',
+			array( 'label' => esc_html__( 'Primary Menu Icon', 'extant' ) )
+		)
+	);
 
-	foreach ( extant_get_font_icons() as $class => $code )
-		$icons[ $class ] = "&#x{$code};";
+	$wp_customize->add_control(
+		new Extant_Customize_Control_Select_Icon(
+			$wp_customize,
+			'menu_secondary_icon',
+			array( 'label' => esc_html__( 'Secondary Menu Icon', 'extant' ) )
+		)
+	);
 
-	return $icons;
+	$wp_customize->add_control(
+		new Extant_Customize_Control_Select_Icon(
+			$wp_customize,
+			'menu_search_icon',
+			array( 'label' => esc_html__( 'Search Menu Icon', 'extant' ) )
+		)
+	);
+
+	$wp_customize->add_control(
+		new Extant_Customize_Control_Select_Icon(
+			$wp_customize,
+			'menu_close_icon',
+			array( 'label' => esc_html__( 'Close Menu Icon', 'extant' ) )
+		)
+	);
 }
 
 /**
@@ -102,7 +165,7 @@ function extant_customize_preview_enqueue() {
 
 	$suffix = hybrid_get_min_suffix();
 
-	wp_enqueue_script( 'extant-customize', trailingslashit( get_template_directory_uri() ) . "js/customize-preview{$suffix}.js", array( 'jquery' ), null, true );
+	wp_enqueue_script( 'extant-customize-preview', trailingslashit( get_template_directory_uri() ) . "js/customize-preview{$suffix}.js", array( 'jquery' ), null, true );
 }
 
 /**
@@ -112,7 +175,8 @@ function extant_customize_preview_enqueue() {
  * @access public
  * @return void
  */
-function extant_customize_controls_enqueue() {
+function extant_customize_controls_register_scripts() {
 
-	wp_enqueue_style( 'font-awesome', hybrid_get_stylesheet_uri( 'font-awesome', 'template' ) );
+	wp_register_style( 'font-awesome',              hybrid_get_stylesheet_uri( 'font-awesome', 'template' ) );
+	wp_register_style( 'extant-customize-controls', hybrid_get_stylesheet_uri( 'customize-controls', 'template' ) );
 }

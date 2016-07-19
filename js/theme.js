@@ -122,7 +122,7 @@ jQuery( window ).ready( function() {
 			}
 	}
 
-	jQuery( '.menu-toggle button' ).click(
+	jQuery( '.menu-toggle-primary button' ).click(
 		function( e ) {
 
 			//var scroll = jQuery( window ).scrollTop();
@@ -134,7 +134,7 @@ jQuery( window ).ready( function() {
 				jQuery( 'body' ).toggleClass( 'menu-secondary-open' );
 			}
 
-			extantToggleClass( 'menu-open' );
+			extantToggleClass( 'menu-primary-open' );
 		}
 	);
 
@@ -144,8 +144,8 @@ jQuery( window ).ready( function() {
 			if ( jQuery( 'body' ).hasClass( 'menu-search-open' ) ) {
 				jQuery( 'body' ).toggleClass( 'menu-search-open' );
 			}
-			else if ( jQuery( 'body' ).hasClass( 'menu-open' ) ) {
-				jQuery( 'body' ).toggleClass( 'menu-open' );
+			else if ( jQuery( 'body' ).hasClass( 'menu-primary-open' ) ) {
+				jQuery( 'body' ).toggleClass( 'menu-primary-open' );
 			}
 
 			extantToggleClass( 'menu-secondary-open' );
@@ -155,8 +155,8 @@ jQuery( window ).ready( function() {
 	jQuery( '.menu-toggle-search button' ).click(
 		function( e ) {
 
-			if ( jQuery( 'body' ).hasClass( 'menu-open' ) ) {
-				jQuery( 'body' ).toggleClass( 'menu-open' );
+			if ( jQuery( 'body' ).hasClass( 'menu-primary-open' ) ) {
+				jQuery( 'body' ).toggleClass( 'menu-primary-open' );
 			}
 			else if ( jQuery( 'body' ).hasClass( 'menu-secondary-open' ) ) {
 				jQuery( 'body' ).toggleClass( 'menu-secondary-open' );
@@ -169,8 +169,8 @@ jQuery( window ).ready( function() {
 	jQuery( document ).click(
 		function() {
 
-			if ( jQuery( 'body' ).hasClass( 'menu-open' ) ) {
-				jQuery( 'body' ).toggleClass( 'menu-open' );
+			if ( jQuery( 'body' ).hasClass( 'menu-primary-open' ) ) {
+				jQuery( 'body' ).toggleClass( 'menu-primary-open' );
 			}
 
 			if ( jQuery( 'body' ).hasClass( 'menu-search-open' ) ) {

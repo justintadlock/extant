@@ -9,9 +9,6 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-# Handle the header icon.
-add_filter( 'hybrid_site_title', 'extant_site_title' );
-
 # Custom body and post classes.
 add_filter( 'body_class', 'extant_body_class' );
 add_filter( 'post_class', 'extant_post_class' );
@@ -27,21 +24,6 @@ add_filter( 'previous_comments_link_attributes', 'extant_prev_comments_link_attr
 add_filter( 'next_comments_link_attributes',     'extant_next_comments_link_attr' );
 
 /**
- * Adds a class to the site title to handle the header icon.
- *
- * @since  1.0.0
- * @access public
- * @param  array  $attr
- * @return array
- */
-function extant_site_title( $title ) {
-
-	$icon = extant_get_header_icon();
-
-	return str_replace( 'rel="home">', 'rel="home" class="' . sanitize_html_class( $icon ) . '">', $title );
-}
-
-/**
  * Adds custom body classes.
  *
  * @since  1.0.0
@@ -51,8 +33,8 @@ function extant_site_title( $title ) {
  */
 function extant_body_class( $classes ) {
 
-	if ( extant_get_header_icon() )
-		$classes[] = 'display-header-icon';
+	if ( ! extant_show_header_icon() )
+		$classes[] = 'hide-header-icon';
 
 	return $classes;
 }

@@ -82,16 +82,28 @@ function extant_get_menu_search_icon() {
 }
 
 /**
- * Conditional tag to check if the header icon should always display.  By default,
- * it's only meant to display on mobile (<= 480px).
+ * Returns the close menu icon theme mod.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function extant_get_menu_close_icon() {
+
+	return hybrid_get_theme_mod( 'menu_close_icon', 'icon-times' );
+}
+
+/**
+ * Conditional tag to check if the header icon should be shown. Note that it always
+ * appears on mobile devices (<= 480px).
  *
  * @since  1.0.0
  * @access public
  * @return bool
  */
-function extant_always_display_header_icon() {
+function extant_show_header_icon() {
 
-	return hybrid_get_theme_mod( 'header_icon_always', false );
+	return hybrid_get_theme_mod( 'show_header_icon', false );
 }
 
 /**
@@ -104,6 +116,30 @@ function extant_always_display_header_icon() {
 function extant_get_primary_color() {
 
 	return hybrid_get_theme_mod( 'color_primary', '#c02942' );
+}
+
+/**
+ * Returns the header primary color theme mod.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function extant_get_header_primary_color() {
+
+	return hybrid_get_theme_mod( 'color_header_primary', '#333333' );
+}
+
+/**
+ * Returns the header secondary color theme mod.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function extant_get_header_secondary_color() {
+
+	return hybrid_get_theme_mod( 'color_header_secondary', '#ffffff' );
 }
 
 /**

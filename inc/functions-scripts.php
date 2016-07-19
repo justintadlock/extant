@@ -70,6 +70,33 @@ function extant_enqueue() {
 	wp_enqueue_style( 'hybrid-gallery'      );
 	wp_enqueue_style( 'hybrid-style'        );
 	wp_enqueue_style( 'extant-mediaelement' );
+
+	wp_add_inline_style( 'hybrid-style', extant_get_inline_css() );
+}
+
+function extant_get_inline_css() {
+
+	$style = '';
+
+	$header_icon      = extant_get_font_icon_css( extant_get_header_icon()         );
+	$m_primary_icon   = extant_get_font_icon_css( extant_get_menu_primary_icon()   );
+	$m_secondary_icon = extant_get_font_icon_css( extant_get_menu_secondary_icon() );
+	$m_search_icon    = extant_get_font_icon_css( extant_get_menu_search_icon()    );
+	$m_close_icon     = extant_get_font_icon_css( extant_get_menu_close_icon()     );
+
+	$style .= sprintf( '.site-title a::before { content: "%s"; }',                $header_icon      );
+	$style .= sprintf( '.menu-toggle-primary button::after { content: "%s"; }',   $m_primary_icon   );
+	$style .= sprintf( '.menu-toggle-secondary button::after { content: "%s"; }', $m_secondary_icon );
+	$style .= sprintf( '.menu-toggle-search button::after { content: "%s"; }',    $m_search_icon    );
+
+	$style .= sprintf(
+		'.menu-primary-open .menu-toggle-primary button::after,
+		 .menu-secondary-open .menu-toggle-secondary button::after,
+		 .menu-search-open .menu-toggle-search button::after { content: "%s"; }',
+		$m_close_icon
+	);
+
+	return str_replace( array( "\r", "\n", "\t" ), '', $style );
 }
 
 /**

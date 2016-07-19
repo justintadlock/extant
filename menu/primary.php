@@ -1,8 +1,8 @@
 <li <?php hybrid_attr( 'menu', 'primary' ); ?>>
 
-	<h3 id="menu-primary-title" class="menu-toggle">
+	<h3 id="menu-primary-title" class="menu-toggle-primary">
 		<button><span class="screen-reader-text"><?php echo hybrid_get_menu_name( 'primary' ); ?></span></button>
-	</h3><!-- .menu-toggle -->
+	</h3><!-- .menu-primary-toggle -->
 
 	<?php if ( has_nav_menu( 'primary' ) ) : ?>
 
