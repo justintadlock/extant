@@ -243,18 +243,18 @@ final class Extant_Theme {
 	public function register_scripts() {
 
 		// Register scripts.
-		wp_register_script( 'extant', $this->dir_uri . 'js/theme.js', array( 'jquery' ), null, true );
+		wp_register_script( 'extant', hybrid_get_script_uri( 'theme', 'template' ), array( 'jquery' ), null, true );
 
 		// Register fonts.
 		hybrid_register_font( 'extant', array( 'family' => extant_get_font_families(), 'subset' => extant_get_font_subsets() ) );
 
 		// Register styles.
-		wp_register_style( 'font-awesome',        hybrid_get_stylesheet_uri( 'font-awesome', 'template' ) );
-		wp_register_style( 'extant-mediaelement', hybrid_get_stylesheet_uri( 'mediaelement', 'template' ) );
-		wp_register_style( 'extant-embed',        hybrid_get_stylesheet_uri( 'embed' ) );
+		wp_register_style( 'font-awesome',        hybrid_get_style_uri( 'font-awesome', 'template' ) );
+		wp_register_style( 'extant-mediaelement', hybrid_get_style_uri( 'mediaelement', 'template' ) );
+		wp_register_style( 'extant-embed',        hybrid_get_style_uri( 'embed' ) );
 
 		if ( is_child_theme() )
-			wp_register_style( 'extant-parent-embed', hybrid_get_stylesheet_uri( 'embed', 'template' ) );
+			wp_register_style( 'extant-parent-embed', hybrid_get_style_uri( 'embed', 'template' ) );
 	}
 }
 

@@ -248,10 +248,10 @@ final class Extant_Customize {
 	 */
 	public function register_control_scripts() {
 
-		wp_register_script( 'extant-customize-controls', trailingslashit( get_template_directory_uri() ) . 'js/customize-controls.js', array( 'customize-controls' ), null, true );
+		wp_register_script( 'extant-customize-controls', hybrid_get_script_uri( 'customize-controls', 'template' ), array( 'customize-controls' ), null, true );
 
-		wp_register_style( 'font-awesome',              hybrid_get_stylesheet_uri( 'font-awesome', 'template' ) );
-		wp_register_style( 'extant-customize-controls', hybrid_get_stylesheet_uri( 'customize-controls', 'template' ) );
+		wp_register_style( 'font-awesome',              hybrid_get_style_uri( 'font-awesome', 'template' ) );
+		wp_register_style( 'extant-customize-controls', hybrid_get_style_uri( 'customize-controls', 'template' ) );
 	}
 
 	/**
@@ -263,9 +263,7 @@ final class Extant_Customize {
 	 */
 	public function preview_enqueue() {
 
-		$suffix = hybrid_get_min_suffix();
-
-		wp_enqueue_script( 'extant-customize-preview', trailingslashit( get_template_directory_uri() ) . "js/customize-preview{$suffix}.js", array( 'jquery' ), null, true );
+		wp_enqueue_script( 'extant-customize-preview', hybrid_get_script_uri( 'customize-preview', 'template' ), array( 'jquery' ), null, true );
 	}
 }
 

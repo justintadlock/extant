@@ -48,7 +48,7 @@ function hybrid_is_layout( $layout ) {
  * @param  string  $where  stylesheet|template
  * @return string
  */
-function hybrid_get_stylesheet_uri( $name, $where = 'stylesheet' ) {
+function hybrid_get_style_uri( $name, $where = 'stylesheet' ) {
 
 	$suffix = hybrid_get_min_suffix();
 	$path   = 'template' === $where ? '%1$s/css' : '%2$s/css';
@@ -59,6 +59,28 @@ function hybrid_get_stylesheet_uri( $name, $where = 'stylesheet' ) {
 	$style_uri = $suffix && file_exists( "{$dir}{$name}{$suffix}.css" ) ? "{$uri}{$name}{$suffix}.css" : "{$uri}{$name}.css";
 
 	return apply_filters( "hybrid_{$name}_stylesheet_uri", $style_uri, $dir, $uri );
+}
+
+/**
+ * Searches for and attempts to find a specific script.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $name   Name of the script file (without the extension).
+ * @param  string  $where  stylesheet|template
+ * @return string
+ */
+function hybrid_get_script_uri( $name, $where = 'stylesheet' ) {
+
+	$suffix = hybrid_get_min_suffix();
+	$path   = 'template' === $where ? '%1$s/js' : '%2$s/js';
+
+	$dir = trailingslashit( sprintf( $path, get_template_directory(),     get_stylesheet_directory()     ) );
+	$uri = trailingslashit( sprintf( $path, get_template_directory_uri(), get_stylesheet_directory_uri() ) );
+
+	$script_uri = $suffix && file_exists( "{$dir}{$name}{$suffix}.js" ) ? "{$uri}{$name}{$suffix}.js" : "{$uri}{$name}.js";
+
+	return apply_filters( "hybrid_{$name}_script_uri", $script_uri, $dir, $uri );
 }
 
 /**
