@@ -38,6 +38,17 @@ jQuery( document ).ready( function() {
 
 	} ); // wp.customize
 
+	// Update `<body>` class when `show_header_icon` value has changed.
+	wp.customize( 'show_header_icon', function( value ) {
+
+		value.bind( function( to ) {
+
+			true === to ? jQuery( 'body' ).removeClass( 'hide-header-icon' ) : jQuery( 'body' ).addClass( 'hide-header-icon' );
+
+		} ); // value.bind
+
+	} ); // wp.customize
+
 	/*
 	 * Handles the Primary color for the theme.  This color is used for various elements and at different
 	 * shades. It must set an rgba color value to handle the "shades".
