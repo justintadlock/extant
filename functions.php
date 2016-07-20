@@ -84,8 +84,8 @@ final class Extant_Theme {
 		require_once( $this->dir_path . 'inc/hybrid-x.php'     );
 		require_once( $this->dir_path . 'inc/hybrid-fonts.php' );
 
-		// Load theme functions files.
-		require_once( $this->dir_path . 'inc/functions-customize.php' );
+		// Load theme includes.
+		require_once( $this->dir_path . 'inc/class-customize.php'     );
 		require_once( $this->dir_path . 'inc/functions-filters.php'   );
 		require_once( $this->dir_path . 'inc/functions-icons.php'     );
 		require_once( $this->dir_path . 'inc/functions-options.php'   );
