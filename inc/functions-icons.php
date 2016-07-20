@@ -32,11 +32,24 @@ function extant_get_font_icon_code( $name ) {
  * @param  string  $name
  * @return string
  */
-function extant_get_font_icon_html( $name ) {
+function extant_get_font_icon_text( $name ) {
 
 	$icon = extant_get_font_icon_code( $name );
 
 	return $icon ? "&#x{$icon}" : '';
+}
+
+/**
+ * Returns the font icon HTML element.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $name
+ * @return string
+ */
+function extant_get_font_icon_html( $name ) {
+
+	return sprintf( '<i class="%s" aria-hidden="true"></i>', sanitize_html_class( $name ) );
 }
 
 /**
@@ -64,7 +77,7 @@ function extant_get_font_icon_css( $name ) {
  */
 function extant_font_icon_exists( $name ) {
 
-	$name = extant_get_font_icons();
+	$icons = extant_get_font_icons();
 
 	return isset( $icons[ $name ] );
 }

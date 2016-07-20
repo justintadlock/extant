@@ -3,7 +3,11 @@
 	<li <?php hybrid_attr( 'menu', 'secondary' ); ?>>
 
 		<h3 id="menu-secondary-title" class="menu-toggle-secondary">
-			<button><span class="screen-reader-text"><?php echo hybrid_get_menu_name( 'secondary' ); ?></span></button>
+			<?php printf(
+				'<button>%s<span class="screen-reader-text">%s</span></button>',
+				extant_get_menu_secondary_i(),
+				hybrid_get_menu_name( 'secondary' )
+			); ?>
 		</h3><!-- .menu-toggle -->
 
 		<?php wp_nav_menu(

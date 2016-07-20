@@ -63,6 +63,8 @@ class Extant_Customize_Control_Select_Icon extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
+		wp_enqueue_script( 'extant-customize-controls' );
+
 		wp_enqueue_style( 'font-awesome' );
 		wp_enqueue_style( 'extant-customize-controls' );
 	}

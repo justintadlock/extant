@@ -9,6 +9,27 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
+# Handle the header icon.
+add_filter( 'hybrid_site_title', 'extant_site_title' );
+
+/**
+ * Adds a class to the site title to handle the header icon.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function extant_site_title() {
+
+	return sprintf(
+		'<h1 %s><a href="%s" rel="home">%s<span class="name">%s</span></a></h1>',
+		hybrid_get_attr( 'site-title' ),
+		esc_url( home_url() ),
+		extant_get_header_i(),
+		get_bloginfo( 'name' )
+	);
+}
+
 # Custom body and post classes.
 add_filter( 'body_class', 'extant_body_class' );
 add_filter( 'post_class', 'extant_post_class' );

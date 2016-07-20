@@ -753,10 +753,10 @@ a .svg-featured {
  ********************************************************************************************************/
 
 /* Menus */
-.site-title a::before,
-.menu-toggle-primary button::after,
-.menu-toggle-secondary button::after,
-.menu-toggle-search button::after,
+.site-title i::before,
+.menu-toggle-primary button i::before,
+.menu-toggle-secondary button i::before,
+.menu-toggle-search button i::before,
 .menu li a::after,
 .menu-primary li li a::before,
 
@@ -798,33 +798,33 @@ a .svg-featured {
 }
 
 
-	.site-title a::before {
+	.site-title i::before {
 		vertical-align: middle;
 		font-size: 24px;
 	}
 
 
-		.rtl .site-title a::before { padding: 0 0 5px 8px; }
-		.ltr .site-title a::before { padding: 0 8px 5px 0; }
+		.rtl .site-title i::before { padding: 0 0 5px 8px; }
+		.ltr .site-title i::before { padding: 0 8px 5px 0; }
 
 	@media only screen and ( min-width: 481px ) {
 
-		.hide-header-icon .site-title a::before { content: ''; padding: 0; }
+		.hide-header-icon .site-title i::before { content: ''; padding: 0; }
 	}
 
 	/* Menu Primary */
 
-	.menu-toggle-primary button::after {
+	.menu-toggle-primary button i::before {
 		font-size: 24px;
 		text-decoration: none;
 	}
 
-	.menu-toggle-secondary button::after {
+	.menu-toggle-secondary button i::before {
 		font-size: 24px;
 		text-decoration: none;
 	}
 
-	.menu-toggle-search button::after {
+	.menu-toggle-search button i::before {
 		font-size: 24px;
 		text-decoration: none;
 	}
@@ -843,19 +843,19 @@ a .svg-featured {
 			height: 100%;
 		}
 
-
+/*
 	@media only screen and ( min-width: 480px ) {
 
-		.menu-primary-open .menu-toggle-primary button::after,
-		.menu-secondary-open .menu-toggle-secondary button::after { padding-left: 3px; padding-right: 4px; }
+		.menu-primary-open .menu-toggle-primary button i::before,
+		.menu-secondary-open .menu-toggle-secondary button i::before { padding-left: 3px; padding-right: 4px; }
 	}
+*/
 
-		.menu-primary-open.ltr .menu-toggle-primary button::after,
-		.menu-secondary-open.ltr .menu-toggle-secondary button::after,
-		.menu-search-open.rtl .menu-toggle-search button::after { content: '\f00d'; }
-		.menu-primary-open.rtl .menu-toggle-primary button::after,
-		.menu-secondary-open.rtl .menu-toggle-secondary button::after,
-		.menu-search-open.ltr .menu-toggle-search button::after { content: '\f00d'; }
+
+		.menu-primary-open .menu-toggle-primary button i::before,
+		.menu-secondary-open .menu-toggle-secondary button i::before,
+		.menu-search-open .menu-toggle-search button i::before { content: '\f00d'; }
+
 
 	.menu-primary li li a::before {
 		content:   '\f068';

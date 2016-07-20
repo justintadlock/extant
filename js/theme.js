@@ -56,7 +56,7 @@ jQuery( window ).ready( function() {
 		'<span class="screen-reader-text">'
 	);
 
-	jQuery( '.site-title a' ).wrapInner( '<span class="name">' );
+	//jQuery( '.site-title a' ).wrapInner( '<span class="name">' );
 
 	//jQuery( '.comment-list .avatar' ).wrap( '<span class="avatar-wrap">' );
 
@@ -126,6 +126,12 @@ jQuery( window ).ready( function() {
 		function( e ) {
 
 			//var scroll = jQuery( window ).scrollTop();
+
+			/*var alt = jQuery( this ).attr( 'data-icon-alt' );
+			var c = jQuery( this ).attr( 'class' );
+
+			jQuery( this ).removeClass( c ).addClass( alt );
+			jQuery( this ).attr( 'data-icon-alt', c );*/
 
 			if ( jQuery( 'body' ).hasClass( 'menu-search-open' ) ) {
 				jQuery( 'body' ).toggleClass( 'menu-search-open' );

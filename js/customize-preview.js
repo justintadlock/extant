@@ -39,25 +39,6 @@ jQuery( document ).ready( function() {
 	} ); // wp.customize
 
 	/*
-	 * Handles the header icon.  This is only displayed if the header text is displayed.
-	 */
-	wp.customize( 'header_icon', function( value ) {
-
-		value.bind( function( new_icon, old_icon ) {
-
-			if ( '' !== old_icon ) {
-				jQuery( '#site-title' ).removeClass( old_icon );
-			}
-
-			if ( '' !== new_icon ) {
-				jQuery( '#site-title' ).addClass( new_icon );
-			}
-
-		} ); // value.bind
-
-	} ); // wp.customize
-
-	/*
 	 * Handles the Primary color for the theme.  This color is used for various elements and at different
 	 * shades. It must set an rgba color value to handle the "shades".
 	 */

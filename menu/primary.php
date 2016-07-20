@@ -1,7 +1,11 @@
 <li <?php hybrid_attr( 'menu', 'primary' ); ?>>
 
 	<h3 id="menu-primary-title" class="menu-toggle-primary">
-		<button><span class="screen-reader-text"><?php echo hybrid_get_menu_name( 'primary' ); ?></span></button>
+		<?php printf(
+			'<button>%s<span class="screen-reader-text">%s</span></button>',
+			extant_get_menu_primary_i(),
+			hybrid_get_menu_name( 'primary' )
+		); ?>
 	</h3><!-- .menu-primary-toggle -->
 
 	<?php if ( has_nav_menu( 'primary' ) ) : ?>

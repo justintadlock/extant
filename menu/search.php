@@ -3,7 +3,11 @@
 	<li <?php hybrid_attr( 'menu', 'search' ); ?>>
 
 		<h3 id="menu-search-title" class="menu-toggle-search">
-			<button><span class="screen-reader-text"><?php esc_html_e( 'Search', 'extant' ); ?></span></button>
+			<?php printf(
+				'<button>%s<span class="screen-reader-text">%s</span></button>',
+				extant_get_menu_search_i(),
+				esc_html__( 'Search', 'extant' )
+			); ?>
 		</h3><!-- .menu-toggle-search -->
 
 		<?php get_search_form(); ?>

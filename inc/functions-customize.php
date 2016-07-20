@@ -45,6 +45,44 @@ function extant_customize_register( $wp_customize ) {
 		array( 'title' => __( 'Icons', 'extant' ) )
 	);
 
+	/* === Selective Refresh === */
+
+	$wp_customize->selective_refresh->add_partial(
+		'header_icon',
+		array(
+			'selector'            => '.site-title i',
+			'container_inclusive' => true,
+			'render_callback'     => 'extant_get_header_i'
+		)
+	);
+
+	$wp_customize->selective_refresh->add_partial(
+		'menu_primary_icon',
+		array(
+			'selector'            => '.menu-toggle-primary button i',
+			'container_inclusive' => true,
+			'render_callback'     => 'extant_get_menu_primary_i'
+		)
+	);
+
+	$wp_customize->selective_refresh->add_partial(
+		'menu_secondary_icon',
+		array(
+			'selector'            => '.menu-toggle-secondary button i',
+			'container_inclusive' => true,
+			'render_callback'     => 'extant_get_menu_secondary_i'
+		)
+	);
+
+	$wp_customize->selective_refresh->add_partial(
+		'menu_search_icon',
+		array(
+			'selector'            => '.menu-toggle-search button i',
+			'container_inclusive' => true,
+			'render_callback'     => 'extant_get_menu_search_i'
+		)
+	);
+
 	/* === Settings === */
 
 	$wp_customize->add_setting(
@@ -87,15 +125,6 @@ function extant_customize_register( $wp_customize ) {
 		'menu_search_icon',
 		array(
 			'default'            => extant_get_menu_search_icon(),
-			'sanitize_callback'  => 'extant_validate_font_icon',
-			'transport'          => 'postMessage',
-		)
-	);
-
-	$wp_customize->add_setting(
-		'menu_close_icon',
-		array(
-			'default'            => extant_get_menu_close_icon(),
 			'sanitize_callback'  => 'extant_validate_font_icon',
 			'transport'          => 'postMessage',
 		)
@@ -144,14 +173,6 @@ function extant_customize_register( $wp_customize ) {
 			array( 'label' => esc_html__( 'Search Menu Icon', 'extant' ) )
 		)
 	);
-
-	$wp_customize->add_control(
-		new Extant_Customize_Control_Select_Icon(
-			$wp_customize,
-			'menu_close_icon',
-			array( 'label' => esc_html__( 'Close Menu Icon', 'extant' ) )
-		)
-	);
 }
 
 /**
@@ -176,6 +197,8 @@ function extant_customize_preview_enqueue() {
  * @return void
  */
 function extant_customize_controls_register_scripts() {
+
+	wp_register_script( 'extant-customize-controls', trailingslashit( get_template_directory_uri() ) . 'js/customize-controls.js', array( 'customize-controls' ), null, true );
 
 	wp_register_style( 'font-awesome',              hybrid_get_stylesheet_uri( 'font-awesome', 'template' ) );
 	wp_register_style( 'extant-customize-controls', hybrid_get_stylesheet_uri( 'customize-controls', 'template' ) );

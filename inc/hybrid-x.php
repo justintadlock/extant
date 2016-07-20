@@ -23,7 +23,7 @@
  */
 function hybrid_get_theme_mod( $name, $default = false ) {
 
-	return get_theme_mod( $mod, apply_filters( "hybrid_theme_mod_{$mod}_default", $default ) );
+	return get_theme_mod( $name, apply_filters( "hybrid_theme_mod_{$name}_default", $default ) );
 }
 
 /**

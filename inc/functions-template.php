@@ -217,7 +217,7 @@ function extant_get_featured_svg_icon() {
 		}
 	}
 
-	return apply_filters( 'extant_featured_svg_icon', extant_get_font_icon_html( $icon ) );
+	return apply_filters( 'extant_featured_svg_icon', extant_get_font_icon_text( $icon ) );
 }
 
 /**
@@ -251,4 +251,52 @@ function extant_map_featured_icons() {
 
 	// Developers, array key can be `{$type}-{$format}`, `{$format}`, or `{$type}`.
 	return apply_filters( 'extant_map_featured_icons', $icons );
+}
+
+/**
+ * Returns the header icon HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function extant_get_header_i() {
+
+	return extant_get_font_icon_html( extant_get_header_icon() );
+}
+
+/**
+ * Returns the primary menu icon HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function extant_get_menu_primary_i() {
+
+	return extant_get_font_icon_html( extant_get_menu_primary_icon() );
+}
+
+/**
+ * Returns the secondary menu icon HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function extant_get_menu_secondary_i() {
+
+	return extant_get_font_icon_html( extant_get_menu_secondary_icon() );
+}
+
+/**
+ * Returns the search menu icon HTML.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function extant_get_menu_search_i() {
+
+	return extant_get_font_icon_html( extant_get_menu_search_icon() );
 }
