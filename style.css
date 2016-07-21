@@ -1446,6 +1446,29 @@ display: block; /* can't use inline or inline-block */
 p > iframe {
 	margin-bottom: 0;
 }
+/* ====== Embeds ====== */
+
+	.twitter-tweet { width: 100% !important; }
+
+	.embed-wrap {
+		position:       relative;
+		margin-bottom:  1.5rem;
+		padding-bottom: 56.25%;
+		padding-top:    30px;
+		height:         0;
+		overflow:       hidden;
+	}
+
+	.embed-wrap iframe,
+	.embed-wrap object,
+	.embed-wrap embed {
+		position:  absolute;
+		top:       0;
+		left:      0;
+		width:     100%;
+		max-width: 100%;
+		height:    100%;
+	}
 
 /********************************************************************************************************
  * ====== End Media ======
