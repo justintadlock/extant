@@ -1,0 +1,151 @@
+#accordion-panel-theme_options .accordion-section-title::before {
+	content: "\f111"; /* default */
+	margin-right: 8px;
+	margin-top: 1px;
+    display: inline-block;
+	color: #aaa;
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    line-height: 1;
+    font-family: dashicons;
+    text-decoration: inherit;
+    font-weight: normal;
+    font-style: normal;
+    vertical-align: top;
+    text-align: center;
+    -webkit-transition: color .1s ease-in 0;
+    transition: color .1s ease-in 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+	#accordion-panel-theme_options .accordion-section-title:hover::before,
+	#accordion-panel-theme_options .accordion-section-title:focus::before {
+		color: inherit;
+	}
+
+	.rtl #accordion-panel-theme_options .accordion-section-title::before {
+		margin-right: 0;
+		margin-left: 8px;
+	}
+
+
+	#accordion-panel-theme_options .control-section-locked .accordion-section-title::before {
+		content: "\f160";
+		color: inherit;
+	}
+
+	#accordion-panel-theme_options .panel-meta .accordion-section-title::before {
+		display: none;
+	}
+
+	#accordion-panel-theme_options > .accordion-section-title::before {
+		content: "\f100";
+		display: none;
+	}
+	#accordion-section-pro > .accordion-section-title::before {
+		content: "\f132";
+		color: inherit;
+	/*	display: none;*/
+	}
+	#accordion-section-layout > .accordion-section-title::before {
+		content: "\f538";
+	}
+	#accordion-section-icons > .accordion-section-title::before {
+		content: "\f155";
+	}
+	#accordion-section-colors > .accordion-section-title::before {
+		content: "\f540";
+	}
+	#accordion-section-background_image > .accordion-section-title::before {
+		content: "\f128";
+	}
+/*
+	#accordion-section-pro span.name {
+		background: #c02942;
+		    color: #fff;
+		    padding: 5px 15px;
+	}
+	#accordion-section-pro > .accordion-section-title:hover span.name,
+	#accordion-section-pro > .accordion-section-title:focus span.name {
+		background: transparent;
+	}
+*/
+
+#accordion-panel-theme_options > .accordion-section-title,
+#accordion-section-pro > .accordion-section-title {
+	padding: 15px;
+	margin: 15px 0;
+	color: #fff;
+	background: #c02942;
+	border-top: 1px solid rgba( 192, 41, 66, 0.25 );
+	border-bottom: 1px solid rgba( 192, 41, 66, 0.25 );
+}
+
+#accordion-panel-theme_options .control-section-locked > .accordion-section-title,
+#accordion-panel-theme_options .control-section-locked > .accordion-section-title:hover,
+#accordion-panel-theme_options .control-section-locked > .accordion-section-title:focus {
+	margin: 15px 0;
+	color: rgba( 192, 41, 66, 0.65 );
+	background: #fff;
+}
+
+#accordion-panel-theme_options .control-section-locked + .control-section-locked > .accordion-section-title {
+	margin-top: -15px;
+}
+
+
+
+	#accordion-panel-theme_options > .accordion-section-title::after,
+	#accordion-panel-theme_options > .accordion-section-title:hover::after,
+	#accordion-panel-theme_options > .accordion-section-title:focus::after,
+	#accordion-section-pro > .accordion-section-title::after,
+	#accordion-section-pro > .accordion-section-title:hover::after,
+	#accordion-section-pro > .accordion-section-title:focus::after {
+		color: inherit !important;
+		top: 15px;
+	}
+
+	#accordion-panel-theme_options.accordion-section > .accordion-section-title:hover,
+	#accordion-panel-theme_options.accordion-section > .accordion-section-title:focus,
+	#accordion-section-pro.accordion-section > .accordion-section-title:hover,
+	#accordion-section-pro.accordion-section > .accordion-section-title:focus {
+		border-color: #333;
+		color: #fff;
+		background: #333;
+	}
+
+	.control-section-locked .accordion-section-title { cursor: initial;
+		padding-right: 15px !important;
+padding-top: 15px; padding-bottom: 15px; }
+	.control-section-locked .accordion-section-title::after { display: none; }
+
+	.control-section-locked .accordion-section-title > button { cursor: pointer; }
+
+	.control-section-locked .accordion-section-title > button {
+		float: right;
+		margin-top: -4px;
+		font-weight: 400;
+		margin-left: 8px;
+	}
+
+		.rtl .control-section-locked .accordion-section-title > button {
+			float: left;
+			margin-left: 0;
+			margin-right: 8px;
+		}
+
+	.control-section-locked .pro-link:hover,
+	.control-section-locked .pro-link:focus {
+		color: #fff;
+		background: #333;
+		text-decoration: underline;
+	}
+
+.customize-control-select-icon select {
+	font-family: 'FontAwesome';
+	font-size: 24px;
+	height: 45px;
+	padding: 0 8px;
+}

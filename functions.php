@@ -1,6 +1,5 @@
 <?php
 
-
 /* Images
 https://unsplash.com/photos/jUNuMQvBwGc
 https://unsplash.com/photos/TMOeGZw9NY4
@@ -114,7 +113,8 @@ final class Extant_Theme {
 	private function setup_actions() {
 
 		// Theme setup.
-		add_action( 'after_setup_theme', array( $this, 'theme_setup' ), 5 );
+		add_action( 'after_setup_theme', array( $this, 'theme_setup'             ),  5 );
+		add_action( 'after_setup_theme', array( $this, 'custom_background_setup' ), 15 );
 
 		// Register menus.
 		add_action( 'init', array( $this, 'register_menus' ) );
@@ -168,6 +168,25 @@ final class Extant_Theme {
 
 		// Handle content width for embeds and images.
 		hybrid_set_content_width( 950 );
+	}
+
+	/**
+	 * Adds support for the WordPress 'custom-background' theme feature.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function custom_background_setup() {
+
+		add_theme_support(
+			'custom-background',
+			array(
+				'default-color'    => 'ffffff',
+				'default-image'    => '',
+				'wp-head-callback' => 'extant_custom_background_callback',
+			)
+		);
 	}
 
 	/**

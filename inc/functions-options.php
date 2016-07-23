@@ -151,5 +151,31 @@ function extant_get_header_secondary_color() {
  */
 function extant_is_pro() {
 
-	return apply_filters( 'extant_is_pro', false );
+	$is_pro = extant_is_pro_colors() && extant_is_pro_icons();
+
+	return apply_filters( 'extant_is_pro', $is_pro );
+}
+
+/**
+ * Conditional tag to check whether the user is running the pro colors extension.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return bool
+ */
+function extant_is_pro_colors() {
+
+	return apply_filters( 'extant_is_pro_colors', false );
+}
+
+/**
+ * Conditional tag to check whether the user is running the pro icons extension.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return bool
+ */
+function extant_is_pro_icons() {
+
+	return apply_filters( 'extant_is_pro_icons', false );
 }

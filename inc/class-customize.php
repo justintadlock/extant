@@ -48,7 +48,8 @@ final class Extant_Customize {
 	 */
 	private function setup_actions() {
 
-		// Register sections, settings, controls, and partials.
+		// Register panels, sections, settings, controls, and partials.
+		add_action( 'customize_register', array( $this, 'panels'   ) );
 		add_action( 'customize_register', array( $this, 'sections' ) );
 		add_action( 'customize_register', array( $this, 'settings' ) );
 		add_action( 'customize_register', array( $this, 'controls' ) );
@@ -62,6 +63,24 @@ final class Extant_Customize {
 	}
 
 	/**
+	 * Sets up the customizer panels.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function panels( $wp_customize ) {
+
+		$wp_customize->add_panel(
+			'theme_options',
+			array(
+				'priority' => 5,
+				'title'    => __( 'Theme Options', 'extant' )
+			)
+		);
+	}
+
+	/**
 	 * Sets up the customizer sections.
 	 *
 	 * @since  1.0.0
@@ -70,9 +89,37 @@ final class Extant_Customize {
 	 */
 	public function sections( $wp_customize ) {
 
+		// Load custom sections.
+		require_once( extant_theme()->dir_path . 'inc/customize/section-locked.php' );
+
+		// Register custom section types.
+		$wp_customize->register_section_type( 'Extant_Customize_Section_Locked' );
+
+		// Move theme-specific sections to our theme options panel.
+		$wp_customize->get_section( 'background_image' )->panel = 'theme_options';
+		$wp_customize->get_section( 'layout' )->panel           = 'theme_options';
+		$wp_customize->get_section( 'colors' )->panel           = 'theme_options';
+
 		$wp_customize->add_section(
 			'icons',
-			array( 'title' => __( 'Icons', 'extant' ) )
+			array(
+				'panel' => 'theme_options',
+				'title' => __( 'Icons', 'extant' )
+			)
+		);
+
+		$wp_customize->add_section(
+			new Extant_Customize_Section_Locked(
+				$wp_customize,
+				'pro_options',
+				array(
+					'panel'           => 'theme_options',
+					'priority'        => 995,
+					'title'           => esc_html__( 'Pro Options', 'extant' ),
+					'button'          => esc_html__( 'Unlock', 'extant' ),
+					'active_callback' => array( $this, 'show_pro_options' )
+				)
+			)
 		);
 	}
 
@@ -88,6 +135,36 @@ final class Extant_Customize {
 		// Enable live preview for WordPress theme features.
 		$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
 		$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
+
+		$wp_customize->add_setting(
+			'color_primary',
+			array(
+				'default'              => extant_get_primary_color(),
+				'sanitize_callback'    => 'sanitize_hex_color_no_hash',
+				'sanitize_js_callback' => 'maybe_hash_hex_color',
+				'transport'            => 'postMessage'
+			)
+		);
+
+		$wp_customize->add_setting(
+			'color_header_primary',
+			array(
+				'default'              => extant_get_header_primary_color(),
+				'sanitize_callback'    => 'sanitize_hex_color_no_hash',
+				'sanitize_js_callback' => 'maybe_hash_hex_color',
+				'transport'            => 'postMessage'
+			)
+		);
+
+		$wp_customize->add_setting(
+			'color_header_secondary',
+			array(
+				'default'              => extant_get_header_secondary_color(),
+				'sanitize_callback'    => 'sanitize_hex_color_no_hash',
+				'sanitize_js_callback' => 'maybe_hash_hex_color',
+				'transport'            => 'postMessage'
+			)
+		);
 
 		$wp_customize->add_setting(
 			'show_header_icon',
@@ -133,6 +210,13 @@ final class Extant_Customize {
 				'transport'          => 'postMessage',
 			)
 		);
+
+		$wp_customize->add_setting(
+			new WP_Customize_Filter_Setting(
+				$wp_customize,
+				'not_a_real_setting'
+			)
+		);
 	}
 
 	/**
@@ -146,9 +230,48 @@ final class Extant_Customize {
 
 		// Load custom controls.
 		require_once( extant_theme()->dir_path . 'inc/customize/control-select-icon.php' );
+		require_once( extant_theme()->dir_path . 'inc/customize/control-custom-html.php' );
 
 		// Register custom control types.
 		$wp_customize->register_control_type( 'Extant_Customize_Control_Select_Icon' );
+		$wp_customize->register_control_type( 'Extant_Customize_Control_Custom_HTML' );
+
+		/* === Colors === */
+
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'color_primary',
+				array(
+					'label'    => esc_html__( 'Primary Color', 'extant' ),
+					'section'  => 'colors',
+				)
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'color_header_primary',
+				array(
+					'label'    => esc_html__( 'Header Primary Color', 'extant' ),
+					'section'  => 'colors',
+				)
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'color_header_secondary',
+				array(
+					'label'    => esc_html__( 'Header Secondary Color', 'extant' ),
+					'section'  => 'colors',
+				)
+			)
+		);
+
+		/* === Icons === */
 
 		$wp_customize->add_control(
 			'show_header_icon',
@@ -189,6 +312,20 @@ final class Extant_Customize {
 				$wp_customize,
 				'menu_search_icon',
 				array( 'label' => esc_html__( 'Search Menu Icon', 'extant' ) )
+			)
+		);
+
+		/* === Pro Options === */
+
+		$wp_customize->add_control(
+			new Extant_Customize_Control_Custom_HTML(
+				$wp_customize,
+				'not_a_real_setting',
+				array(
+					'section' => 'pro_options',
+					'label'   => esc_html__( 'Go Pro', 'extant' ),
+					'html'    => $this->get_custom_control_html()
+				)
 			)
 		);
 	}
@@ -237,6 +374,38 @@ final class Extant_Customize {
 				'render_callback'     => 'extant_get_menu_search_i'
 			)
 		);
+	}
+
+	/**
+	 * Whether to show the pro options.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return bool
+	 */
+	public function show_pro_options() {
+
+		return ! extant_is_pro();
+	}
+
+	/**
+	 * Returns the HTML for the custom HTML control.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
+	 */
+	public function get_custom_control_html() {
+
+		$html  = '<ul>';
+		$html .= '<li><label><input type="checkbox" id="extant-upgrade-all" /> All Features</label></li>';
+		$html .= '<li><label><input type="checkbox" id="extant-upgrade-icons" /> Colors</label></li>';
+		$html .= '<li><label><input type="checkbox" id="extant-upgrade-colors" /> Icons</label></li>';
+		$html .= '</ul>';
+
+		$html .= '<p><button type="button" class="button button-primary">Purchase</button></p>';
+
+		return $html;
 	}
 
 	/**
