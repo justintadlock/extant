@@ -75,7 +75,7 @@ class Extant_Customize_Section_Locked extends WP_Customize_Section {
 			<h3 class="accordion-section-title" tabindex="0">
 				{{ data.title }}
 
-				<# if ( data.link_text ) { #>
+				<# if ( data.button ) { #>
 					<button type="button" class="button button-primary">{{ data.button }}</button>
 				<# } #>
 			</h3>
