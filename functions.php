@@ -143,7 +143,7 @@ final class Extant_Theme {
 		add_theme_support( 'custom-content-portfolio' );
 
 		// Theme layouts.
-		add_theme_support( 'theme-layouts', array( 'default' => 'grid-portrait', 'post_meta' => false ) );
+		add_theme_support( 'theme-layouts', array( 'default' => 'grid-landscape', 'post_meta' => false ) );
 
 		// Breadcrumbs.
 		add_theme_support( 'breadcrumb-trail' );
@@ -218,21 +218,20 @@ final class Extant_Theme {
 
 			// Sets the `post-thumbnail` size.
 			set_post_thumbnail_size( 240, 135, true );
-
-			// Custom sizes.
-			add_image_size( 'extant-landscape',     750,  422,  true );
-			add_image_size( 'extant-landscape-2x',  1500, 844,  true );
-
 		// 3:4
 		} else if ( 'grid-portrait' === $layout ) {
 
 			// Sets the `post-thumbnail` size.
 			set_post_thumbnail_size( 180, 240, true );
-
-			// Custom sizes.
-			add_image_size( 'extant-portrait',    380, 506,  true );
-			add_image_size( 'extant-portrait-2x', 760, 1012, true );
 		}
+
+		// Landscape sizes.
+		add_image_size( 'extant-landscape',     750,  422,  true );
+		add_image_size( 'extant-landscape-2x',  1500, 844,  true );
+
+		// Portrait sizes.
+		add_image_size( 'extant-portrait',    380, 506,  true );
+		add_image_size( 'extant-portrait-2x', 760, 1012, true );
 
 		// Sizes always used for sticky posts.
 		add_image_size( 'extant-sticky',    950,  534,  true );

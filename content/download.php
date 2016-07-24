@@ -8,12 +8,13 @@
 
 		<?php get_the_image(
 			array(
-				'size'         => 'extant-sticky',
-				'srcset_sizes' => array( 'extant-sticky-2x' => '2x' ),
+				'size'         => extant_get_featured_size(),
+				'srcset_sizes' => array( extant_get_featured_size_2x() => '2x' ),
 				'order'        => array( 'featured' ),
-				'min_width'    => 750,
+				'min_width'    => extant_get_featured_min_width(),
 				'before'       => '<div class="featured-media">',
-				'after'        => '</div>'
+				'after'        => '</div>',
+				'link_to_post' => false
 			)
 		); ?>
 

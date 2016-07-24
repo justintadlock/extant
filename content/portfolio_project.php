@@ -3,14 +3,7 @@
 	<?php if ( is_single( get_the_ID() ) ) : // If viewing a single post. ?>
 
 		<header class="entry-header">
-
 			<h1 <?php hybrid_attr( 'entry-title' ); ?>><?php single_post_title(); ?></h1>
-
-			<div class="entry-byline">
-				<?php hybrid_post_terms( array( 'taxonomy' => 'portfolio_category' ) ); ?>
-				<?php hybrid_post_terms( array( 'taxonomy' => 'portfolio_tag', 'before' => sprintf( '<span class="sep">%s</span> ', _x( '&middot;', 'post meta separator', 'extant' ) ) ) ); ?>
-			</div><!-- .entry-byline -->
-
 		</header><!-- .entry-header -->
 
 		<div <?php hybrid_attr( 'entry-content' ); ?>>
@@ -19,10 +12,15 @@
 		</div><!-- .entry-content -->
 
 		<footer class="entry-footer">
-			<?php ccp_project_client(     array( 'wrap' => '<span %s><span class="project-key">' . __( 'Client',    'extant' ) . '</span> %s</span>' ) ); ?>
-			<?php ccp_project_location(   array( 'wrap' => '<span %s><span class="project-key">' . __( 'Location',  'extant' ) . '</span> %s</span>' ) ); ?>
-			<?php ccp_project_start_date( array( 'wrap' => '<span %s><span class="project-key">' . __( 'Started',   'extant' ) . '</span> %s</span>' ) ); ?>
-			<?php ccp_project_end_date(   array( 'wrap' => '<span %s><span class="project-key">' . __( 'Completed', 'extant' ) . '</span> %s</span>' ) ); ?>
+			<?php hybrid_post_terms( array( 'taxonomy' => 'portfolio_category' ) ); ?>
+			<?php hybrid_post_terms( array( 'taxonomy' => 'portfolio_tag' ) ); ?>
+
+			<ul class="project-meta">
+				<?php ccp_project_client(     array( 'wrap' => '<li %s><span class="project-key">' . __( 'Client',    'extant' ) . '</span> %s</li>' ) ); ?>
+				<?php ccp_project_location(   array( 'wrap' => '<li %s><span class="project-key">' . __( 'Location',  'extant' ) . '</span> %s</li>' ) ); ?>
+				<?php ccp_project_start_date( array( 'wrap' => '<li %s><span class="project-key">' . __( 'Started',   'extant' ) . '</span> %s</li>' ) ); ?>
+				<?php ccp_project_end_date(   array( 'wrap' => '<li %s><span class="project-key">' . __( 'Completed', 'extant' ) . '</span> %s</li>' ) ); ?>
+			</ul>
 			<?php ccp_project_link(       array( 'text' => __( 'View Project Site', 'extant' ) ) ); ?>
 		</footer><!-- .entry-footer -->
 

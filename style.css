@@ -763,6 +763,7 @@ a .svg-featured {
 /* Posts */
 .protected .label-password::before,
 .chat-author cite::before,
+.entry-terms::before,
 
 /* Respond */
 .comment-respond label[for="author"]::before,
@@ -921,6 +922,18 @@ a .svg-featured {
 
 	.prev-comments-link::before { content: "\f137"; font-size: 14px; margin: -1px 5px 0 0; }
 	.next-comments-link::after { content: "\f138"; font-size: 14px; margin: -1px 0 0 5px; }
+
+	.ltr .entry-terms::before { margin: -1px 5px 0 0; }
+	.rtl .entry-terms::before { margin: -1px 0 0 5px; }
+
+	.entry-terms.category::before,
+	.entry-terms.portfolio_category::before,
+	.entry-terms.download_category::before { content: '\f07c'; }
+
+	.entry-terms.post_tag::before,
+	.entry-terms.portfolio_tag::before,
+	.entry-terms.download_tag::before { content: '\f02c'; }
+
 	/* Comments */
 	/*
 	.comment-reply-link::after {
@@ -1255,6 +1268,21 @@ display: block; /* can't use inline or inline-block */
 	    width: auto;
 	}
 }
+
+	.ltr .entry-terms + .entry-terms { margin-left: 1rem; }
+	.rtl .entry-terms + .entry-terms { margin-right: 1rem; }
+
+	.entry-terms a {
+		padding: 0.375rem 0.625rem;
+		color: #000;
+		background: #fafafa;
+	}
+
+		.entry-terms a:hover,
+		.entry-terms a:focus {
+			background: #f8f8f8;
+			text-decoration: underline;
+		}
 
 	.format-quote blockquote {
 		overflow: hidden;
@@ -2072,15 +2100,14 @@ ul.trail-items {
 
 /* ====== Custom Content Portfolio ====== */
 
-.singular-portfolio_project .entry-meta {
+.singular-portfolio_project .project-meta {
 	display: table;
 	width: 100%;
+	border: 2px solid #f2f2f2;
+	margin: 1.5rem 0;
 }
 
-.singular-portfolio_project .project-client,
-.singular-portfolio_project .project-location,
-.singular-portfolio_project .project-start-date,
-.singular-portfolio_project .project-end-date {
+.singular-portfolio_project .project-meta li {
 	display: table-row;
 	width: 100%;
 }
@@ -2088,11 +2115,10 @@ ul.trail-items {
 .singular-portfolio_project .project-key {
 	display: table-cell;
 	text-align: left;
-	border-bottom: 1px dotted #f8f8f8;
-	padding: 5px 0;
-	padding-right: 1.5rem;
 	font-weight: bold;
 	color: #888;
+	padding: 0.75rem 1.5rem;
+	border-bottom: 1px solid #f8f8f8;
 }
 
 .singular-portfolio_project .project-data {
@@ -2100,13 +2126,15 @@ ul.trail-items {
 	text-align: right;
 	width: 100%;
 	max-width: 65%;
-	border-bottom: 1px dotted #f8f8f8;
-	padding: 5px 0;
+	padding: 0.75rem 1.5rem;
+	border-bottom: 1px solid #f8f8f8;
 }
+
+	.project-meta li:last-of-type .project-data,
+	.project-meta li:last-of-type .project-key { border-bottom: none; }
 
 .singular-portfolio_project .project-link {
 display: inline-block;
-    margin-top: 1.5rem;
     background: #c02942;
     text-shadow: none;
     color: #fff;
@@ -2181,14 +2209,49 @@ display: inline-block;
 	.edd_multi_mode .edd-item-quantity { padding: 0.125rem; }
 
 .edd_price_option_sep {
-font-size: 1rem;
     color: #bbb;
+}
+
+@media only screen and ( min-width: 641px ) {
+
+	.singular-download.grid-portrait .featured-media {
+		width: 50%;
+	}
+	.singular-download.grid-portrait .featured-media + .edd_download_purchase_form {
+		width: 50%;
+		box-sizing: border-box;
+	}
+
+	.ltr.singular-download.grid-portrait .featured-media { float: left; }
+	.rtl.singular-download.grid-portrait .featured-media { float: right; }
+
+	.ltr.singular-download.grid-portrait .featured-media + .edd_download_purchase_form {
+		float: right; padding-left: 1.5rem;
+	}
+	.rtl.singular-download.grid-portrait .featured-media + .edd_download_purchase_form {
+		float: left; padding-right: 1.5rem;
+	}
 }
 
 .edd_purchase_submit_wrapper .edd-add-to-cart,
 .edd_purchase_submit_wrapper .edd-submit {
 	width: 100%;
 	text-align: center;
+}
+
+.entry-content { clear: both; }
+
+.singular-download a.edd-add-to-cart.button {
+	width: 100%;
+	text-align: center;
+	border: 2px solid #333;
+	background: #fff;
+	color: #333;
+}
+.singular-download  a.edd-add-to-cart.button:hover,
+.singular-download  a.edd-add-to-cart.button:focus {
+	color: #fff;
+	background: #333;
 }
 
 .edd_purchase_submit_wrapper .edd-cart-ajax-alert {
@@ -2207,16 +2270,22 @@ display: inline-block;
 	list-style: none;
 	margin-left: 0;
 	margin-right: 0;
-	margin: 0;
+	margin: 0 0 0.75rem;
+	border: 2px solid #f2f2f2;
 }
 
 .edd_price_options ul li {
-background: #f8f8f8;
     /* vertical-align: middle; */
     overflow: hidden;
     padding: 0.75rem;
-    border-bottom: 1px solid #f0f0f0;
+	font-size: 1rem;
+    border-bottom: 1px solid #f8f8f8;
 }
+.edd_price_options ul li label { font-size: 1rem; }
+
+	.edd_price_options ul li:last-of-type {
+		border-bottom: none;
+	}
 
 
 

@@ -17,8 +17,8 @@
 			<?php hybrid_post_format_link(); ?>
 			<span class="sep"><?php _ex( '&middot;', 'post meta separator', 'extant' ); ?></span>
 			<time <?php hybrid_attr( 'entry-published' ); ?>><?php echo get_the_date(); ?></time>
-			<?php hybrid_post_terms( array( 'taxonomy' => 'category', 'before' => '<br />' ) ); ?>
-			<?php hybrid_post_terms( array( 'taxonomy' => 'post_tag', 'before' => sprintf( '<span class="sep">%s</span>', _x( '&middot;', 'post meta separator', 'extant' ) ) ) ); ?>
+			<?php hybrid_post_terms( array( 'taxonomy' => 'category' ) ); ?>
+			<?php hybrid_post_terms( array( 'taxonomy' => 'post_tag' ) ); ?>
 		</footer><!-- .entry-footer -->
 
 	<?php else : // If not viewing a single post. ?>

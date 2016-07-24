@@ -136,6 +136,9 @@ final class Extant_Customize {
 		$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
 		$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
 
+		// Layout needs to be refreshed to change image sizes.
+		$wp_customize->get_setting( 'theme_layout' )->transport = 'refresh';
+
 		$wp_customize->add_setting(
 			'color_primary',
 			array(

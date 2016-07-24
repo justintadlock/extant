@@ -23,7 +23,7 @@
 
 		<footer class="entry-footer">
 			<?php hybrid_post_terms( array( 'taxonomy' => 'category' ) ); ?>
-			<?php hybrid_post_terms( array( 'taxonomy' => 'post_tag', 'before' => sprintf( '<span class="sep">%s</span> ', _x( '&middot;', 'post meta separator', 'extant' ) ) ) ); ?>
+			<?php hybrid_post_terms( array( 'taxonomy' => 'post_tag' ) ); ?>
 		</footer><!-- .entry-footer -->
 
 	<?php else : // If not viewing a single post. ?>
