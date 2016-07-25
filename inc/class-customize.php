@@ -400,13 +400,14 @@ final class Extant_Customize {
 	 */
 	public function get_custom_control_html() {
 
-		$html  = '<ul>';
-		$html .= '<li><label><input type="checkbox" id="extant-upgrade-all" /> All Features</label></li>';
-		$html .= '<li><label><input type="checkbox" id="extant-upgrade-icons" /> Colors</label></li>';
-		$html .= '<li><label><input type="checkbox" id="extant-upgrade-colors" /> Icons</label></li>';
-		$html .= '</ul>';
-
-		$html .= '<p><button type="button" class="button button-primary">Purchase</button></p>';
+		$html = sprintf(
+			'<p>%s</p>
+			 <p>%s</p>
+			 <p><a class="button button-primary" href="http://themehybrid.com/themes/extant" target="_blank">%s</a></p>',
+			__( 'Extant Pro is an add-on that gives you the ability to pick and choose icons, change up your color scheme, and more without ever having to leave the customizer.', 'extant' ),
+			__( 'In addition to extra customizer options, you get a full year of dedicated support.', 'extant' ),
+			__( 'Find Out More', 'extant' )
+		);
 
 		return $html;
 	}
