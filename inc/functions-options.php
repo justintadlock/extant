@@ -115,7 +115,7 @@ function extant_show_header_icon() {
  */
 function extant_get_primary_color() {
 
-	return hybrid_get_theme_mod( 'color_primary', '#c02942' );
+	return hybrid_get_theme_mod( 'color_primary', 'c02942' );
 }
 
 /**
@@ -127,7 +127,7 @@ function extant_get_primary_color() {
  */
 function extant_get_header_primary_color() {
 
-	return hybrid_get_theme_mod( 'color_header_primary', '#333333' );
+	return hybrid_get_theme_mod( 'color_header_primary', '333333' );
 }
 
 /**
@@ -139,7 +139,7 @@ function extant_get_header_primary_color() {
  */
 function extant_get_header_secondary_color() {
 
-	return hybrid_get_theme_mod( 'color_header_secondary', '#ffffff' );
+	return hybrid_get_theme_mod( 'color_header_secondary', 'ffffff' );
 }
 
 /**

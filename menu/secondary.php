@@ -2,7 +2,7 @@
 
 	<li <?php hybrid_attr( 'menu', 'secondary' ); ?>>
 
-		<h3 id="menu-secondary-title" class="menu-toggle-secondary">
+		<h3 id="menu-secondary-title" class="menu-toggle-secondary menu-toggle">
 			<?php printf(
 				'<button>%s<span class="screen-reader-text">%s</span></button>',
 				extant_get_menu_secondary_i(),

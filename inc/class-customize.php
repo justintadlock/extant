@@ -359,6 +359,16 @@ final class Extant_Customize {
 	public function partials( $manager ) {
 
 		$manager->selective_refresh->add_partial(
+			'colors',
+			array(
+				'selector'            => '#hybrid-style-inline-css',
+				'container_inclusive' => false,
+				'settings'            => array( 'color_header_primary', 'color_header_secondary' ),
+				'render_callback'     => 'extant_get_inline_css'
+			)
+		);
+
+		$manager->selective_refresh->add_partial(
 			'header_icon',
 			array(
 				'selector'            => '.site-title i',

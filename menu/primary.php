@@ -1,6 +1,6 @@
 <li <?php hybrid_attr( 'menu', 'primary' ); ?>>
 
-	<h3 id="menu-primary-title" class="menu-toggle-primary">
+	<h3 id="menu-primary-title" class="menu-toggle-primary menu-toggle">
 		<?php printf(
 			'<button>%s<span class="screen-reader-text">%s</span></button>',
 			extant_get_menu_primary_i(),
