@@ -76,7 +76,7 @@ function extant_enqueue() {
 
 function extant_get_inline_css() {
 
-	return extant_get_header_color_css();
+	return extant_get_primary_color_css() . extant_get_header_color_css();
 }
 
 /**
@@ -115,6 +115,72 @@ function extant_get_mediaelement_inline_script() {
 
 		settings.features = [ 'progress', 'playpause', 'volume', 'tracks', 'current', 'duration', 'fullscreen' ];
 	} )( window );";
+}
+
+/**
+ * Returns the primary color inline CSS.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function extant_get_primary_color_css() {
+
+	$p_hex = maybe_hash_hex_color( extant_get_primary_color() );
+
+	$p_rgb = join( ', ', hybrid_hex_to_rgb( $p_hex ) );
+
+	$style = '';
+
+	// primary - color
+	$style .= sprintf(
+		'.main a:hover,
+		.main a:focus,
+		.site-footer a:hover,
+		.site-footer a:focus,
+		.breadcrumbs a:hover,
+		.breadcrumbs a:focus,
+		pre,
+		code,
+		.line-through,
+		label.focus,
+		legend,
+		.comment-respond .required,
+		.edd-required-indicator,
+		.edd_purchase_submit_wrapper .edd-cart-ajax-alert { color: %s; }',
+		$p_hex
+	);
+
+	// primary - background
+	$style .= sprintf(
+		'input[type="submit"],
+		input[type="reset"],
+		input[type="button"],
+		button,
+		.edd-page a.edd-submit.button,
+		.singular-portfolio_project .project-link { background: %s; }',
+		$p_hex
+	);
+
+	// primary - background - 0.1
+	$style .= sprintf(
+		'legend,
+		pre { background-color: rgba( %s, 0.1 ); }',
+		$p_rgb
+	);
+
+	// primary box-shadow for images
+	$style .= sprintf(
+		'.main a:hover img,
+		.main a:focus img,
+		a:hover .svg-featured,
+		a:focus .svg-featured {
+			box-shadow: 0 0 0 9px #fff, 0 0 0 10px rgba( %1$s, 0.25 ), 0 0 0 12px rgba( %1$s, 0.05 );
+		}',
+		$p_rgb
+	);
+
+	return str_replace( array( "\r", "\n", "\t" ), '', $style );
 }
 
 /**

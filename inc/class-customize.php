@@ -363,8 +363,12 @@ final class Extant_Customize {
 			array(
 				'selector'            => '#hybrid-style-inline-css',
 				'container_inclusive' => false,
-				'settings'            => array( 'color_header_primary', 'color_header_secondary' ),
-				'render_callback'     => 'extant_get_inline_css'
+				'render_callback'     => 'extant_get_inline_css',
+				'settings'            => array(
+					'color_primary',
+					'color_header_primary',
+					'color_header_secondary'
+				)
 			)
 		);
 

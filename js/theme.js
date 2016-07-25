@@ -103,7 +103,7 @@ jQuery( window ).ready( function() {
 
 	/* Menu toggle. */
 
-	jQuery( '.main' ).before( '<div class="overlay">' );
+	jQuery( '.below-site-header' ).prepend( '<div class="overlay">' );
 
 	var scroll = 0;
 
