@@ -4,7 +4,7 @@
 
 		<h3 id="comments-nav-title" class="screen-reader-text"><?php _e( 'Comments Navigation', 'extant' ); ?></h3>
 
-		<?php previous_comments_link(  '<span class="screen-reader-text"> ' . _x( '&larr; Previous', 'comments navigation', 'extant' . '</span>' ) ); ?>
+		<?php previous_comments_link(  '<span class="screen-reader-text"> ' . _x( '&larr; Previous', 'comments navigation', 'extant' ) . '</span>' ); ?>
 
 		<span class="page-numbers"><?php 
 			// Translators: Comments page numbers. 1 is current page and 2 is total pages.

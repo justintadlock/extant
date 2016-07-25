@@ -55,7 +55,7 @@ final class Extant_Customize {
 		add_action( 'customize_register', array( $this, 'controls' ) );
 		add_action( 'customize_register', array( $this, 'partials' ) );
 
-		// Enqueue scripts and styles for the controls.
+		// Register scripts and styles for the controls.
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'register_control_scripts' ), 0 );
 
 		// Enqueue scripts and styles for the preview.
@@ -67,11 +67,12 @@ final class Extant_Customize {
 	 *
 	 * @since  1.0.0
 	 * @access public
+	 * @param  object  $manager
 	 * @return void
 	 */
-	public function panels( $wp_customize ) {
+	public function panels( $manager ) {
 
-		$wp_customize->add_panel(
+		$manager->add_panel(
 			'theme_options',
 			array(
 				'priority' => 5,
@@ -85,22 +86,23 @@ final class Extant_Customize {
 	 *
 	 * @since  1.0.0
 	 * @access public
+	 * @param  object  $manager
 	 * @return void
 	 */
-	public function sections( $wp_customize ) {
+	public function sections( $manager ) {
 
 		// Load custom sections.
 		require_once( extant_theme()->dir_path . 'inc/customize/section-locked.php' );
 
 		// Register custom section types.
-		$wp_customize->register_section_type( 'Extant_Customize_Section_Locked' );
+		$manager->register_section_type( 'Extant_Customize_Section_Locked' );
 
 		// Move theme-specific sections to our theme options panel.
-		$wp_customize->get_section( 'background_image' )->panel = 'theme_options';
-		$wp_customize->get_section( 'layout' )->panel           = 'theme_options';
-		$wp_customize->get_section( 'colors' )->panel           = 'theme_options';
+		$manager->get_section( 'background_image' )->panel = 'theme_options';
+		$manager->get_section( 'layout' )->panel           = 'theme_options';
+		$manager->get_section( 'colors' )->panel           = 'theme_options';
 
-		$wp_customize->add_section(
+		$manager->add_section(
 			'icons',
 			array(
 				'panel' => 'theme_options',
@@ -108,9 +110,9 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->add_section(
+		$manager->add_section(
 			new Extant_Customize_Section_Locked(
-				$wp_customize,
+				$manager,
 				'pro_options',
 				array(
 					'panel'           => 'theme_options',
@@ -128,18 +130,19 @@ final class Extant_Customize {
 	 *
 	 * @since  1.0.0
 	 * @access public
+	 * @param  object  $manager
 	 * @return void
 	 */
-	public function settings( $wp_customize ) {
+	public function settings( $manager ) {
 
 		// Enable live preview for WordPress theme features.
-		$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
-		$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
+		$manager->get_setting( 'blogname' )->transport        = 'postMessage';
+		$manager->get_setting( 'blogdescription' )->transport = 'postMessage';
 
 		// Layout needs to be refreshed to change image sizes.
-		$wp_customize->get_setting( 'theme_layout' )->transport = 'refresh';
+		$manager->get_setting( 'theme_layout' )->transport = 'refresh';
 
-		$wp_customize->add_setting(
+		$manager->add_setting(
 			'color_primary',
 			array(
 				'default'              => extant_get_primary_color(),
@@ -149,7 +152,7 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->add_setting(
+		$manager->add_setting(
 			'color_header_primary',
 			array(
 				'default'              => extant_get_header_primary_color(),
@@ -159,7 +162,7 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->add_setting(
+		$manager->add_setting(
 			'color_header_secondary',
 			array(
 				'default'              => extant_get_header_secondary_color(),
@@ -169,7 +172,7 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->add_setting(
+		$manager->add_setting(
 			'show_header_icon',
 			array(
 				'default'           => extant_show_header_icon(),
@@ -178,7 +181,7 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->add_setting(
+		$manager->add_setting(
 			'header_icon',
 			array(
 				'default'            => extant_get_header_icon(),
@@ -187,7 +190,7 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->add_setting(
+		$manager->add_setting(
 			'menu_primary_icon',
 			array(
 				'default'            => extant_get_menu_primary_icon(),
@@ -196,7 +199,7 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->add_setting(
+		$manager->add_setting(
 			'menu_secondary_icon',
 			array(
 				'default'            => extant_get_menu_secondary_icon(),
@@ -205,7 +208,7 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->add_setting(
+		$manager->add_setting(
 			'menu_search_icon',
 			array(
 				'default'            => extant_get_menu_search_icon(),
@@ -214,7 +217,7 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->add_setting( new WP_Customize_Filter_Setting( $wp_customize, 'go_pro' ) );
+		$manager->add_setting( new WP_Customize_Filter_Setting( $manager, 'go_pro' ) );
 	}
 
 	/**
@@ -222,23 +225,24 @@ final class Extant_Customize {
 	 *
 	 * @since  1.0.0
 	 * @access public
+	 * @param  object  $manager
 	 * @return void
 	 */
-	public function controls( $wp_customize ) {
+	public function controls( $manager ) {
 
 		// Load custom controls.
 		require_once( extant_theme()->dir_path . 'inc/customize/control-select-icon.php' );
 		require_once( extant_theme()->dir_path . 'inc/customize/control-custom-html.php' );
 
 		// Register custom control types.
-		$wp_customize->register_control_type( 'Extant_Customize_Control_Select_Icon' );
-		$wp_customize->register_control_type( 'Extant_Customize_Control_Custom_HTML' );
+		$manager->register_control_type( 'Extant_Customize_Control_Select_Icon' );
+		$manager->register_control_type( 'Extant_Customize_Control_Custom_HTML' );
 
 		/* === Colors === */
 
-		$wp_customize->add_control(
+		$manager->add_control(
 			new WP_Customize_Color_Control(
-				$wp_customize,
+				$manager,
 				'color_primary',
 				array(
 					'label'           => esc_html__( 'Primary Color', 'extant' ),
@@ -248,9 +252,9 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->add_control(
+		$manager->add_control(
 			new WP_Customize_Color_Control(
-				$wp_customize,
+				$manager,
 				'color_header_primary',
 				array(
 					'label'           => esc_html__( 'Header Primary Color', 'extant' ),
@@ -260,9 +264,9 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->add_control(
+		$manager->add_control(
 			new WP_Customize_Color_Control(
-				$wp_customize,
+				$manager,
 				'color_header_secondary',
 				array(
 					'label'           => esc_html__( 'Header Secondary Color', 'extant' ),
@@ -274,7 +278,7 @@ final class Extant_Customize {
 
 		/* === Icons === */
 
-		$wp_customize->add_control(
+		$manager->add_control(
 			'show_header_icon',
 			array(
 				'label'           => esc_html__( 'Always Display Header Icon', 'extant' ),
@@ -285,9 +289,9 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->add_control(
+		$manager->add_control(
 			new Extant_Customize_Control_Select_Icon(
-				$wp_customize,
+				$manager,
 				'header_icon',
 				array(
 					'label'           => esc_html__( 'Header Icon', 'extant' ),
@@ -296,9 +300,9 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->add_control(
+		$manager->add_control(
 			new Extant_Customize_Control_Select_Icon(
-				$wp_customize,
+				$manager,
 				'menu_primary_icon',
 				array(
 					'label'           => esc_html__( 'Primary Menu Icon', 'extant' ),
@@ -307,9 +311,9 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->add_control(
+		$manager->add_control(
 			new Extant_Customize_Control_Select_Icon(
-				$wp_customize,
+				$manager,
 				'menu_secondary_icon',
 				array(
 					'label'           => esc_html__( 'Secondary Menu Icon', 'extant' ),
@@ -318,9 +322,9 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->add_control(
+		$manager->add_control(
 			new Extant_Customize_Control_Select_Icon(
-				$wp_customize,
+				$manager,
 				'menu_search_icon',
 				array(
 					'label'           => esc_html__( 'Search Menu Icon', 'extant' ),
@@ -331,9 +335,9 @@ final class Extant_Customize {
 
 		/* === Pro Options === */
 
-		$wp_customize->add_control(
+		$manager->add_control(
 			new Extant_Customize_Control_Custom_HTML(
-				$wp_customize,
+				$manager,
 				'go_pro',
 				array(
 					'section' => 'pro_options',
@@ -349,11 +353,12 @@ final class Extant_Customize {
 	 *
 	 * @since  1.0.0
 	 * @access public
+	 * @param  object  $manager
 	 * @return void
 	 */
-	public function partials( $wp_customize ) {
+	public function partials( $manager ) {
 
-		$wp_customize->selective_refresh->add_partial(
+		$manager->selective_refresh->add_partial(
 			'header_icon',
 			array(
 				'selector'            => '.site-title i',
@@ -362,7 +367,7 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->selective_refresh->add_partial(
+		$manager->selective_refresh->add_partial(
 			'menu_primary_icon',
 			array(
 				'selector'            => '.menu-toggle-primary button i',
@@ -371,7 +376,7 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->selective_refresh->add_partial(
+		$manager->selective_refresh->add_partial(
 			'menu_secondary_icon',
 			array(
 				'selector'            => '.menu-toggle-secondary button i',
@@ -380,7 +385,7 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->selective_refresh->add_partial(
+		$manager->selective_refresh->add_partial(
 			'menu_search_icon',
 			array(
 				'selector'            => '.menu-toggle-search button i',

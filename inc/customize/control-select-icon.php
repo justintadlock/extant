@@ -10,7 +10,7 @@
  */
 
 /**
- * Radio image customize control.
+ * Select icon customize control.
  *
  * @since  1.0.0
  * @access public
@@ -55,7 +55,7 @@ class Extant_Customize_Control_Select_Icon extends WP_Customize_Control {
 	}
 
 	/**
-	 * Loads the framework scripts/styles.
+	 * Loads the control scripts/styles.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -117,7 +117,7 @@ class Extant_Customize_Control_Select_Icon extends WP_Customize_Control {
 	<?php }
 
 	/**
-	 * Returns an array of header icons for use with the 'header_icon' theme option.
+	 * Returns an array of icons for use in the option.
 	 *
 	 * @since  1.0.0
 	 * @access public
