@@ -214,12 +214,7 @@ final class Extant_Customize {
 			)
 		);
 
-		$wp_customize->add_setting(
-			new WP_Customize_Filter_Setting(
-				$wp_customize,
-				'not_a_real_setting'
-			)
-		);
+		$wp_customize->add_setting( new WP_Customize_Filter_Setting( $wp_customize, 'go_pro' ) );
 	}
 
 	/**
@@ -246,8 +241,9 @@ final class Extant_Customize {
 				$wp_customize,
 				'color_primary',
 				array(
-					'label'    => esc_html__( 'Primary Color', 'extant' ),
-					'section'  => 'colors',
+					'label'           => esc_html__( 'Primary Color', 'extant' ),
+					'section'         => 'colors',
+					'active_callback' => 'extant_is_pro'
 				)
 			)
 		);
@@ -257,8 +253,9 @@ final class Extant_Customize {
 				$wp_customize,
 				'color_header_primary',
 				array(
-					'label'    => esc_html__( 'Header Primary Color', 'extant' ),
-					'section'  => 'colors',
+					'label'           => esc_html__( 'Header Primary Color', 'extant' ),
+					'section'         => 'colors',
+					'active_callback' => 'extant_is_pro'
 				)
 			)
 		);
@@ -268,8 +265,9 @@ final class Extant_Customize {
 				$wp_customize,
 				'color_header_secondary',
 				array(
-					'label'    => esc_html__( 'Header Secondary Color', 'extant' ),
-					'section'  => 'colors',
+					'label'           => esc_html__( 'Header Secondary Color', 'extant' ),
+					'section'         => 'colors',
+					'active_callback' => 'extant_is_pro'
 				)
 			)
 		);
@@ -279,10 +277,11 @@ final class Extant_Customize {
 		$wp_customize->add_control(
 			'show_header_icon',
 			array(
-				'label'       => esc_html__( 'Always Display Header Icon', 'extant' ),
-				'description' => __( 'Icon is only shown on mobile devices by default.', 'extant' ),
-				'section'     => 'icons',
-				'type'        => 'checkbox'
+				'label'           => esc_html__( 'Always Display Header Icon', 'extant' ),
+				'description'     => __( 'Icon is only shown on mobile devices by default.', 'extant' ),
+				'section'         => 'icons',
+				'type'            => 'checkbox',
+				'active_callback' => 'extant_is_pro'
 			)
 		);
 
@@ -290,7 +289,10 @@ final class Extant_Customize {
 			new Extant_Customize_Control_Select_Icon(
 				$wp_customize,
 				'header_icon',
-				array( 'label' => esc_html__( 'Header Icon', 'extant' ) )
+				array(
+					'label'           => esc_html__( 'Header Icon', 'extant' ),
+					'active_callback' => 'extant_is_pro'
+				)
 			)
 		);
 
@@ -298,7 +300,10 @@ final class Extant_Customize {
 			new Extant_Customize_Control_Select_Icon(
 				$wp_customize,
 				'menu_primary_icon',
-				array( 'label' => esc_html__( 'Primary Menu Icon', 'extant' ) )
+				array(
+					'label'           => esc_html__( 'Primary Menu Icon', 'extant' ),
+					'active_callback' => 'extant_is_pro'
+				)
 			)
 		);
 
@@ -306,7 +311,10 @@ final class Extant_Customize {
 			new Extant_Customize_Control_Select_Icon(
 				$wp_customize,
 				'menu_secondary_icon',
-				array( 'label' => esc_html__( 'Secondary Menu Icon', 'extant' ) )
+				array(
+					'label'           => esc_html__( 'Secondary Menu Icon', 'extant' ),
+					'active_callback' => 'extant_is_pro'
+				)
 			)
 		);
 
@@ -314,7 +322,10 @@ final class Extant_Customize {
 			new Extant_Customize_Control_Select_Icon(
 				$wp_customize,
 				'menu_search_icon',
-				array( 'label' => esc_html__( 'Search Menu Icon', 'extant' ) )
+				array(
+					'label'           => esc_html__( 'Search Menu Icon', 'extant' ),
+					'active_callback' => 'extant_is_pro'
+				)
 			)
 		);
 
@@ -323,7 +334,7 @@ final class Extant_Customize {
 		$wp_customize->add_control(
 			new Extant_Customize_Control_Custom_HTML(
 				$wp_customize,
-				'not_a_real_setting',
+				'go_pro',
 				array(
 					'section' => 'pro_options',
 					'label'   => esc_html__( 'Go Pro', 'extant' ),
