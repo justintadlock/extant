@@ -34,6 +34,18 @@ function extant_is_portrait() {
 }
 
 /**
+ * Returns the layout type.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return bool
+ */
+function extant_get_layout_type() {
+
+	return hybrid_get_theme_mod( 'layout_type', 'full' );
+}
+
+/**
  * Returns the header icon theme mod.
  *
  * @since  1.0.0

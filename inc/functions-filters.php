@@ -57,6 +57,8 @@ function extant_body_class( $classes ) {
 	if ( ! extant_show_header_icon() )
 		$classes[] = 'hide-header-icon';
 
+	$classes[] = 'layout-type-' . sanitize_html_class( extant_get_layout_type() );
+
 	return $classes;
 }
 

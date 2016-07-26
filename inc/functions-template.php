@@ -300,3 +300,32 @@ function extant_get_menu_search_i() {
 
 	return extant_get_font_icon_html( extant_get_menu_search_icon() );
 }
+
+/**
+ * Returns an array of the available layout types.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return array
+ */
+function extant_get_layout_types() {
+
+	return array(
+		'full'  => esc_html__( 'Full Width', 'extant' ),
+		'boxed' => esc_html__( 'Boxed',      'extant' )
+	);
+}
+
+/**
+ * Whitelist validation function to check whether a layout type is valid.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return bool
+ */
+function extant_validate_layout_type( $type ) {
+
+	$types = extant_get_layout_types();
+
+	return isset( $types[ $type ] );
+}

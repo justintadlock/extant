@@ -38,6 +38,19 @@ jQuery( document ).ready( function() {
 
 	} ); // wp.customize
 
+	// Update `<body>` class when `layout_type` value has changed.
+	wp.customize(
+		'layout_type',
+		function( value ) {
+			value.bind(
+				function( to ) {
+					var classes = jQuery( 'body' ).attr( 'class' ).replace( /\slayout-type-[a-zA-Z0-9_-]*/g, '' );
+					jQuery( 'body' ).attr( 'class', classes ).addClass( 'layout-type-' + to );
+				}
+			);
+		}
+	);
+
 	// Update `<body>` class when `show_header_icon` value has changed.
 	wp.customize( 'show_header_icon', function( value ) {
 

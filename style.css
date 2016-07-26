@@ -69,17 +69,32 @@
  * is essentially the foundation for the entire design.
  ********************************************************************************************************/
 
-body { overflow-x: hidden; background: #fff; }
+body { overflow-x: hidden; }
 
-body.layout-type-boxed { background: #eee; }
-
-.layout-type-boxed #container {
-	max-width: 850px;
+.below-site-header {
+	width: 100%;
 	margin: 0 auto;
+	padding-bottom: 3rem;
+	background: #fff;
+	overflow-y: hidden;
 }
 
+.layout-type-boxed .below-site-header {
+	padding-bottom: 0;
+}
 
-#container { background: #fff; }
+@media only screen and ( min-width: 998px ) {
+
+	.layout-type-boxed .below-site-header {
+		max-width: calc( 950px + 6rem );
+		margin-top: 3rem;
+		margin-bottom: 3rem;
+	}
+}
+
+	@media screen and ( max-width: 480px ) {
+		.below-site-header { margin-bottom: 54px; }
+	}
 
 .main {
 	max-width: 750px;
@@ -1071,7 +1086,7 @@ a .svg-featured {
 .site-footer {
 	font-family: 'Roboto Slab', serif;
 	font-size: 15px;
-	margin: 0 0 2.25rem;
+	margin: 0;
 	padding:    1.5rem 0 0;
 	font-size:  15px;
 	text-align: center;
@@ -1086,10 +1101,6 @@ a .svg-featured {
 		margin:    0 auto;
 		padding:   0 1.5rem;
 		box-sizing: border-box;
-	}
-
-	@media screen and ( max-width: 480px ) {
-		.site-footer { margin-bottom: calc( 2.25rem + 54px ); }
 	}
 
 /********************************************************************************************************
@@ -1779,7 +1790,7 @@ ol.comment-list {
 	.menu-primary-open .below-site-header,
 	.menu-secondary-open .below-site-header,
 	.menu-search-open .below-site-header { position: fixed; z-index: 90;
-		width: 100%; height: 100%; }
+		height: 100%; left: 0; right: 0;}
 
 	.menu-primary-open .overlay,
 	.menu-secondary-open .overlay,
@@ -2297,9 +2308,7 @@ input.edd-item-quantity { display: inline-block; max-width: 75px; margin-right: 
 .entry::after,
 .archive-header::after,
 .site-header::after,
-.sidebar-subsidiary::after,
-.woocommerce-ordering::after,
-#customer_details::after {
+.sidebar-subsidiary::after {
 	content:    ".";
 	display:    block;
 	height:     0;

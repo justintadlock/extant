@@ -182,7 +182,7 @@ final class Extant_Theme {
 		add_theme_support(
 			'custom-background',
 			array(
-				'default-color'    => 'ffffff',
+				'default-color'    => 'f8f8f8',
 				'default-image'    => '',
 				'wp-head-callback' => 'extant_custom_background_callback',
 			)

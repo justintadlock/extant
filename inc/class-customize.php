@@ -136,11 +136,26 @@ final class Extant_Customize {
 	public function settings( $manager ) {
 
 		// Enable live preview for WordPress theme features.
-		$manager->get_setting( 'blogname' )->transport        = 'postMessage';
-		$manager->get_setting( 'blogdescription' )->transport = 'postMessage';
+		$manager->get_setting( 'blogname' )->transport              = 'postMessage';
+		$manager->get_setting( 'blogdescription' )->transport       = 'postMessage';
+		$manager->get_setting( 'background_color' )->transport      = 'postMessage';
+		$manager->get_setting( 'background_image' )->transport      = 'postMessage';
+		$manager->get_setting( 'background_position_x' )->transport = 'postMessage';
+		$manager->get_setting( 'background_repeat' )->transport     = 'postMessage';
+		$manager->get_setting( 'background_attachment' )->transport = 'postMessage';
 
 		// Layout needs to be refreshed to change image sizes.
 		$manager->get_setting( 'theme_layout' )->transport = 'refresh';
+
+		$manager->add_setting(
+			'layout_type',
+			array(
+				'default'              => extant_get_layout_type(),
+				'sanitize_callback'    => 'extant_validate_layout_type',
+				'sanitize_js_callback' => 'extant_validate_layout_type',
+				'transport'            => 'postMessage'
+			)
+		);
 
 		$manager->add_setting(
 			'color_primary',
@@ -237,6 +252,19 @@ final class Extant_Customize {
 		// Register custom control types.
 		$manager->register_control_type( 'Extant_Customize_Control_Select_Icon' );
 		$manager->register_control_type( 'Extant_Customize_Control_Custom_HTML' );
+
+		/* == Layouts == */
+
+		$manager->add_control(
+			'layout_type',
+			array(
+				'label' => esc_html__( 'Layout Type', 'extant' ),
+				'section' => 'layout',
+				'active_callback' => 'extant_is_pro',
+				'type' => 'radio',
+				'choices' => extant_get_layout_types()
+			)
+		);
 
 		/* === Colors === */
 
