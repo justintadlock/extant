@@ -167,6 +167,30 @@ function extant_get_header_background_color() {
 }
 
 /**
+ * Returns the footer primary color theme mod.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function extant_get_footer_primary_color() {
+
+	return hybrid_get_theme_mod( 'color_footer_primary', '333333' );
+}
+
+/**
+ * Returns the footer background color theme mod.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function extant_get_footer_background_color() {
+
+	return hybrid_get_theme_mod( 'color_footer_background', 'f8f8f8' );
+}
+
+/**
  * Conditional tag to check whether the user is running the pro version.
  *
  * @since  1.0.0

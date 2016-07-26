@@ -135,7 +135,7 @@ final class Extant_Customize {
 	 */
 	public function settings( $manager ) {
 
-		// Enable live preview for WordPress theme features.
+		// Set the transport property of existing settings.
 		$manager->get_setting( 'blogname' )->transport              = 'postMessage';
 		$manager->get_setting( 'blogdescription' )->transport       = 'postMessage';
 		$manager->get_setting( 'background_color' )->transport      = 'postMessage';
@@ -143,9 +143,9 @@ final class Extant_Customize {
 		$manager->get_setting( 'background_position_x' )->transport = 'postMessage';
 		$manager->get_setting( 'background_repeat' )->transport     = 'postMessage';
 		$manager->get_setting( 'background_attachment' )->transport = 'postMessage';
+		$manager->get_setting( 'theme_layout' )->transport          = 'refresh';
 
-		// Layout needs to be refreshed to change image sizes.
-		$manager->get_setting( 'theme_layout' )->transport = 'refresh';
+		/* === Layouts === */
 
 		$manager->add_setting(
 			'layout_type',
@@ -157,45 +157,31 @@ final class Extant_Customize {
 			)
 		);
 
-		$manager->add_setting(
-			'color_primary',
-			array(
-				'default'              => extant_get_primary_color(),
-				'sanitize_callback'    => 'sanitize_hex_color_no_hash',
-				'sanitize_js_callback' => 'maybe_hash_hex_color',
-				'transport'            => 'postMessage'
-			)
+		/* === Colors === */
+
+		$colors = array(
+			'color_primary'           => extant_get_primary_color(),
+			'color_header_primary'    => extant_get_header_primary_color(),
+			'color_header_secondary'  => extant_get_header_secondary_color(),
+			'color_header_background' => extant_get_header_background_color(),
+			'color_footer_primary'    => extant_get_footer_primary_color(),
+			'color_footer_background' => extant_get_footer_background_color()
 		);
 
-		$manager->add_setting(
-			'color_header_primary',
-			array(
-				'default'              => extant_get_header_primary_color(),
-				'sanitize_callback'    => 'sanitize_hex_color_no_hash',
-				'sanitize_js_callback' => 'maybe_hash_hex_color',
-				'transport'            => 'postMessage'
-			)
-		);
+		foreach ( $colors as $setting => $default ) {
 
-		$manager->add_setting(
-			'color_header_secondary',
-			array(
-				'default'              => extant_get_header_secondary_color(),
-				'sanitize_callback'    => 'sanitize_hex_color_no_hash',
-				'sanitize_js_callback' => 'maybe_hash_hex_color',
-				'transport'            => 'postMessage'
-			)
-		);
+			$manager->add_setting(
+				$setting,
+				array(
+					'default'              => $default,
+					'sanitize_callback'    => 'sanitize_hex_color_no_hash',
+					'sanitize_js_callback' => 'maybe_hash_hex_color',
+					'transport'            => 'postMessage'
+				)
+			);
+		}
 
-		$manager->add_setting(
-			'color_header_background',
-			array(
-				'default'              => extant_get_header_background_color(),
-				'sanitize_callback'    => 'sanitize_hex_color_no_hash',
-				'sanitize_js_callback' => 'maybe_hash_hex_color',
-				'transport'            => 'postMessage'
-			)
-		);
+		/* === Icons === */
 
 		$manager->add_setting(
 			'show_header_icon',
@@ -206,41 +192,26 @@ final class Extant_Customize {
 			)
 		);
 
-		$manager->add_setting(
-			'header_icon',
-			array(
-				'default'            => extant_get_header_icon(),
-				'sanitize_callback'  => 'extant_validate_font_icon',
-				'transport'          => 'postMessage',
-			)
+		$icons = array(
+			'header_icon'         => extant_get_header_icon(),
+			'menu_primary_icon'   => extant_get_menu_primary_icon(),
+			'menu_secondary_icon' => extant_get_menu_secondary_icon(),
+			'menu_search_icon'    => extant_get_menu_search_icon()
 		);
 
-		$manager->add_setting(
-			'menu_primary_icon',
-			array(
-				'default'            => extant_get_menu_primary_icon(),
-				'sanitize_callback'  => 'extant_validate_font_icon',
-				'transport'          => 'postMessage',
-			)
-		);
+		foreach ( $icons as $setting => $default ) {
 
-		$manager->add_setting(
-			'menu_secondary_icon',
-			array(
-				'default'            => extant_get_menu_secondary_icon(),
-				'sanitize_callback'  => 'extant_validate_font_icon',
-				'transport'          => 'postMessage',
-			)
-		);
+			$manager->add_setting(
+				$setting,
+				array(
+					'default'            => $default,
+					'sanitize_callback'  => 'extant_validate_font_icon',
+					'transport'          => 'postMessage',
+				)
+			);
+		}
 
-		$manager->add_setting(
-			'menu_search_icon',
-			array(
-				'default'            => extant_get_menu_search_icon(),
-				'sanitize_callback'  => 'extant_validate_font_icon',
-				'transport'          => 'postMessage',
-			)
-		);
+		/* === Pro === */
 
 		$manager->add_setting( new WP_Customize_Filter_Setting( $manager, 'go_pro' ) );
 	}
@@ -268,63 +239,39 @@ final class Extant_Customize {
 		$manager->add_control(
 			'layout_type',
 			array(
-				'label' => esc_html__( 'Layout Type', 'extant' ),
-				'section' => 'layout',
-				'active_callback' => 'extant_is_pro',
-				'type' => 'radio',
-				'choices' => extant_get_layout_types()
+				'label'           => esc_html__( 'Layout Type', 'extant' ),
+				'section'         => 'layout',
+				'type'            => 'radio',
+				'choices'         => extant_get_layout_types(),
+				'active_callback' => 'extant_is_pro'
 			)
 		);
 
 		/* === Colors === */
 
-		$manager->add_control(
-			new WP_Customize_Color_Control(
-				$manager,
-				'color_primary',
-				array(
-					'label'           => esc_html__( 'Primary Color', 'extant' ),
-					'section'         => 'colors',
-					'active_callback' => 'extant_is_pro'
-				)
-			)
+		$colors = array(
+			'color_primary'           => esc_html__( 'Primary Color',            'extant' ),
+			'color_header_primary'    => esc_html__( 'Header: Primary Color',    'extant' ),
+			'color_header_secondary'  => esc_html__( 'Header: Secondary Color',  'extant' ),
+			'color_header_background' => esc_html__( 'Header: Background Color', 'extant' ),
+			'color_footer_primary'    => esc_html__( 'Footer: Primary Color',    'extant' ),
+			'color_footer_background' => esc_html__( 'Footer: Background Color', 'extant' )
 		);
 
-		$manager->add_control(
-			new WP_Customize_Color_Control(
-				$manager,
-				'color_header_primary',
-				array(
-					'label'           => esc_html__( 'Header: Primary Color', 'extant' ),
-					'section'         => 'colors',
-					'active_callback' => 'extant_is_pro'
-				)
-			)
-		);
+		foreach ( $colors as $setting => $label ) {
 
-		$manager->add_control(
-			new WP_Customize_Color_Control(
-				$manager,
-				'color_header_secondary',
-				array(
-					'label'           => esc_html__( 'Header: Secondary Color', 'extant' ),
-					'section'         => 'colors',
-					'active_callback' => 'extant_is_pro'
+			$manager->add_control(
+				new WP_Customize_Color_Control(
+					$manager,
+					$setting,
+					array(
+						'label'           => $label,
+						'section'         => 'colors',
+						'active_callback' => 'extant_is_pro'
+					)
 				)
-			)
-		);
-
-		$manager->add_control(
-			new WP_Customize_Color_Control(
-				$manager,
-				'color_header_background',
-				array(
-					'label'           => esc_html__( 'Header: Background Color', 'extant' ),
-					'section'         => 'colors',
-					'active_callback' => 'extant_is_pro'
-				)
-			)
-		);
+			);
+		}
 
 		/* === Icons === */
 
@@ -339,49 +286,26 @@ final class Extant_Customize {
 			)
 		);
 
-		$manager->add_control(
-			new Extant_Customize_Control_Select_Icon(
-				$manager,
-				'header_icon',
-				array(
-					'label'           => esc_html__( 'Header Icon', 'extant' ),
-					'active_callback' => 'extant_is_pro'
-				)
-			)
+		$icons = array(
+			'header_icon'         => esc_html__( 'Header Icon',         'extant' ),
+			'menu_primary_icon'   => esc_html__( 'Primary Menu Icon',   'extant' ),
+			'menu_secondary_icon' => esc_html__( 'Secondary Menu Icon', 'extant' ),
+			'menu_search_icon'    => esc_html__( 'Search Menu Icon',    'extant' )
 		);
 
-		$manager->add_control(
-			new Extant_Customize_Control_Select_Icon(
-				$manager,
-				'menu_primary_icon',
-				array(
-					'label'           => esc_html__( 'Primary Menu Icon', 'extant' ),
-					'active_callback' => 'extant_is_pro'
-				)
-			)
-		);
+		foreach ( $icons as $control => $label ) {
 
-		$manager->add_control(
-			new Extant_Customize_Control_Select_Icon(
-				$manager,
-				'menu_secondary_icon',
-				array(
-					'label'           => esc_html__( 'Secondary Menu Icon', 'extant' ),
-					'active_callback' => 'extant_is_pro'
+			$manager->add_control(
+				new Extant_Customize_Control_Select_Icon(
+					$manager,
+					$control,
+					array(
+						'label'           => $label,
+						'active_callback' => 'extant_is_pro'
+					)
 				)
-			)
-		);
-
-		$manager->add_control(
-			new Extant_Customize_Control_Select_Icon(
-				$manager,
-				'menu_search_icon',
-				array(
-					'label'           => esc_html__( 'Search Menu Icon', 'extant' ),
-					'active_callback' => 'extant_is_pro'
-				)
-			)
-		);
+			);
+		}
 
 		/* === Pro Options === */
 
@@ -418,7 +342,9 @@ final class Extant_Customize {
 					'color_primary',
 					'color_header_primary',
 					'color_header_secondary',
-					'color_header_background'
+					'color_header_background',
+					'color_footer_primary',
+					'color_footer_background'
 				)
 			)
 		);

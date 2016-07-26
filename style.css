@@ -75,7 +75,6 @@ body { overflow-x: hidden; }
 	width: 100%;
 	margin: 0 auto;
 	padding-bottom: 3rem;
-	background: #fff;
 	overflow-y: hidden;
 }
 
@@ -96,10 +95,13 @@ body { overflow-x: hidden; }
 		.below-site-header { margin-bottom: 54px; }
 	}
 
+.layout-type-full .below-site-header { background: #fff; }
+
 .main {
 	max-width: 750px;
 	margin: 0 auto;
 	padding: 3.125rem 1.5rem;
+	background: #fff;
 }
 	.plural .main {
 		max-width: 950px;
@@ -214,7 +216,6 @@ a:hover time { cursor: pointer; }
 	color: #666;
 }
 
-	.site-footer a,
 	.breadcrumbs a,
 	.main h1 a, .main h2 a, .main h3 a,
 	.main h4 a, .main h5 a, .main h6 a {
@@ -1090,10 +1091,10 @@ a .svg-featured {
 	padding:    1.5rem 0 0;
 	font-size:  15px;
 	text-align: center;
-	color:      #666;
-	background: #f7f7f7;
-	border-top: 1px solid #f2f2f2;
-	border-bottom: 1px solid #f2f2f2;
+	/*color:      #666;*/
+	/*background: #f7f7f7;*/
+	border-top: 1px solid;
+	border-bottom: 1px solid;
 }
 
 	.site-footer > .wrap {

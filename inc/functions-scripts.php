@@ -76,7 +76,7 @@ function extant_enqueue() {
 
 function extant_get_inline_css() {
 
-	return extant_get_primary_color_css() . extant_get_header_color_css();
+	return extant_get_primary_color_css() . extant_get_header_color_css() . extant_get_footer_color_css();
 }
 
 /**
@@ -136,8 +136,6 @@ function extant_get_primary_color_css() {
 	$style .= sprintf(
 		'.main a:hover,
 		.main a:focus,
-		.site-footer a:hover,
-		.site-footer a:focus,
 		.breadcrumbs a:hover,
 		.breadcrumbs a:focus,
 		pre,
@@ -253,6 +251,10 @@ function extant_get_header_color_css() {
 			}',
 			$s_hex
 		);
+
+		$style .= '@media only screen and (min-width: 998px) {
+			.layout-type-boxed .below-site-header { margin-top: 1.5rem; }
+		}';
 	}
 
 	$style .= '.menu-toggle button { background: transparent; }';
@@ -279,6 +281,15 @@ function extant_get_header_color_css() {
 		.menu-super > ul > li { border-color: rgba( %s, 0.05 ); }',
 		$p_rgb
 	);
+
+	if ( 'transparent' === $b_hex ) {
+
+		$style .= '@media only screen and ( min-width: 481px ) {
+			.site-header,
+			.site-title,
+			.menu-super > ul > li { border-color: transparent; }
+		}';
+	}
 
 	// primary - border-color
 	$style .= sprintf(
@@ -359,6 +370,38 @@ function extant_get_header_color_css() {
 		$p_hex,
 		$s_hex
 	);
+
+	return str_replace( array( "\r", "\n", "\t" ), '', $style );
+}
+
+function extant_get_footer_color_css() {
+
+	$p = extant_get_footer_primary_color();
+	$b = extant_get_footer_background_color();
+
+	$p_hex = $p ? maybe_hash_hex_color( $p ) : '#333333';
+	$b_hex = $b ? maybe_hash_hex_color( $b ) : 'transparent'; // Allow for transparent background.
+
+	$p_rgb = join( ', ', hybrid_hex_to_rgb( $p_hex ) );
+
+	$style = '';
+
+	$style .= sprintf( '.site-footer { background: %s; }', $b_hex );
+
+	$style .= sprintf( '.site-footer { color: rgba( %s, 0.75 ); }', $p_rgb );
+
+	$style .= sprintf( '.site-footer { border-color: rgba( %s, 0.05 ); }', $p_rgb );
+
+	if ( 'transparent' === $b_hex ) {
+
+		$style .= '@media only screen and ( min-width: 481px ) { .site-footer { border-color: transparent; } }';
+
+		$style .= '@media only screen and (min-width: 998px) {
+			.layout-type-boxed .below-site-header { margin-bottom: 1.5rem; }
+		}';
+	}
+
+	$style .= sprintf( '.site-footer a { color: %s; }', $p_hex );
 
 	return str_replace( array( "\r", "\n", "\t" ), '', $style );
 }
