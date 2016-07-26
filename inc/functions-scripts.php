@@ -192,8 +192,13 @@ function extant_get_primary_color_css() {
  */
 function extant_get_header_color_css() {
 
-	$p_hex = maybe_hash_hex_color( extant_get_header_primary_color() );
-	$s_hex = maybe_hash_hex_color( extant_get_header_secondary_color() );
+	$p = extant_get_header_primary_color();
+	$s = extant_get_header_secondary_color();
+	$b = extant_get_header_background_color();
+
+	$p_hex = $p ? maybe_hash_hex_color( $p ) : '#333333';
+	$s_hex = $s ? maybe_hash_hex_color( $s ) : '#ffffff';
+	$b_hex = $b ? maybe_hash_hex_color( $b ) : 'transparent'; // Allow for transparent background.
 
 	$p_rgb = join( ', ', hybrid_hex_to_rgb( $p_hex ) );
 	$s_rgb = join( ', ', hybrid_hex_to_rgb( $s_hex ) );
@@ -235,12 +240,22 @@ function extant_get_header_color_css() {
 		$s_hex
 	);
 
-	// secondary - background
-	$style .= sprintf(
-		'.site-header,
-		.menu-toggle button { background: %s; }',
-		$s_hex
-	);
+	// background
+	$style .= sprintf( '.site-header { background: %s; }', $b_hex );
+
+	// If the background is transparent, that'll be an issue for the mobile menu.
+	// What we'll do in that case is use the secondary color for the background.
+	if ( 'transparent' === $b_hex ) {
+
+		$style .= sprintf(
+			'@media only screen and ( max-width: 480px ) {
+				.site-header { background: %s; }
+			}',
+			$s_hex
+		);
+	}
+
+	$style .= '.menu-toggle button { background: transparent; }';
 
 	// primary - background
 	$style .= sprintf(

@@ -188,6 +188,16 @@ final class Extant_Customize {
 		);
 
 		$manager->add_setting(
+			'color_header_background',
+			array(
+				'default'              => extant_get_header_background_color(),
+				'sanitize_callback'    => 'sanitize_hex_color_no_hash',
+				'sanitize_js_callback' => 'maybe_hash_hex_color',
+				'transport'            => 'postMessage'
+			)
+		);
+
+		$manager->add_setting(
 			'show_header_icon',
 			array(
 				'default'           => extant_show_header_icon(),
@@ -285,7 +295,7 @@ final class Extant_Customize {
 				$manager,
 				'color_header_primary',
 				array(
-					'label'           => esc_html__( 'Header Primary Color', 'extant' ),
+					'label'           => esc_html__( 'Header: Primary Color', 'extant' ),
 					'section'         => 'colors',
 					'active_callback' => 'extant_is_pro'
 				)
@@ -297,7 +307,19 @@ final class Extant_Customize {
 				$manager,
 				'color_header_secondary',
 				array(
-					'label'           => esc_html__( 'Header Secondary Color', 'extant' ),
+					'label'           => esc_html__( 'Header: Secondary Color', 'extant' ),
+					'section'         => 'colors',
+					'active_callback' => 'extant_is_pro'
+				)
+			)
+		);
+
+		$manager->add_control(
+			new WP_Customize_Color_Control(
+				$manager,
+				'color_header_background',
+				array(
+					'label'           => esc_html__( 'Header: Background Color', 'extant' ),
 					'section'         => 'colors',
 					'active_callback' => 'extant_is_pro'
 				)
@@ -395,7 +417,8 @@ final class Extant_Customize {
 				'settings'            => array(
 					'color_primary',
 					'color_header_primary',
-					'color_header_secondary'
+					'color_header_secondary',
+					'color_header_background'
 				)
 			)
 		);

@@ -155,6 +155,18 @@ function extant_get_header_secondary_color() {
 }
 
 /**
+ * Returns the header background color theme mod.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return string
+ */
+function extant_get_header_background_color() {
+
+	return hybrid_get_theme_mod( 'color_header_background', 'ffffff' );
+}
+
+/**
  * Conditional tag to check whether the user is running the pro version.
  *
  * @since  1.0.0
