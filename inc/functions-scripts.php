@@ -206,9 +206,7 @@ function extant_get_header_color_css() {
 	// primary - color
 	$style .= sprintf(
 		'.site-title a,
-		.menu-toggle-primary button,
-		.menu-toggle-secondary button,
-		.menu-toggle-search button { color: %s; }',
+		.menu-toggle button { color: %s; }',
 		$p_hex
 	);
 
@@ -222,19 +220,13 @@ function extant_get_header_color_css() {
 	$style .= sprintf(
 		'.menu-toggle button:hover,
 		.menu-toggle button:focus,
-		.menu-primary-open .menu-toggle-primary button,
-		.menu-secondary-open .menu-toggle-secondary button,
-		.menu-search-open .menu-toggle-search button,
+		.menu-toggle button.selected,
 		.site-header .menu-items a,
 		.site-header .menu-items a:hover,
 		.site-header .menu-items a:focus,
 		.menu-search .search-field,
 		.menu-search .search-submit:hover,
-		.menu-search .search-submit:focus { color: %1$s; }
-		.menu-search .search-field::-webkit-input-placeholder { color: %1$s; }
-		.menu-search .search-field::-moz-placeholder          { color: %1$s; }
-		.menu-search .search-field:-ms-input-placeholder      { color: %1$s; }
-		.menu-search .search-field:-moz-placeholder           { color: %1$s; }',
+		.menu-search .search-submit:focus { color: %s; }',
 		$s_hex
 	);
 
@@ -257,18 +249,12 @@ function extant_get_header_color_css() {
 		}';
 	}
 
-	$style .= '.menu-toggle button { background: transparent; }';
-
 	// primary - background
 	$style .= sprintf(
 		'.menu-toggle button:hover,
 		.menu-toggle button:focus,
-		.menu-primary-open .menu-toggle-primary button,
-		.menu-secondary-open .menu-toggle-secondary button,
-		.menu-search-open .menu-toggle-search button,
-		.menu-primary > .wrap,
-		.menu-secondary > .wrap,
-		.menu-search > .search-form,
+		.menu-toggle button.selected,
+		.menu > .wrap,
 		.menu-search .search-field,
 		.menu-search .search-submit { background: %s; }',
 		$p_hex

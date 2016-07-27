@@ -68,17 +68,6 @@ jQuery( window ).ready( function() {
 
 	jQuery( 'body' ).addClass( 'menu-col-' + jQuery( '.menu-super > ul > li' ).length );
 
-	// Primary menu focus
-	jQuery( '.menu-super > ul > li a, .menu-super > ul > li button' ).on( 'focus',
-		function() {
-			jQuery( this ).parents( 'li' ).addClass( 'focus' );
-		}
-	);
-	jQuery( '.menu-super > ul > li a, .menu-super > ul > li button' ).on( 'blur',
-		function() {
-			jQuery( this ).parents( 'li' ).removeClass( 'focus' );
-		}
-	);
 
 	// Hide separator for no comments span.
 	jQuery( 'span.comments-link' ).prev( '.sep' ).hide();
@@ -114,9 +103,9 @@ jQuery( window ).ready( function() {
 					scroll = jQuery( 'body' ).scrollTop();
 				}
 
-				jQuery( 'body' ).toggleClass( c );
+				jQuery( 'body' ).addClass( 'menu-open' ).addClass( c );
 			} else {
-				jQuery( 'body' ).toggleClass( c );
+				jQuery( 'body' ).removeClass( 'menu-open' ).removeClass( c );
 				jQuery( 'body' ).scrollTop( scroll );
 				scroll = 0;
 			}
@@ -125,13 +114,9 @@ jQuery( window ).ready( function() {
 	jQuery( '.menu-toggle-primary button' ).click(
 		function( e ) {
 
-			//var scroll = jQuery( window ).scrollTop();
+			jQuery( '.menu-toggle button' ).not( this ).removeClass( 'selected' );
 
-			/*var alt = jQuery( this ).attr( 'data-icon-alt' );
-			var c = jQuery( this ).attr( 'class' );
-
-			jQuery( this ).removeClass( c ).addClass( alt );
-			jQuery( this ).attr( 'data-icon-alt', c );*/
+			jQuery( this ).toggleClass( 'selected' );
 
 			if ( jQuery( 'body' ).hasClass( 'menu-search-open' ) ) {
 				jQuery( 'body' ).toggleClass( 'menu-search-open' );
@@ -147,6 +132,10 @@ jQuery( window ).ready( function() {
 	jQuery( '.menu-toggle-secondary button' ).click(
 		function( e ) {
 
+			jQuery( '.menu-toggle button' ).not( this ).removeClass( 'selected' );
+
+			jQuery( this ).toggleClass( 'selected' );
+
 			if ( jQuery( 'body' ).hasClass( 'menu-search-open' ) ) {
 				jQuery( 'body' ).toggleClass( 'menu-search-open' );
 			}
@@ -161,6 +150,10 @@ jQuery( window ).ready( function() {
 	jQuery( '.menu-toggle-search button' ).click(
 		function( e ) {
 
+			jQuery( '.menu-toggle button' ).not( this ).removeClass( 'selected' );
+
+			jQuery( this ).toggleClass( 'selected' );
+
 			if ( jQuery( 'body' ).hasClass( 'menu-primary-open' ) ) {
 				jQuery( 'body' ).toggleClass( 'menu-primary-open' );
 			}
@@ -174,6 +167,9 @@ jQuery( window ).ready( function() {
 
 	jQuery( document ).click(
 		function() {
+
+			jQuery( 'body' ).removeClass( 'menu-open' );
+			jQuery( '.menu-toggle button' ).removeClass( 'selected' );
 
 			if ( jQuery( 'body' ).hasClass( 'menu-primary-open' ) ) {
 				jQuery( 'body' ).toggleClass( 'menu-primary-open' );

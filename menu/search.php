@@ -10,7 +10,9 @@
 			); ?>
 		</h3><!-- .menu-toggle-search -->
 
-		<?php get_search_form(); ?>
+		<div class="wrap">
+			<?php get_search_form(); ?>
+		</div>
 	</li>
 
 <?php endif; ?>
