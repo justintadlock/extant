@@ -41,7 +41,8 @@ function hybrid_register_font( $handle, $args = array() ) {
 			// Arguments for `wp_register_style()`.
 			'depends' => array(),
 			'version' => false,
-			'media'   => 'all'
+			'media'   => 'all',
+			'src'     => ''     // Will overwrite Google Fonts arguments.
 		)
 	);
 
@@ -149,28 +150,31 @@ function hybrid_font_is_enqueued( $handle ) {
  */
 function hybrid_get_font_url( $handle, $args ) {
 
-	$font_url   = '';
+	$font_url   = $args['src'] ? $args['src'] : '';
 	$query_args = array();
 
-	$family = apply_filters( "{$handle}_font_family", $args['family'] );
-	$subset = apply_filters( "{$handle}_font_subset", $args['subset'] );
-	$text   = apply_filters( "{$handle}_font_text",   $args['text']   );
-	$effect = apply_filters( "{$handle}_font_effect", $args['effect']   );
+	if ( ! $font_url ) {
 
-	if ( $family ) {
+		$family = apply_filters( "{$handle}_font_family", $args['family'] );
+		$subset = apply_filters( "{$handle}_font_subset", $args['subset'] );
+		$text   = apply_filters( "{$handle}_font_text",   $args['text']   );
+		$effect = apply_filters( "{$handle}_font_effect", $args['effect']   );
 
-		$query_args['family'] = urlencode( implode( '|', (array) $family ) );
+		if ( $family ) {
 
-		if ( $subset )
-			$query_args['subset'] = urlencode( implode( ',', (array) $subset ) );
+			$query_args['family'] = urlencode( implode( '|', (array) $family ) );
 
-		if ( $text )
-			$query_args['text'] = urlencode( $text );
+			if ( $subset )
+				$query_args['subset'] = urlencode( implode( ',', (array) $subset ) );
 
-		if ( $effect )
-			$query_args['effect'] = urlencode( implode( '|', (array) $effect ) );
+			if ( $text )
+				$query_args['text'] = urlencode( $text );
 
-		$font_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+			if ( $effect )
+				$query_args['effect'] = urlencode( implode( '|', (array) $effect ) );
+
+			$font_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+		}
 	}
 
 	return apply_filters( "{$handle}_font_url", $font_url, $args, $query_args );
