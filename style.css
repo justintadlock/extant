@@ -85,9 +85,19 @@ body { overflow-x: hidden; }
 @media only screen and ( min-width: 998px ) {
 
 	.layout-type-boxed .below-site-header {
-		max-width: calc( 950px + 6rem );
-		margin-top: 3rem;
+		padding-top: 3rem;
+	}
+
+	.layout-type-boxed .main {
+	/*	max-width: calc( 950px + 6rem );*/
 		margin-bottom: 3rem;
+	}
+
+	.layout-type-boxed .breadcrumbs {
+	    text-align: center;
+	    max-width: 950px;
+	    padding: 1.5rem 3rem;
+	    margin: 0 auto;
 	}
 }
 
@@ -97,15 +107,35 @@ body { overflow-x: hidden; }
 
 .layout-type-full .below-site-header { background: #fff; }
 
+.breadcrumbs {
+	padding: 0.75rem 1.5rem;
+}
+
+@media only screen and ( max-width: 480px ) {
+	.breadcrumbs {
+	border-bottom: 1px solid #f2f2f2;
+	}
+}
+
+.layout-type-boxed .breadcrumbs {
+	    background: #fff;
+	border-bottom: 1px solid #f2f2f2;
+}
+
 .main {
-	max-width: 750px;
+	max-width: 100%;
 	margin: 0 auto;
-	padding: 3.125rem 1.5rem;
+	padding: 1.5rem;
 	background: #fff;
 }
-	.plural .main {
-		max-width: 950px;
+
+	.layout-type-boxed .main { max-width: 950px; }
+
+	.content {
+		max-width: 750px;
+		margin: 0 auto;
 	}
+	.plural .content { max-width: 950px; }
 
 	@media only screen and ( min-width: 640px ) {
 		.main {
@@ -1923,11 +1953,6 @@ ol.comment-list {
 
 /* ====== Breadcrumb Trail ====== */
 
-.breadcrumbs {
-	margin-bottom: -2.25rem;
-	padding: 0.75rem 1.5rem;
-	/*border-bottom: 1px solid #f8f8f8;*/
-}
 
 ul.trail-items {
 	list-style: none;

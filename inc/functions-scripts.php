@@ -245,7 +245,7 @@ function extant_get_header_color_css() {
 		);
 
 		$style .= '@media only screen and (min-width: 998px) {
-			.layout-type-boxed .below-site-header { margin-top: 1.5rem; }
+			.layout-type-boxed .below-site-header { padding-top: 1.5rem; }
 		}';
 	}
 
