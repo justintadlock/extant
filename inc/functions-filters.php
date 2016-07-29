@@ -76,7 +76,7 @@ function extant_post_class( $classes ) {
 
 		$classes[] = 'sticky';
 
-	} else  if (  ! is_singular() && ! is_sticky() ) {
+	} else  if (  ! is_singular() && ! ( is_home() && is_sticky() ) ) {
 		static $extant_post_alt;
 		++$extant_post_alt;
 

@@ -82,6 +82,10 @@ body { overflow-x: hidden; }
 	padding-bottom: 0;
 }
 
+.breadcrumbs {
+	padding: 0.75rem 1.5rem;
+}
+
 @media only screen and ( min-width: 998px ) {
 
 	.layout-type-boxed .below-site-header {
@@ -101,15 +105,19 @@ body { overflow-x: hidden; }
 	}
 }
 
+	@media only screen and ( min-width: 481px ) and ( max-width: 998px ) {
+
+		.breadcrumbs {
+		    text-align: center;
+		    padding: 1.5rem 3rem;
+	border-bottom: 1px solid #f2f2f2;
+		}
+	}
 	@media screen and ( max-width: 480px ) {
 		.below-site-header { margin-bottom: 54px; }
 	}
 
 .layout-type-full .below-site-header { background: #fff; }
-
-.breadcrumbs {
-	padding: 0.75rem 1.5rem;
-}
 
 @media only screen and ( max-width: 480px ) {
 	.breadcrumbs {
@@ -125,7 +133,7 @@ body { overflow-x: hidden; }
 .main {
 	max-width: 100%;
 	margin: 0 auto;
-	padding: 1.5rem;
+	padding: 3rem 1.5rem;
 	background: #fff;
 }
 
@@ -547,7 +555,7 @@ td { border-color: #f2f2f2; }
 		.edd-page a.edd-submit.button {
 			display:        inline-block;
 			padding:        0.75rem 1rem;
-			font-size:      0.9375rem;
+			font-size:      15px;
 			font-weight:    400;
 			color:          #fff;
 		/*	background:     #c02942;*/
@@ -1478,29 +1486,42 @@ p > iframe {
 #comments {
 	position: relative;
 	margin-bottom: 1.5rem;
+	border: 1px solid #f2f2f2;
 }
 
-#comments-number,
-#reviews #comments > h2 /* WC doesn't use standard. */ {
-	margin: 1.5rem 0 3rem;
-	padding: 0.75rem 1.5rem;
-	background: #f7f7f7;
+	@media only screen and ( max-width: 480px ) {
+
+		#comments {
+			width: calc( 100% + 3rem );
+			margin-left: -1.5rem;
+			border-left-width: 0px;
+			border-right-width: 0px;
+		}
+	}
+
+#comments-number {
+	padding: 1.5rem;
 	font-size: 22px;
 	color: #666;
-	border-bottom-right-radius: 1.5rem;
-	border-top-right-radius: 1.5rem;
+	border-bottom: 1px solid #f2f2f2;
+	text-align: center;
 }
+
+	.ltr .has-comments-nav #comments-number { text-align: left; }
+	.rtl .has-comments-nav #comments-number { text-align: right; }
 
 .comments-nav {
 	position: absolute;
-	    top: 1rem;
-	    right: 1.5rem;
+	    top: 1.75rem;
 	    font-size: 13px;
 	text-transform: uppercase;
 	color: #888;
 	    line-height: 22px;
 	    vertical-align: middle;
 }
+
+		.ltr .comments-nav { right: 1.5rem; }
+		.rtl .comments-nav { left: 1.5rem; }
 
 	.comments-nav a,
 	.comments-nav a:hover,
@@ -1511,7 +1532,7 @@ p > iframe {
 
 ol.comment-list {
 	list-style: none;
-	margin: 0;
+	margin: 0 1.5rem;
 	font-size: 17px;
 }
 
@@ -1539,7 +1560,7 @@ ol.comment-list {
 
 	.comment-meta {
 		margin: -1.5rem 0 1.5rem;
-		font-size: 0.9375rem;
+		font-size: 15px;
 		color: #ccc;
 	}
 
@@ -1569,10 +1590,6 @@ ol.comment-list {
 		.comment-meta, .comment-meta a { color: #bbb; }
 		.comment-author a { color: #333; }
 
-/*
-	.comment-reply-link { float: right; margin-top: 5px; text-shadow: none; }
-*/
-
 	.comment-parent {font-size: 14px;
     margin-bottom: 0.5rem;
 	}
@@ -1595,10 +1612,28 @@ ol.comment-list {
 
 /* ====== Respond ====== */
 
+#comments + .comment-respond { margin-top: 3rem; }
+
 .comment-respond {
-	border: 1px solid #f7f7f7;
-	border-radius: 5px;
+	border: 1px solid #f2f2f2;
 }
+
+	@media only screen and ( max-width: 480px ) {
+
+		.comment-respond {
+			width: calc( 100% + 3rem );
+			margin-left: -1.5rem;
+			border-left-width: 0;
+			border-right-width: 0;
+		}
+
+		.comment-list .comment-respond {
+			width: 100%;
+			margin-left: 0;
+			border-left-width: 1px;
+			border-right-width: 1px;
+		}
+	}
 
 	.comment-reply-title {
 		position: relative;
@@ -1606,8 +1641,7 @@ ol.comment-list {
 		font-size: 22px;
 		text-align: center;
 		color: #666;
-		text-transform: uppercase;
-		border-bottom: 1px solid #f7f7f7;
+		border-bottom: 1px solid #f2f2f2;
 	}
 	#cancel-comment-reply-link {
 		position: absolute;
@@ -1626,7 +1660,6 @@ ol.comment-list {
 		color: #fff;
 		background: #e00;
 		border-bottom-left-radius: 5px;
-		border-top-right-radius: 5px;
 	}
 
 		#cancel-comment-reply-link:hover::after {
@@ -1642,7 +1675,7 @@ ol.comment-list {
 	.comment-respond .must-log-in,
 	.comment-notes {
 		text-align: center;
-		font-size: 0.9375rem;
+		font-size: 15pxrem;
 		color: #bbb;
 	}
 
@@ -1692,13 +1725,6 @@ ol.comment-list {
 				}
 		}
 
-
-			/*
-			::-webkit-input-placeholder { color: #666; }
-			:-moz-placeholder { color: #666; }
-			::-moz-placeholder { color: #666; }
-			:-ms-input-placeholder { color: #666; }
-			*/
 
 /********************************************************************************************************
  * ====== End Comments Template ======

@@ -206,7 +206,9 @@ function extant_get_header_color_css() {
 	// primary - color
 	$style .= sprintf(
 		'.site-title a,
-		.menu-toggle button { color: %s; }',
+		.menu-toggle button,
+		.menu-search .search-submit:hover,
+		.menu-search .search-submit:focus { color: %s; }',
 		$p_hex
 	);
 
@@ -224,9 +226,7 @@ function extant_get_header_color_css() {
 		.site-header .menu-items a,
 		.site-header .menu-items a:hover,
 		.site-header .menu-items a:focus,
-		.menu-search .search-field,
-		.menu-search .search-submit:hover,
-		.menu-search .search-submit:focus { color: %s; }',
+		.menu-search .search-field { color: %s; }',
 		$s_hex
 	);
 
@@ -319,14 +319,19 @@ function extant_get_header_color_css() {
 		$s_hex
 	);
 
+	// secondary - background
+	$style .= sprintf(
+		'.menu-search .search-submit:hover,
+		.menu-search .search-submit:focus { background: %s; }',
+		$s_hex
+	);
+
 	// secondary - background - 0.05
 	$style .= sprintf(
 		'.menu-primary li a:hover,
 		.menu-primary li a:focus,
 		.menu-secondary li a:hover,
-		.menu-secondary li a:focus,
-		.menu-search .search-submit:hover,
-		.menu-search .search-submit:focus { background: rgba( %s, 0.05 ); }',
+		.menu-secondary li a:focus { background: rgba( %s, 0.05 ); }',
 		$s_rgb
 	);
 

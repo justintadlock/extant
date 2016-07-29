@@ -68,6 +68,8 @@ jQuery( window ).ready( function() {
 
 	jQuery( 'body' ).addClass( 'menu-col-' + jQuery( '.menu-super > ul > li' ).length );
 
+	// Adds a class to the comments container if we have a nav (paginated comments).
+	jQuery( '.comments-nav' ).parents( '#comments' ).addClass( 'has-comments-nav' );
 
 	// Hide separator for no comments span.
 	jQuery( 'span.comments-link' ).prev( '.sep' ).hide();
