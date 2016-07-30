@@ -9,6 +9,8 @@
 
 	<div id="container">
 
+		<div class="wrap">
+
 		<div class="skip-link">
 			<a href="#content" class="screen-reader-text"><?php _e( 'Skip to content', 'extant' ); ?></a>
 		</div><!-- .skip-link -->

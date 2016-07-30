@@ -106,8 +106,10 @@ jQuery( window ).ready( function() {
 				}
 
 				jQuery( 'body' ).addClass( 'menu-open' ).addClass( c );
+				jQuery( 'html' ).addClass( 'menu-open' );
 			} else {
 				jQuery( 'body' ).removeClass( 'menu-open' ).removeClass( c );
+				jQuery( 'html' ).removeClass( 'menu-open' );
 				jQuery( 'body' ).scrollTop( scroll );
 				scroll = 0;
 			}
@@ -171,6 +173,7 @@ jQuery( window ).ready( function() {
 		function() {
 
 			jQuery( 'body' ).removeClass( 'menu-open' );
+				jQuery( 'html' ).removeClass( 'menu-open' );
 			jQuery( '.menu-toggle button' ).removeClass( 'selected' );
 
 			if ( jQuery( 'body' ).hasClass( 'menu-primary-open' ) ) {

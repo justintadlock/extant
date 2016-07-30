@@ -22,6 +22,8 @@
 
 		</div><!-- .below-site-header -->
 
+		</div><!-- .wrap -->
+
 	</div><!-- #container -->
 
 	<?php wp_footer(); // WordPress hook for loading JavaScript, toolbar, and other things in the footer. ?>
