@@ -218,8 +218,7 @@ final class Extant_Customize {
 				'label'           => esc_html__( 'Layout Type', 'extant' ),
 				'section'         => 'layout',
 				'type'            => 'radio',
-				'choices'         => extant_get_layout_types(),
-				'active_callback' => 'extant_is_pro'
+				'choices'         => extant_get_layout_types()
 			)
 		);
 
@@ -231,8 +230,7 @@ final class Extant_Customize {
 				'label'           => esc_html__( 'Always Display Header Icon', 'extant' ),
 				'description'     => __( 'Icon is only shown on mobile devices by default.', 'extant' ),
 				'section'         => 'icons',
-				'type'            => 'checkbox',
-				'active_callback' => 'extant_is_pro'
+				'type'            => 'checkbox'
 			)
 		);
 
@@ -249,10 +247,7 @@ final class Extant_Customize {
 				new Extant_Customize_Control_Select_Icon(
 					$manager,
 					$control,
-					array(
-						'label'           => $label,
-						'active_callback' => 'extant_is_pro'
-					)
+					array( 'label' => $label )
 				)
 			);
 		}
