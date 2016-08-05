@@ -243,22 +243,22 @@ final class Extant_Theme {
 	 */
 	public function register_layouts() {
 
-		hybrid_register_layout( 
-			'grid-landscape', 
-			array( 
-				'label'          => esc_html__( 'Grid: Landscape', 'extant' ), 
-				'is_post_layout' => false, 
+		hybrid_register_layout(
+			'grid-landscape',
+			array(
+				'label'          => esc_html__( 'Grid: Landscape', 'extant' ),
+				'is_post_layout' => false,
 				'image'          => hybrid_locate_theme_file( 'images/layouts/grid-landscape.png' )
-			) 
+			)
 		);
 
-		hybrid_register_layout( 
-			'grid-portrait', 
-			array( 
-				'label'          => esc_html__( 'Grid: Portrait', 'extant' ), 
-				'is_post_layout' => false, 
+		hybrid_register_layout(
+			'grid-portrait',
+			array(
+				'label'          => esc_html__( 'Grid: Portrait', 'extant' ),
+				'is_post_layout' => false,
 				'image'          => hybrid_locate_theme_file( 'images/layouts/grid-portrait.png' )
-			) 
+			)
 		);
 	}
 
@@ -272,18 +272,18 @@ final class Extant_Theme {
 	public function register_scripts() {
 
 		// Register scripts.
-		wp_register_script( 'extant', hybrid_get_script_uri( 'theme', 'template' ), array( 'jquery' ), null, true );
+		wp_register_script( 'extant', hybrid_get_script_uri( 'theme' ), array( 'jquery' ), null, true );
 
 		// Register fonts.
 		hybrid_register_font( 'extant', array( 'family' => extant_get_font_families(), 'subset' => extant_get_font_subsets() ) );
 
 		// Register styles.
-		wp_register_style( 'font-awesome',        hybrid_get_style_uri( 'font-awesome', 'template' ) );
-		wp_register_style( 'extant-mediaelement', hybrid_get_style_uri( 'mediaelement', 'template' ) );
+		wp_register_style( 'font-awesome',        hybrid_get_style_uri( 'font-awesome' ) );
+		wp_register_style( 'extant-mediaelement', hybrid_get_style_uri( 'mediaelement' ) );
 		wp_register_style( 'extant-embed',        hybrid_get_style_uri( 'embed' ) );
 
 		if ( is_child_theme() )
-			wp_register_style( 'extant-parent-embed', hybrid_get_style_uri( 'embed', 'template' ) );
+			wp_register_style( 'extant-child-embed', hybrid_get_child_style_uri( 'embed' ) );
 	}
 }
 

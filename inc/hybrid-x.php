@@ -40,47 +40,103 @@ function hybrid_is_layout( $layout ) {
 }
 
 /**
- * Searches for and attempts to find a specific stylesheet.
+ * Replaces `%1$s` and `%2$s` with the template and stylesheet directory paths.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $value
+ * @return string
+ */
+function hybrid_sprintf_theme_dir( $value ) {
+
+	return sprintf( $value, get_template_directory(), get_stylesheet_directory() );
+}
+
+/**
+ * Replaces `%1$s` and `%2$s` with the template and stylesheet directory URIs.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $value
+ * @return string
+ */
+function hybrid_sprintf_theme_uri( $value ) {
+
+	return sprintf( $value, get_template_directory_uri(), get_stylesheet_directory_uri() );
+}
+
+/**
+ * Returns a stylesheet file.
  *
  * @since  1.0.0
  * @access public
  * @param  string  $name   Name of the stylesheet file (without the extension).
- * @param  string  $where  stylesheet|template
+ * @param  string  $path   The folder to look for the stylesheet in.
+ * @param  string  $where  template|stylesheet
  * @return string
  */
-function hybrid_get_style_uri( $name, $where = 'stylesheet' ) {
+function hybrid_get_style_uri( $name, $path = 'css', $where = 'template' ) {
 
 	$suffix = hybrid_get_min_suffix();
-	$path   = 'template' === $where ? '%1$s/css' : '%2$s/css';
+	$path   = 'stylesheet' === $where ? '%2$s/' . $path : '%1$s/' . $path;
 
-	$dir = trailingslashit( sprintf( $path, get_template_directory(),     get_stylesheet_directory()     ) );
-	$uri = trailingslashit( sprintf( $path, get_template_directory_uri(), get_stylesheet_directory_uri() ) );
+	$dir = trailingslashit( hybrid_sprintf_theme_dir( $path ) );
+	$uri = trailingslashit( hybrid_sprintf_theme_uri( $path ) );
 
 	$style_uri = $suffix && file_exists( "{$dir}{$name}{$suffix}.css" ) ? "{$uri}{$name}{$suffix}.css" : "{$uri}{$name}.css";
 
-	return apply_filters( "hybrid_{$name}_style_uri", $style_uri, $dir, $uri );
+	return apply_filters( "hybrid_{$name}_style_uri", $style_uri );
 }
 
 /**
- * Searches for and attempts to find a specific script.
+ * Returns a stylesheet file from the child theme.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $name   Name of the stylesheet file (without the extension).
+ * @param  string  $path   The folder to look for the stylesheet in.
+ * @return string
+ */
+function hybrid_get_child_style_uri( $name, $path = 'css' ) {
+
+	return hybrid_get_style_uri( $name, $path, 'stylesheet' );
+}
+
+/**
+ * Returns a script file.
  *
  * @since  1.0.0
  * @access public
  * @param  string  $name   Name of the script file (without the extension).
- * @param  string  $where  stylesheet|template
+ * @param  string  $path   The folder to look for the script in.
+ * @param  string  $where  template|stylesheet
  * @return string
  */
-function hybrid_get_script_uri( $name, $where = 'stylesheet' ) {
+function hybrid_get_script_uri( $name, $path = 'js', $where = 'template' ) {
 
 	$suffix = hybrid_get_min_suffix();
-	$path   = 'template' === $where ? '%1$s/js' : '%2$s/js';
+	$path   = 'stylesheet' === $where ? '%2$s/' . $path : '%1$s/' . $path;
 
-	$dir = trailingslashit( sprintf( $path, get_template_directory(),     get_stylesheet_directory()     ) );
-	$uri = trailingslashit( sprintf( $path, get_template_directory_uri(), get_stylesheet_directory_uri() ) );
+	$dir = trailingslashit( hybrid_sprintf_theme_dir( $path ) );
+	$uri = trailingslashit( hybrid_sprintf_theme_uri( $path ) );
 
 	$script_uri = $suffix && file_exists( "{$dir}{$name}{$suffix}.js" ) ? "{$uri}{$name}{$suffix}.js" : "{$uri}{$name}.js";
 
-	return apply_filters( "hybrid_{$name}_script_uri", $script_uri, $dir, $uri );
+	return apply_filters( "hybrid_{$name}_script_uri", $script_uri );
+}
+
+/**
+ * Returns a script file from the child theme.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $name   Name of the script file (without the extension).
+ * @param  string  $path   The folder to look for the script in.
+ * @return string
+ */
+function hybrid_get_child_script_uri( $name, $path = 'js' ) {
+
+	return hybrid_get_script_uri( $name, $path, 'stylesheet' );
 }
 
 /**
