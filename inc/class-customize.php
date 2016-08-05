@@ -157,30 +157,6 @@ final class Extant_Customize {
 			)
 		);
 
-		/* === Colors === */
-
-		$colors = array(
-			'color_primary'           => extant_get_primary_color(),
-			'color_header_primary'    => extant_get_header_primary_color(),
-			'color_header_secondary'  => extant_get_header_secondary_color(),
-			'color_header_background' => extant_get_header_background_color(),
-			'color_footer_primary'    => extant_get_footer_primary_color(),
-			'color_footer_background' => extant_get_footer_background_color()
-		);
-
-		foreach ( $colors as $setting => $default ) {
-
-			$manager->add_setting(
-				$setting,
-				array(
-					'default'              => $default,
-					'sanitize_callback'    => 'sanitize_hex_color_no_hash',
-					'sanitize_js_callback' => 'maybe_hash_hex_color',
-					'transport'            => 'postMessage'
-				)
-			);
-		}
-
 		/* === Icons === */
 
 		$manager->add_setting(
@@ -247,32 +223,6 @@ final class Extant_Customize {
 			)
 		);
 
-		/* === Colors === */
-
-		$colors = array(
-			'color_primary'           => esc_html__( 'Primary Color',            'extant' ),
-			'color_header_primary'    => esc_html__( 'Header: Primary Color',    'extant' ),
-			'color_header_secondary'  => esc_html__( 'Header: Secondary Color',  'extant' ),
-			'color_header_background' => esc_html__( 'Header: Background Color', 'extant' ),
-			'color_footer_primary'    => esc_html__( 'Footer: Primary Color',    'extant' ),
-			'color_footer_background' => esc_html__( 'Footer: Background Color', 'extant' )
-		);
-
-		foreach ( $colors as $setting => $label ) {
-
-			$manager->add_control(
-				new WP_Customize_Color_Control(
-					$manager,
-					$setting,
-					array(
-						'label'           => $label,
-						'section'         => 'colors',
-						'active_callback' => 'extant_is_pro'
-					)
-				)
-			);
-		}
-
 		/* === Icons === */
 
 		$manager->add_control(
@@ -331,23 +281,6 @@ final class Extant_Customize {
 	 * @return void
 	 */
 	public function partials( $manager ) {
-
-		$manager->selective_refresh->add_partial(
-			'colors',
-			array(
-				'selector'            => '#hybrid-style-inline-css',
-				'container_inclusive' => false,
-				'render_callback'     => 'extant_get_inline_css',
-				'settings'            => array(
-					'color_primary',
-					'color_header_primary',
-					'color_header_secondary',
-					'color_header_background',
-					'color_footer_primary',
-					'color_footer_background'
-				)
-			)
-		);
 
 		$manager->selective_refresh->add_partial(
 			'header_icon',

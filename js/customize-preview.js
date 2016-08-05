@@ -1,20 +1,9 @@
 /**
- * Function for turning a hex color into an RGB string.
- */
-function extant_hex_to_rgb( hex ) {
-	var color = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec( hex );
-
-	return parseInt( color[1], 16 ) + ", " + parseInt( color[2], 16 ) + ", " + parseInt( color[3], 16 );
-}
-
-/**
  * Handles the customizer live preview settings.
  */
 jQuery( document ).ready( function() {
 
-	/*
-	 * Shows a live preview of changing the site title.
-	 */
+	// Shows a live preview of changing the site title.
 	wp.customize( 'blogname', function( value ) {
 
 		value.bind( function( to ) {
@@ -25,9 +14,7 @@ jQuery( document ).ready( function() {
 
 	} ); // wp.customize
 
-	/*
-	 * Shows a live preview of changing the site description.
-	 */
+	// Shows a live preview of changing the site description.
 	wp.customize( 'blogdescription', function( value ) {
 
 		value.bind( function( to ) {

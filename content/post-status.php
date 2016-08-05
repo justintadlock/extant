@@ -3,21 +3,15 @@
 	<?php if ( is_single( get_the_ID() ) ) : // If viewing a single post. ?>
 
 		<div <?php hybrid_attr( 'entry-content' ); ?>>
-
-			<?php if ( get_option( 'show_avatars' ) ) : // If avatars are enabled. ?>
-				<span class="avatar-wrap"><?php echo get_avatar( get_the_author_meta( 'email' ) ); ?></span>
-			<?php endif; ?>
-
 			<?php the_content(); ?>
 			<?php wp_link_pages(); ?>
-
 		</div><!-- .entry-content -->
 
 		<footer class="entry-footer">
 			<?php hybrid_post_format_link(); ?>
 			<span class="sep"><?php _ex( '&middot;', 'post meta separator', 'extant' ); ?></span>
 			<time <?php hybrid_attr( 'entry-published' ); ?>><?php echo get_the_date(); ?></time>
-			<?php hybrid_post_terms( array( 'taxonomy' => 'category' ) ); ?>
+			<?php hybrid_post_terms( array( 'taxonomy' => 'category', 'before' => '<br />' ) ); ?>
 			<?php hybrid_post_terms( array( 'taxonomy' => 'post_tag' ) ); ?>
 		</footer><!-- .entry-footer -->
 

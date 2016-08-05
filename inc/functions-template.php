@@ -231,16 +231,16 @@ function extant_map_featured_icons() {
 
 	$icons = array(
 		// Post type.
-		'attachment'        => 'icon-image',
+		'attachment'        => 'icon-picture-o',
 		'download'          => 'icon-download',
 		'page'              => 'icon-file-text-o',
-		'portfolio_project' => 'icon-image',
+		'portfolio_project' => 'icon-picture-o',
 
 		// Post format.
 		'aside'             => 'icon-paperclip',
 		'audio'             => 'icon-volume-up',
 		'chat'              => 'icon-comments',
-		'gallery'           => 'icon-image',
+		'gallery'           => 'icon-picture-o',
 		'image'             => 'icon-camera-retro',
 		'link'              => 'icon-link',
 		'quote'             => 'icon-quote-right',

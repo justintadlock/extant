@@ -1,0 +1,12 @@
+﻿/* Korean stylesheet. */
+
+q { quotes: '\201C' '\201D' '\2018' '\2019'; }
+
+h1, h2, h3, h4, h5, h6,
+.site-footer {
+	font-family: 'Noto Sans KR', 'Malgun Gothic', 'Gulim', 'Batang', "돋움", 'Dotum', 'Hangangche', sans-serif;
+}
+
+body {
+	font-family: 'Noto Sans KR', 'Malgun Gothic', 'Gulim', 'Batang', "돋움", 'Dotum', 'Hangangche', sans-serif;
+}

@@ -58,7 +58,7 @@ function hybrid_get_style_uri( $name, $where = 'stylesheet' ) {
 
 	$style_uri = $suffix && file_exists( "{$dir}{$name}{$suffix}.css" ) ? "{$uri}{$name}{$suffix}.css" : "{$uri}{$name}.css";
 
-	return apply_filters( "hybrid_{$name}_stylesheet_uri", $style_uri, $dir, $uri );
+	return apply_filters( "hybrid_{$name}_style_uri", $style_uri, $dir, $uri );
 }
 
 /**

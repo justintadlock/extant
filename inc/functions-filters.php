@@ -74,7 +74,8 @@ function extant_post_class( $classes ) {
 
 	if ( function_exists( 'ccp_is_project_archive' ) && ccp_is_project_archive() && ccp_is_project_sticky() ) {
 
-		$classes[] = 'sticky';
+		if ( ! in_array( 'sticky', $classes ) )
+			$classes[] = 'sticky';
 
 	} else  if (  ! is_singular() && ! ( is_home() && is_sticky() ) ) {
 		static $extant_post_alt;

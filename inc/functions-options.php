@@ -94,18 +94,6 @@ function extant_get_menu_search_icon() {
 }
 
 /**
- * Returns the close menu icon theme mod.
- *
- * @since  1.0.0
- * @access public
- * @return string
- */
-function extant_get_menu_close_icon() {
-
-	return hybrid_get_theme_mod( 'menu_close_icon', 'icon-times' );
-}
-
-/**
  * Conditional tag to check if the header icon should be shown. Note that it always
  * appears on mobile devices (<= 480px).
  *
@@ -116,78 +104,6 @@ function extant_get_menu_close_icon() {
 function extant_show_header_icon() {
 
 	return hybrid_get_theme_mod( 'show_header_icon', false );
-}
-
-/**
- * Returns the primary color theme mod.
- *
- * @since  1.0.0
- * @access public
- * @return string
- */
-function extant_get_primary_color() {
-
-	return hybrid_get_theme_mod( 'color_primary', 'c02942' );
-}
-
-/**
- * Returns the header primary color theme mod.
- *
- * @since  1.0.0
- * @access public
- * @return string
- */
-function extant_get_header_primary_color() {
-
-	return hybrid_get_theme_mod( 'color_header_primary', '333333' );
-}
-
-/**
- * Returns the header secondary color theme mod.
- *
- * @since  1.0.0
- * @access public
- * @return string
- */
-function extant_get_header_secondary_color() {
-
-	return hybrid_get_theme_mod( 'color_header_secondary', 'ffffff' );
-}
-
-/**
- * Returns the header background color theme mod.
- *
- * @since  1.0.0
- * @access public
- * @return string
- */
-function extant_get_header_background_color() {
-
-	return hybrid_get_theme_mod( 'color_header_background', 'ffffff' );
-}
-
-/**
- * Returns the footer primary color theme mod.
- *
- * @since  1.0.0
- * @access public
- * @return string
- */
-function extant_get_footer_primary_color() {
-
-	return hybrid_get_theme_mod( 'color_footer_primary', '333333' );
-}
-
-/**
- * Returns the footer background color theme mod.
- *
- * @since  1.0.0
- * @access public
- * @return string
- */
-function extant_get_footer_background_color() {
-
-	return hybrid_get_theme_mod( 'color_footer_background', 'f8f8f8' );
 }
 
 /**

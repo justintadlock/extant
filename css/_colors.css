@@ -1,0 +1,364 @@
+/* === General Design Colors === */
+
+/* color - #bbb */
+
+.gallery-caption,
+.gallery-caption a,
+.entry-byline,
+.entry-footer,
+#edd-login-account-wrap,
+#edd-new-account-wrap,
+.comments-closed,
+.comment-respond .logged-in-as,
+.comment-respond .must-log-in,
+.comment-notes,
+.trail-items li,
+.edd_form .edd-description,
+.edd_price_option_sep,
+.archive-description,
+.comment-meta, .comment-meta a {
+	color: #bbb;
+}
+
+/* background - #fff */
+
+.main,
+.layout-type-full .below-site-header,
+.layout-type-boxed .breadcrumbs,
+.singular-download a.edd-add-to-cart.button,
+.comment-respond .submit {
+	background: #fff;
+}
+
+/* border-color - #f2f2f2 */
+
+.layout-type-boxed .breadcrumbs,
+pre,
+.form-allowed-tags code,
+blockquote,
+thead,
+tfoot
+tr,
+td,
+fieldset,
+input[type="number"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+textarea,
+select,
+.nav-links li .page-numbers,
+#comments,
+#comments-number,
+.edd_price_options ul,
+.edd_price_options ul li,
+.comment-respond,
+.comment-reply-title,
+.singular-portfolio_project .project-meta,
+.singular-portfolio_project .project-key,
+.singular-portfolio_project .project-data,
+.media-meta li,
+.breadcrumbs,
+.comment .avatar { border-color: #f2f2f2; }
+
+/* color - #666 */
+
+.site-footer a,
+.breadcrumbs a,
+.main a,
+.main,
+.line-through del,
+.line-through strike,
+.line-through s {
+	color: #666;
+}
+
+/* color - #333 */
+
+.breadcrumbs a,
+.main h1 a,
+.main h2 a,
+.main h3 a,
+.main h4 a,
+.main h5 a,
+.main h6 a,
+.entry-title a,
+.nav-links,
+.singular-download a.edd-add-to-cart.button,
+.comment-author a,
+.comment-respond .submit {
+	color: #333;
+}
+
+/* color - #fff */
+
+.format-quote blockquote a,
+.format-quote blockquote a:hover,
+.format-quote blockquote a:focus,
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+/*.edd-page a.edd-submit.button,*/
+.gallery-count,
+.singular-download  a.edd-add-to-cart.button:hover,
+.singular-download  a.edd-add-to-cart.button:focus,
+.format-quote blockquote,
+.format-status .entry-content,
+.singular-portfolio_project .project-link,
+.singular-portfolio_project .project-link:hover,
+.singular-portfolio_project .project-link:focus,
+.nav-links li .current,
+.nav-links li a:hover,
+.nav-links li a:focus,
+.comment-respond .submit:hover,
+.comment-respond .submit:focus,
+#cancel-comment-reply-link::after {
+	color: #fff;
+}
+
+	@media screen and ( min-width: 640px ) {
+
+		.sticky .entry-header,
+		.sticky .entry-title,
+		.sticky .entry-byline,
+		.sticky a,
+		.sticky .entry-title a,
+		.main .sticky a:hover,
+		.main .sticky a:focus {
+			color: #fff;
+		}
+	}
+
+/* color - #888 */
+
+blockquote,
+.wp-caption-text,
+.singular-portfolio_project .project-key,
+.comments-nav,
+.comment-parent a { color: #888; }
+
+/* background - #333 */
+
+input[type="submit"]:focus,
+input[type="submit"]:hover,
+input[type="reset"]:focus,
+input[type="reset"]:hover,
+input[type="button"]:focus,
+input[type="button"]:hover,
+button:focus,
+button:hover,
+.edd-page a.edd-submit.button:focus,
+.edd-page a.edd-submit.button:hover,
+.media-info-toggle:hover,
+.singular-download  a.edd-add-to-cart.button:hover,
+.singular-download  a.edd-add-to-cart.button:focus,
+.singular-portfolio_project .project-link:hover,
+.singular-portfolio_project .project-link:focus,
+.nav-links li .current,
+.nav-links li a:hover,
+.nav-links li a:focus,
+.comment-respond .submit:hover,
+.comment-respond .submit:focus,
+#cancel-comment-reply-link:hover::after,
+#cancel-comment-reply-link:focus::after {
+	background: #333;
+}
+
+/* border-color - #333 */
+
+.site-title a:hover,
+.site-title a:focus,
+.nav-links li .current,
+.nav-links li a:hover,
+.nav-links li a:focus,
+.singular-download a.edd-add-to-cart.button,
+.comment-respond .submit {
+	border-color: #333;
+}
+
+/* background - #000000 - transparent */
+
+.gallery-count { background-color: rgba( 0, 0, 0, 0.5 ); }
+
+@media screen and ( min-width: 640px ) {
+
+	.sticky .entry-header { background-color: rgba( 0, 0, 0, 0.5 ); }
+}
+
+/* image border colors using box-shadow */
+
+.main a img,
+a .svg-featured,
+.format-quote blockquote,
+.format-status .entry-content,
+.format-aside .entry-content {
+	box-shadow: 0 0 0 9px #fff, 0 0 0 10px #eee, 0 0 0 12px #fafafa;
+}
+
+/* post format colors */
+
+.format-status .entry-content { background: #d95b43; }
+.format-aside .entry-content  { background: #f7f7f7; }
+
+.format-quote blockquote { background: #53777a; }
+
+		.format-quote cite { color: #97c0c3; }
+
+/* SVG featured images */
+
+.svg-featured .svg-shape { fill: #000; }
+.svg-featured .svg-icon { fill: #fff; }
+
+.format-aside .svg-featured    { background: #f7f7f7; }
+.format-audio .svg-featured    { background: #ecd078; }
+.format-chat .svg-featured     { background: #c02942; }
+.format-gallery .svg-featured  { background: #d99443; }
+.format-image .svg-featured    { background: #9f43d9; }
+.format-link .svg-featured     { background: #111111; }
+.format-quote .svg-featured    { background: #53777a; }
+.format-standard .svg-featured { background: #f8f8f8; }
+.format-status .svg-featured   { background: #d95b43; }
+.format-video .svg-featured    { background: #542437; }
+
+.attachment .svg-featured        { background: #9f43d9; }
+.download .svg-featured,
+.type-download .svg-featured     { background: #436dd9; }
+.page .svg-featured              { background: #666666; }
+.portfolio_project .svg-featured { background: #43b4d9; }
+
+/* misc. */
+
+ins {
+	background:   rgba( 236, 238, 20, 0.05 );
+	border-color: rgba( 0, 153, 51, 0.5 );
+}
+
+/* === Primary Accent Color === */
+
+/* color - #c02942 */
+
+.main a:hover,
+.main a:focus,
+.breadcrumbs a:hover,
+.breadcrumbs a:focus,
+pre,
+code,
+.line-through,
+label.focus,
+legend,
+.comment-respond .required,
+.edd-required-indicator,
+.edd_purchase_submit_wrapper .edd-cart-ajax-alert { color: #c02942; }
+
+/* background - #c02942 */
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.singular-portfolio_project .project-link,
+#cancel-comment-reply-link::after { background: #c02942; }
+
+legend,
+pre { background-color: rgba( 192, 41, 66, 0.1 ); }
+
+/* box-shadow - #c02942 */
+
+.main a:hover img,
+.main a:focus img,
+a:hover .svg-featured,
+a:focus .svg-featured {
+	box-shadow: 0 0 0 9px #fff, 0 0 0 10px rgba( 192, 41, 66, 0.25 ), 0 0 0 12px rgba( 192, 41, 66, 0.05 );
+}
+
+/* transparent border */
+
+legend { border-color: rgba( 192, 41, 66, 0.1 ); }
+
+/* === Header Design Colors === */
+
+.site-title a,
+.menu-toggle button,
+.menu-search .search-submit:hover,
+.menu-search .search-submit:focus { color: #333; }
+
+.site-description { color: rgba( 51, 51, 51, 0.7 ); }
+
+.menu-toggle button:hover,
+.menu-toggle button:focus,
+.menu-toggle button.selected,
+.site-header .menu-items a,
+.site-header .menu-items a:hover,
+.site-header .menu-items a:focus,
+.menu-search .search-field { color: #fff; }
+
+.site-header { background: #fff; }
+
+.menu-toggle button:hover,
+.menu-toggle button:focus,
+.menu-toggle button.selected,
+.menu > .wrap,
+.menu-search .search-field,
+.menu-search .search-submit { background: #333; }
+
+.site-header,
+.site-title,
+.menu-super > ul > li { border-color: rgba( 51, 51, 51, 0.05 ); }
+
+.menu-super > ul > li:hover,
+.menu-super > ul > li:focus,
+.menu.is-open { border-color: #333; }
+
+.menu-search .search-submit { color: rgba( 255, 255, 255, 0.75 ); }
+
+.menu-primary li a,
+.menu-secondary li a { border-color: rgba( 255, 255, 255, 0.025 ); }
+
+.menu-search .search-field { border-color: rgba( 255, 255, 255, 0.25 ); }
+
+.menu-search .search-submit { border-color: rgba( 255, 255, 255, 0.75 ); }
+
+.menu-search .search-submit:hover,
+.menu-search .search-submit:focus { border-color: #fff; }
+
+.menu-search .search-submit:hover,
+.menu-search .search-submit:focus { background: #fff; }
+
+.menu-primary li a:hover,
+.menu-primary li a:focus,
+.menu-secondary li a:hover,
+.menu-secondary li a:focus { background: rgba( 255, 255, 255, 0.05 ); }
+
+.menu-open .overlay { background: rgba( 255, 255, 255, 0.5 ); }
+
+	@media only screen and ( max-width: 480px ) {
+		.site-header,
+		.site-title a { border-color: rgba( 51, 51, 51, 0.05 ); }
+		.site-title a { color: #333; }
+		.site-title a:hover,
+		.site-title a:focus {
+			color:        #fff;
+			background:   #333;
+			border-color: #333;
+		}
+	}
+
+/* === Footer Design Colors === */
+
+.site-footer {
+	color:        rgba( 51, 51, 51, 0.75 );
+	background:   #f8f8f8;
+	border-color: rgba( 51, 51, 51, 0.05 );
+}
+
+	.site-footer a { color: #333; }

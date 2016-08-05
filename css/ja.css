@@ -1,0 +1,12 @@
+﻿/* Japanese Stylesheet */
+/* http://stackoverflow.com/questions/14563064/japanese-standard-web-fonts */
+
+h1, h2, h3, h4, h5, h6,
+.site-footer {
+	font-family: 'Noto Sans', 'Noto Sans Japanese', "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro W3", "HG明朝E", "HG Mincho E", "ＭＳ Ｐ明朝", "MS PMincho", serif;
+}
+
+body {
+	font-family: 'Noto Sans', 'Noto Sans Japanese', "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+
+}

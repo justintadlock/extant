@@ -95,10 +95,6 @@ final class Extant_Theme {
 		if ( class_exists( 'Easy_Digital_Downloads' ) )
 			require_once( $this->dir_path . 'inc/functions-edd.php' );
 
-		// Load admin files.
-		if ( is_admin() )
-			require_once( $this->dir_path . 'inc/admin-welcome.php' );
-
 		// Launch the Hybrid Core framework.
 		new Hybrid();
 	}
@@ -247,8 +243,23 @@ final class Extant_Theme {
 	 */
 	public function register_layouts() {
 
-		hybrid_register_layout( 'grid-landscape', array( 'label' => esc_html__( 'Grid: Landscape', 'extant' ), 'is_post_layout' => false, 'image' => '%s/images/layouts/grid-landscape.png' ) );
-		hybrid_register_layout( 'grid-portrait',  array( 'label' => esc_html__( 'Grid: Portrait',  'extant' ), 'is_post_layout' => false, 'image' => '%s/images/layouts/grid-portrait.png' ) );
+		hybrid_register_layout( 
+			'grid-landscape', 
+			array( 
+				'label'          => esc_html__( 'Grid: Landscape', 'extant' ), 
+				'is_post_layout' => false, 
+				'image'          => hybrid_locate_theme_file( 'images/layouts/grid-landscape.png' )
+			) 
+		);
+
+		hybrid_register_layout( 
+			'grid-portrait', 
+			array( 
+				'label'          => esc_html__( 'Grid: Portrait', 'extant' ), 
+				'is_post_layout' => false, 
+				'image'          => hybrid_locate_theme_file( 'images/layouts/grid-portrait.png' )
+			) 
+		);
 	}
 
 	/**
