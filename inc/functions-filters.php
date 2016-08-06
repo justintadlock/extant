@@ -15,6 +15,9 @@ add_filter( 'hybrid_site_title', 'extant_site_title' );
 # Overwrite default image size for galleries.
 add_filter( 'cleaner_gallery_defaults', 'extant_gallery_defaults', 5 );
 
+# Filter the image sizes to choose from.
+add_filter( 'image_size_names_choose', 'extant_image_size_names_choose', 5 );
+
 /**
  * Adds a class to the site title to handle the header icon.
  *
@@ -218,11 +221,29 @@ function extant_next_comments_link_attr( $attr ) {
  * @since  1.0.0
  * @access public
  * @param  array  $defaults
- * @return string
+ * @return array
  */
 function extant_gallery_defaults( $defaults ) {
 
 	$defaults['size'] = 'grid-portrait' === hybrid_get_global_layout() ? 'extant-portrait-thumb' : 'post-thumbnail';
 
 	return $defaults;
+}
+
+/**
+ * Filters the WordPress image selector to add custom image sizes.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $sizes
+ * @return array
+ */
+function extant_image_size_names_choose( $sizes ) {
+
+	$sizes['extant-landscape']      = esc_html__( 'Landscape',           'extant' );
+	$sizes['post-thumbnail']        = esc_html__( 'Landscape Thumbnail', 'extant' );
+	$sizes['extant-portrait']       = esc_html__( 'Portrait',            'extant' );
+	$sizes['extant-portrait-thumb'] = esc_html__( 'Portrait Thumbnail',  'extant' );
+
+	return $sizes;
 }
