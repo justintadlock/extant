@@ -12,6 +12,9 @@
 # Handle the header icon.
 add_filter( 'hybrid_site_title', 'extant_site_title' );
 
+# Overwrite default image size for galleries.
+add_filter( 'cleaner_gallery_defaults', 'extant_gallery_defaults', 5 );
+
 /**
  * Adds a class to the site title to handle the header icon.
  *
@@ -207,4 +210,19 @@ function extant_prev_comments_link_attr( $attr ) {
 function extant_next_comments_link_attr( $attr ) {
 
 	return $attr .= ' class="next-comments-link"';
+}
+
+/**
+ * Changes the default gallery thumbnail size.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array  $defaults
+ * @return string
+ */
+function extant_gallery_defaults( $defaults ) {
+
+	$defaults['size'] = 'grid-portrait' === hybrid_get_global_layout() ? 'extant-portrait-thumb' : 'post-thumbnail';
+
+	return $defaults;
 }

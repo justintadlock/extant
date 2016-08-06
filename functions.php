@@ -207,30 +207,18 @@ final class Extant_Theme {
 	 */
 	public function register_image_sizes() {
 
-		$layout = hybrid_get_global_layout();
-
-		// 16:9
-		if ( 'grid-landscape' === $layout ) {
-
-			// Sets the `post-thumbnail` size.
-			set_post_thumbnail_size( 240, 135, true );
-		// 3:4
-		} else if ( 'grid-portrait' === $layout ) {
-
-			// Sets the `post-thumbnail` size.
-			set_post_thumbnail_size( 180, 240, true );
-		}
-
 		// Landscape sizes.
-		add_image_size( 'extant-landscape',     750,  422,  true );
+		set_post_thumbnail_size(                 240, 135, true );
+		add_image_size( 'extant-landscape',      750, 422, true );
 		add_image_size( 'extant-landscape-2x',  1500, 844,  true );
 
 		// Portrait sizes.
-		add_image_size( 'extant-portrait',    380, 506,  true );
-		add_image_size( 'extant-portrait-2x', 760, 1012, true );
+		add_image_size( 'extant-portrait',       380,  506, true );
+		add_image_size( 'extant-portrait-2x',    760, 1012, true );
+		add_image_size( 'extant-portrait-thumb', 180,  240, true );
 
 		// Sizes always used for sticky posts.
-		add_image_size( 'extant-sticky',    950,  534,  true );
+		add_image_size( 'extant-sticky',     950,  534, true );
 		add_image_size( 'extant-sticky-2x', 1900, 1068, true );
 	}
 
