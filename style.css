@@ -390,7 +390,7 @@ table {
 
 
 		label {
-			font-size:      0.9375rem;
+			font-size:      15px;
 			font-weight:    400;
 			cursor:         pointer;
 		}
@@ -525,13 +525,16 @@ img {
 	img.alignleft,
 	img.alignright { max-width: 50%; }
 
-	@media only screen and ( min-width: 480px ) {
+	@media only screen and ( max-width: 480px ) {
 
 		img.alignleft,
 		img.alignright {
 			max-width:     100%;
 			margin-bottom: 1rem;
 		}
+
+		p img.alignleft,
+		p img.alignright { margin-bottom: 0; }
 	}
 
 .svg-featured {
@@ -1088,11 +1091,11 @@ img {
 		.media-meta .prep {
 			display:        block;
 			text-transform: uppercase;
-			font-size:      0.8375rem;
+			font-size:      14px;
 			font-weight:   700;
 		}
 
-		.media-meta .data { display: block; font-size: 1rem; }
+		.media-meta .data { display: block; font-size: 16px; }
 
 		@media only screen and ( min-width: 480px ) {
 
@@ -1807,11 +1810,11 @@ ul.trail-items {
 		.rtl.singular-download.layout-grid-portrait .featured-media { float: right; }
 
 		.ltr.singular-download.layout-grid-portrait .featured-media + .edd_download_purchase_form {
-			float:        right; 
+			float:        right;
 			padding-left: 1.5rem;
 		}
 		.rtl.singular-download.grid-portrait .featured-media + .edd_download_purchase_form {
-			float:         left; 
+			float:         left;
 			padding-right: 1.5rem;
 		}
 	}
