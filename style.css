@@ -574,15 +574,15 @@ img {
 	font-size: 14px;
 }
 
-.gallery { margin-bottom: 8px; }
+.gallery { margin-bottom: 1.125rem; }
 
-	.gallery-item { margin-bottom: 17px; }
+	.gallery-item { margin-bottom: 1.0625rem; }
 
-		.gallery-icon a img { margin-top: 10px; }
+		.gallery-icon a img { margin-top: 0.625rem; }
 
 		.gallery-caption {
-			margin-top: 17px;
-			font-size:  0.875rem;
+			margin-top: 1.0625rem;
+			font-size:  14px;
 		}
 
 /* Captions */
@@ -1115,6 +1115,34 @@ img {
 
 
 /* ====== Nav Links ====== */
+
+.page-links {
+	clear: both;
+	text-align: center;
+	font-size: 1rem;
+}
+
+	.page-links .page-numbers,
+	.page-links a {
+		border: 2px solid #333;
+		border-radius: 50%;
+		padding: 3px 8px;
+		font-size: 1rem;
+		margin: 0 0.25rem
+	}
+
+	.page-links a {
+		background: #fff;
+		color: #333;
+		text-decoration: none;
+	}
+
+	.page-links span.page-numbers,
+	.main .page-links a:hover,
+	.main .page-links a:focus {
+		background: #333;
+		color: #fff;
+	}
 
 .navigation {
 	clear:    both;
