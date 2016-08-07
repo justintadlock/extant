@@ -243,6 +243,96 @@ ins {
 	border-color: rgba( 0, 153, 51, 0.5 );
 }
 
+/* === Media Player Colors === */
+
+.wp-playlist-dark .wp-playlist-item { color: #666; }
+
+.wp-playlist-tracks,
+.wp-playlist-item,
+.wp-playlist-light .wp-playlist-current-item { border-color: #f2f2f2; }
+
+.wp-playlist-dark .wp-playlist-item-meta { color: #888; }
+
+.mejs-container.wp-video-shortcode {
+    border-top: 1px solid #000;
+    background: #000;
+}
+
+.wp-audio-shortcode.mejs-container,
+.mejs-controls,
+.mejs-volume-button .mejs-volume-slider,
+.mejs-volume-button .mejs-volume-slider:hover,
+.mejs-volume-button .mejs-volume-slider:focus,
+.wp-playlist-dark {
+	background: #000;
+}
+
+.mejs-container,
+.mejs-embed,
+.mejs-embed body,
+.mejs-overlay-button,
+.mejs-button button:hover,
+.mejs-button button:focus {
+	background: transparent;
+}
+
+.wp-playlist-item-meta { color: rgba( 85, 85, 85, 0.75 ); }
+
+.wp-playlist-dark .wp-playlist-item     { border-color: #333; }
+.wp-video-shortcode .mejs-controls,
+.wp-playlist-dark .mejs-controls        { border-color: #000; }
+
+
+.mejs-time-current { background: rgba( 255, 255, 255, 0.25 ); }
+
+.mejs-overlay-button::after { text-shadow: 1px 1px 2px #333; }
+
+.mejs-button button:focus { outline-color: #fff; }
+
+.mejs-volume-current,
+.mejs-horizontal-volume-current,
+.mejs-volume-handle { background: #fff; }
+
+.mejs-button button::after,
+.mejs-controls,
+.mejs-volume-current,
+.mejs-volume-handle,
+.mejs-overlay-button::after,
+.mejs-time-float,
+.wp-playlist-dark .wp-playlist-playing,
+.wp-playlist-dark .wp-playlist-playing a,
+.wp-playlist-dark .wp-playlist-caption:hover,
+.wp-playlist-dark .wp-playlist-caption:focus,
+.wp-playlist-dark .wp-playlist-item:hover,
+.wp-playlist-dark .wp-playlist-item:focus {
+	color: #fff;
+}
+
+.mejs-time-float { border-color: #c02942; }
+.mejs-time-float-corner { border-top-color: #c02942; }
+
+.wp-playlist-light .wp-playlist-item:hover,
+.wp-playlist-light .wp-playlist-item:focus,
+.mejs-button button:hover::after,
+.mejs-button button:focus::after,
+.mejs-overlay-button:hover::after,
+.mejs-overlay-button:focus::after { color: #c02942; }
+
+.mejs-time-float,
+.mejs-time-loaded { background: #c02942; }
+
+.mejs-time-total,
+.mejs-horizontal-volume-total,
+.mejs-volume-total { background: #333; }
+
+
+
+
+
+
+
+
+
 /* === Primary Accent Color === */
 
 /* color - #c02942 */

@@ -46,17 +46,10 @@
 	text-decoration: none;
 }
 
-/* Alternatives to .mejs-container. Note that these classses are given to the <audio> and <video> elements. */
-.wp-audio-shortcode {}
-.mejs-container.wp-audio-shortcode {}
-
-.wp-video-shortcode {}
-.mejs-container.wp-video-shortcode {}
-
 	/* === Fullscreen view === */
 
 	.mejs-fullscreen {
-		overflow: hidden!important;
+		overflow: hidden !important;
 	}
 
 		.mejs-container-fullscreen {
@@ -69,17 +62,6 @@
 			z-index:  1000;
 		}
 
-	/* === Inner wrapper === */
-
-	.mejs-inner {}
-
-		/* Inside structural wrappers. */
-
-		.mejs-mediaelement {}
-		.mejs-layers {}
-		.mejs-controls {}
-		.mejs-clear {}
-
 /**
  * 02: Media Element - Wrapper for the actual media HTML (<audio>, <video>).
  * --------------------------------------------------------------------------- */
@@ -91,13 +73,6 @@
 	width:    100%;
 	height:   100%;
 }
-
-	/* Audio and video elements */
-	.mejs-mediaelement audio {}
-	audio.wp-audio-shortcode {}
-
-	.mejs-mediaelement video {}
-	video.wp-video-shortcode {}
 
 	/* Fullscreen */
 	.mejs-container-fullscreen .mejs-mediaelement,
@@ -131,10 +106,6 @@
 
 	/* === Cannot play file link === */
 
-	.me-cannotplay a {
-		color: #fff;
-	}
-
 	.me-cannotplay span {
 		display: block;
 		padding: 15px;
@@ -143,8 +114,6 @@
 /**
  * 03: Layers - Overlays and other layers to place over the media player.
  * --------------------------------------------------------------------------- */
-
-.mejs-layers {}
 
 	/* === Poster - <video poster="example.png"> - default video image. === */
 
@@ -178,7 +147,7 @@
 		/* === Overlay play button === */
 
 		.mejs-overlay-play {
-		    cursor: pointer;
+			cursor: pointer;
 		}
 
 			/**
@@ -192,12 +161,7 @@
 				width:    100px;
 				height:   100px;
 				margin:   -50px 0 0 -50px;
-				/*background: url( 'images/bigplay.png' ) no-repeat;*/
 			}
-
-				/* Only needed if you use an .svg file for your normal background. */
-				.no-svg .mejs-overlay-button {
-				}
 
 				/* Adjust background position or other items when play button is hovered. */
 				.mejs-overlay:hover .mejs-overlay-button {
@@ -214,8 +178,6 @@
 			position:   absolute;
 			width:      100%;
 			height:     100%;
-			background: #333;
-			background: rgba( 51, 51, 51, 0.75 );
 		}
 
 			.mejs-overlay-loading span {
@@ -226,7 +188,6 @@
 				width:      80px;
 				height:     80px;
 				margin:     -40px 0 0 -40px;
-				/*background: transparent url( 'images/loading.gif' ) 50% 50% no-repeat;*/
 			}
 
 	/* === Captions Layer (not supported in WP core as of 3.6). === */
@@ -238,11 +199,9 @@
 		bottom:     0;
 		left:       0;
 		text-align: center;
-		color:      #fff;
 	}
 
 		.mejs-captions-layer a {
-			color:           #fff;
 			text-decoration: underline;
 		}
 
@@ -259,8 +218,6 @@
 
 			.mejs-captions-text {
 				padding:    3px 5px;
-				background: #141414;
-				background: rgba(20, 20, 20, 0.8);
 			}
 
 	/* ====== Chapters Layer (not supported in WP core as of 3.6). ====== */
@@ -273,33 +230,25 @@
 		left:     0;
 		width:    10000px;
 		z-index:  1;
-
-			-xborder-right: solid 1px #fff;
 	}
 
 		.mejs-chapter {
 			overflow:   hidden;
 			position:   absolute;
 			float:      left;
-			background: #222;
 			border:     none;
 		}
 
 			.mejs-chapter-block {
 				display:       block;
 				padding:       5px;
-				color:         #fff;
-				border-right:  solid 1px #333;
-				border-bottom: solid 1px #333;
+				border-right:  solid 1px;
+				border-bottom: solid 1px;
 				cursor:        pointer;
 			}
 
 				.mejs-chapter-block-last {
-				    border-right: none;
-				}
-
-				.mejs-chapter-block:hover {
-				    background: #666;
+					border-right: none;
 				}
 
 				.mejs-chapter-block .ch-title {
@@ -325,8 +274,6 @@
 		left:       0;
 		width:      100%;
 		height:     100%;
-		background: #323232;
-		background: rgba( 50, 50, 50, 0.7 );
 		z-index:    1000;
 	}
 
@@ -340,9 +287,6 @@
 			right:      0;
 			top:        0;
 			padding:    4px;
-			color:      #fff;
-			background: #323232;
-			background: rgba( 50, 50, 50, 0.7 );
 			cursor:     pointer;
 			z-index:    100;
 		}
@@ -360,8 +304,6 @@
 	left:            0;
 	width:           100%;
 	height:          30px;
-	background:      #323232;
-	background:      rgba( 50, 50, 50, 0.7 );
 }
 
 	/* Individual control sections. */
@@ -392,24 +334,13 @@
 		font-size:       0;
 		line-height:     0;
 		text-decoration: none;
-
-		/*background: transparent url( 'images/controls.png' ) no-repeat;*/
 	}
 
-		.no-svg .mejs-button button {}
-
 		.mejs-button button:focus {
-			outline: solid 1px yellow;
+			outline: solid 1px;
 		}
 
 	/* === Play/Pause === */
-
-	.mejs-playpause-button {}
-	.mejs-play {} /* Class when playing. */
-	.mejs-play {} /* Class when paused. */
-	.mejs-stop {} /* Stop button. */
-
-		.mejs-playpause-button button {}
 
 		.mejs-play button {
 			background-position: 0 0;
@@ -431,11 +362,7 @@
 		width:      auto;
 		height:     17px;
 		padding:    8px 3px 0;
-		color:      #fff;
 		text-align: center;
-
-			-moz-box-sizing:    content-box;
-			-webkit-box-sizing: content-box;
 		box-sizing: content-box;
 	}
 
@@ -445,11 +372,7 @@
 			float:   left;
 			width:   auto;
 			margin:  2px 2px 0 0;
-			color:   #fff;
 		}
-
-		.mejs-time .mejs-currenttime {}
-		.mejs-time .mejs-duration {}
 
 	/* Wrapper div for the time rail. */
 
@@ -458,10 +381,6 @@
 		width:     200px;
 		padding:   5px 5px 0;
 	}
-
-		/* Wrapper for the time rail elements. */
-		.mejs-controls .mejs-time-slider {
-		}
 
 		/* Individual elements within the time rail */
 		.mejs-time-rail span,
@@ -476,7 +395,6 @@
 		.mejs-time-rail .mejs-time-total {
 			position:   relative;
 			margin:     5px 0;
-			background: #222;
 		}
 
 		/* Buffering */
@@ -527,15 +445,9 @@
 			}
 
 		/* Time loaded */
-		.mejs-time-rail .mejs-time-loaded {
-			width:      0;       /* Don't overwrite. Mediaelement will adjust the width. */
-			background: #3caac8;
-		}
-
-		/* Current time. */
+		.mejs-time-rail .mejs-time-loaded,
 		.mejs-time-rail .mejs-time-current {
 			width:      0;       /* Don't overwrite. Mediaelement will adjust the width. */
-			background: #fff;
 		}
 
 		/* Handle for adjusting current time. */
@@ -545,7 +457,6 @@
 			top:        -2px;
 			width:      10px;
 			margin:     0;
-			background: #fff;
 			cursor:     pointer;
 			text-align: center;
 		}
@@ -558,9 +469,8 @@
 			width:       36px;
 			height:      17px;
 			margin-left: -18px;
-			color:       #111;
-			background:  #eee;
-			border:      solid 1px #252525;
+			border-width: 1px;
+			border-style: solid;
 			text-align:  center;
 		}
 
@@ -582,7 +492,7 @@
 				}
 
 			/* Pointer at the botton of the time float. */
-			.mejs-time-rail .mejs-time-float-corner {
+			.mejs-time-float-corner {
 				display:      block;
 				position:     absolute;
 				top:          15px;
@@ -590,7 +500,8 @@
 				width:        0;
 				height:       0;
 				line-height:  0;
-				border:       solid 5px #eee;
+				border:       solid 5px;
+				/* Note: top corner needs color. Others should be transparent. */
 				border-color: #eee transparent transparent transparent;
 
 					-webkit-border-radius: 0;
@@ -618,12 +529,6 @@
 	.mejs-controls .mejs-volume-button {
 		position: relative;
 	}
-	.mejs-mute {}
-	.mejs-unmute {}
-
-		.mejs-volume-button:hover {}
-
-		.mejs-volume-button button {}
 
 		.mejs-volume-button .mejs-mute button {
 			background-position: -16px -16px;
@@ -642,8 +547,6 @@
 			width:      25px;
 			height:     115px;
 			margin:     0;
-			background: #323232;
-			background: rgba( 50, 50, 50, 0.7 );
 			z-index:    1;
 		}
 
@@ -655,7 +558,6 @@
 			width:      2px;
 			height:     100px;
 			margin:     0;
-			background: #ddd;
 		}
 
 		/* Volume current */
@@ -666,7 +568,6 @@
 			width:      2px;
 			height:     100px;
 			margin:     0;
-			background: #ddd;
 		}
 
 		/* Volume slider handle */
@@ -677,7 +578,6 @@
 			width:      16px;
 			height:     6px;
 			margin:     0;
-			background: #ddd;
 			cursor:     N-resize;
 		}
 
@@ -699,7 +599,6 @@
 			margin:     0;
 			padding:    0;
 			font-size:  1px;
-			background: #333;
 		}
 
 		/* Volume current. */
@@ -712,18 +611,14 @@
 			margin:     0;
 			padding:    0;
 			font-size:  1px;
-			background: #fff;
 		}
 
 		/* Volume handle. */
 		.mejs-horizontal-volume-slider .mejs-horizontal-volume-handle {
-		    display: none;
+			display: none;
 		}
 
 	/* === Loop Button === */
-
-	.mejs-controls .mejs-loop-off {}
-	.mejs-controls .mejs-loop-on {}
 
 		.mejs-loop-off button {
 			background-position: -64px -16px;
@@ -735,14 +630,11 @@
 
 	/* === Backlight button === */
 
-	.mejs-controls .mejs-backlight-off {}
-	.mejs-controls .mejs-backlight-on {}
-
 		.mejs-backlight-off button {
 			background-position: -80px -16px;
 		}
 		.mejs-backlight-on button {
-		    background-position: -80px 0;
+			background-position: -80px 0;
 		}
 
 	/* === Picture controls button === */
@@ -773,8 +665,6 @@
 			width:      130px;
 			height:     100px;
 			padding:    10px;
-			background: #323232;
-			background: rgba( 50, 50, 50, 0.7 );
 		}
 
 			.mejs-captions-button .mejs-captions-selector ul {
@@ -791,7 +681,6 @@
 					display:         block;
 					margin:          0 0 6px;
 					padding:         0;
-					color:           #fff;
 				}
 
 					.mejs-captions-button .mejs-captions-selector input {
@@ -829,8 +718,6 @@
 			width:      130px;
 			height:     100px;
 			padding:    10px;
-			background: #323232;
-			background: rgba( 50, 50, 50, 0.7 );
 			border:     solid 1px transparent;
 		}
 
@@ -848,7 +735,6 @@
 					display:         block;
 					margin:          0 0 6px;
 					padding:         0;
-					color:           #fff;
 				}
 
 					.mejs-sourcechooser-selector li input {
@@ -890,22 +776,8 @@
 .wp-playlist {
 	margin:      0 0 1.5rem;
 	padding:     1.5rem;
-	border:      1px solid #999;
+	border:      1px solid;
 }
-
-	.wp-playlist-light {
-		/**
-		background: #fff;
-		color:      #000;
-		/**/
-	}
-
-	.wp-playlist-dark {
-		/**
-		color:      #fff;
-		background: #000;
-		/**/
-	}
 
 	.wp-playlist video {
 		display:   inline-block;
@@ -934,14 +806,9 @@
 		text-overflow: ellipsis;
 	}
 
-		.wp-playlist-item-title {}
-
-		.wp-playlist-item-artist {}
-
 	/* Currently playing. */
 	.wp-playlist-current-item {
 		overflow: hidden;
-		margin-bottom: 3rem;
 	}
 
 		.wp-playlist-current-item img {
@@ -961,8 +828,6 @@
 			display: block;
 		}
 
-		.wp-playlist-item-album {}
-
 	/* Track list after the current item. */
 	.wp-playlist-tracks {
 		margin-top: 1.5rem;
@@ -980,19 +845,10 @@
 				border-bottom: none;
 			}
 
-		.wp-playlist-light .wp-playlist-item {}
-
-		.wp-playlist-dark .wp-playlist-item {}
-
 		/* Currently-playing item in the track list. */
 		.wp-playlist-playing { font-weight: bold; }
 
-			.wp-playlist-light .wp-playlist-playing {}
-
-			.wp-playlist-dark .wp-playlist-playing {}
-
 			/* Captions in the list. */
-			.wp-playlist-item .wp-playlist-caption {}
 
 				.ltr .wp-playlist-item .wp-playlist-caption { float: left;  }
 				.rtl .wp-playlist-item .wp-playlist-caption { float: right; }
@@ -1012,8 +868,7 @@
 	left:       0;
 	width:      150px;
 	padding:    10px;
-	background: #fff;
-	border:     solid 1px #999;
+	border:     solid 1px;
 	z-index:    1001;
 }
 
@@ -1021,20 +876,13 @@
 		height:     1px;
 		margin:     5px 6px;
 		font-size:  0;
-		background: #333;
 	}
 
 	.mejs-contextmenu .mejs-contextmenu-item {
 		padding:   4px 6px;
 		font-size: 12px;
-		color:     #333;
 		cursor:    pointer;
 	}
-
-		.mejs-contextmenu .mejs-contextmenu-item:hover {
-			color:      #fff;
-			background: #2C7C91;
-		}
 
 /****************************************************************************************/
 
@@ -1085,17 +933,22 @@
 	.wp-playlist a:focus {
 		text-shadow: none;
 		background: transparent;
+		text-decoration: none;
 	}
 	.wp-playlist a:hover,
 	.wp-playlist a:focus { text-decoration: underline; }
 
-	.wp-playlist-dark  { padding-top: 1.5rem; }
 	.wp-video-playlist { padding-top: 0;      }
 
 	/* Currently playing. */
 	.wp-playlist-current-item {
-		padding: 0 1.5rem;
+		padding: 1.5rem;
 	}
+
+		.wp-playlist-light .wp-playlist-current-item {
+			border-width: 1px 1px 0;
+			border-style: solid;
+		}
 
 		.wp-playlist-current-item img { max-width: 100px; }
 
@@ -1107,7 +960,6 @@
 	/* Media player. */
 	.wp-playlist-dark .mejs-controls {
 		padding-bottom: 5px;
-		/*border-top:    1px solid;*/
 		border-bottom: 1px solid;
 	}
 
@@ -1125,7 +977,7 @@
 			margin:        0;
 			padding:       0.5rem 0;
 			font-size:     1rem;
-			border-bottom: 1px dotted;
+			border-bottom: 1px solid;
 		}
 
 			.wp-playlist-item a { color: inherit; border: none; }
@@ -1185,14 +1037,9 @@
 			height:   100%;
 		}
 
-		.mejs-overlay-loading span {
-		/*	background: transparent url( 'mediaelement/images/loading.gif' ) 50% 50% no-repeat;*/
-		}
-
 		.mejs-button button {
 			height:     16px;
 			width:      16px;
-		/*	background: transparent url( 'mediaelement/images/controls.png' ) no-repeat;*/
 		}
 
 			.mejs-fullscreen-button button,
@@ -1204,7 +1051,7 @@
 		.mejs-time > span,
 		.mejs-time .mejs-currenttime,
 		.mejs-time .mejs-duration {
-			font-size: 0.75rem;
+			font-size: 14px;
 		}
 
 		.mejs-volume-button .mejs-volume-slider {
@@ -1276,7 +1123,7 @@
 			margin: 0 0 0.5rem;
 			padding: 0;
 			padding: 0px 4px;
-    box-sizing: border-box;
+			box-sizing: border-box;
 		}
 		.mejs-time-rail,
 		.mejs-time-total {
@@ -1365,122 +1212,8 @@
 			.ltr .audio-shortcode-wrap .wp-audio-shortcode { left: 20%; }
 			.rtl .audio-shortcode-wrap .wp-audio-shortcode { left: 0; }
 
-
-/* ====== color: #656565 ====== */
-
-.media-shortcode-extend .media-info,
-.wp-playlist-dark .wp-playlist-item {
-	color: #656565;
-}
-
-/* ====== border-color: #e3e3e3 ====== */
-
-.wp-playlist-tracks,
-.wp-playlist-item {
-	border-color: #e3e3e3;
-}
-
-/* ====== color: #858585 ====== */
-
-.wp-playlist-dark .wp-playlist-item-meta {
-	color: #858585;
-}
-
-/* ====== background: #252525 ====== */
-
-.mejs-container.wp-video-shortcode {
-    border-top: 1px solid #252525;
-    background: #252525;
-}
-
-.wp-audio-shortcode.mejs-container,
-.mejs-controls,
-.mejs-volume-button .mejs-volume-slider,
-.mejs-volume-button .mejs-volume-slider:hover,
-.mejs-volume-button .mejs-volume-slider:focus,
-.wp-playlist-dark {
-	background: #252525;
-}
-
-/* ====== background: transparent ====== */
-
-.mejs-container,
-.mejs-embed,
-.mejs-embed body,
-.mejs-overlay-button,
-.mejs-controls > .mejs-button button:hover,
-.mejs-controls > .mejs-button button:focus {
-	background: transparent;
-}
-
-.wp-playlist-item-meta { color: rgba( 85, 85, 85, 0.75 ); }
-
-.media-shortcode-extend .audio-info     { border-color: #202020; }
-.media-shortcode-extend .media-info li,
-.wp-playlist-dark .wp-playlist-item     { border-color: #353535; }
-.wp-video-shortcode .mejs-controls,
-.wp-playlist-dark .mejs-controls        { border-color: #151515; }
-
-.mejs-horizontal-volume-slider .mejs-horizontal-volume-total,
-.mejs-volume-button .mejs-volume-slider .mejs-volume-total {
-	background: #454545;
-}
-
-.mejs-time-rail .mejs-time-current { background: rgba( 255, 255, 255, 0.25 ); }
-
-.mejs-overlay-play .mejs-overlay-button::after { text-shadow: 1px 1px 2px #151515; }
-
-.mejs-button button:focus { outline-color: #555; }
-
-.media-shortcode-extend a,
-.media-shortcode-extend a:hover,
-.media-shortcode-extend a:focus,
-.media-info-toggle,
-.entry-content .media-info-toggle,
-.mejs-time .mejs-currenttime,
-.mejs-time .mejs-duration,
-.mejs-volume-button .mejs-volume-slider .mejs-volume-current,
-.mejs-volume-button .mejs-volume-slider .mejs-volume-handle,
-.media-info-toggle:hover,
-.media-info-toggle:focus,
-.mejs-overlay-play .mejs-overlay-button::after,
-.mejs-time-rail .mejs-time-float,
-.wp-playlist-dark .wp-playlist-playing,
-.wp-playlist-dark .wp-playlist-caption:hover,
-.wp-playlist-dark .wp-playlist-caption:focus,
-.wp-playlist-dark .wp-playlist-item:hover
-.wp-playlist-dark .wp-playlist-item:focus {
-	color: #fff;
-}
-
-.mejs-time-rail .mejs-time-float {
-	background: #c02942;
-	border-color: #c02942;
-}
-.mejs-time-rail .mejs-time-float-corner {
-	border-top-color: #c02942;
-}
+/* Need this to force overwrite the inline style medialement adds to make the player 30px. */
+.mejs-audio { height: 51px !important; }
 
 .wp-video,
 .wp-video-shortcode { max-width: 100%; }
-
-/**************************************************/
-
-.mejs-button button::after { color: #fff; }
-
-.wp-playlist-light .wp-playlist-item:hover,
-				.wp-playlist-light .wp-playlist-item:focus,
-				.mejs-button button:hover::after, .mejs-button button:focus::after,
-				.mejs-overlay-button:hover::after, .mejs-overlay-button:focus::after
-{ color: #c02942; }
-
-.mejs-time-rail .mejs-time-loaded { background: #c02942; }
-
-.mejs-time-rail .mejs-time-total { background: #454545; }
-
-
-
-
-
-
-
