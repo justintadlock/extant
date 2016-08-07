@@ -21,7 +21,8 @@
 				<?php ccp_project_start_date( array( 'wrap' => '<li %s><span class="project-key">' . __( 'Started',   'extant' ) . '</span> %s</li>' ) ); ?>
 				<?php ccp_project_end_date(   array( 'wrap' => '<li %s><span class="project-key">' . __( 'Completed', 'extant' ) . '</span> %s</li>' ) ); ?>
 			</ul>
-			<?php ccp_project_link(       array( 'text' => __( 'View Project Site', 'extant' ) ) ); ?>
+
+			<?php ccp_project_link( array( 'text' => __( 'View Project Site', 'extant' ) ) ); ?>
 		</footer><!-- .entry-footer -->
 
 	<?php else : // If not viewing a single post. ?>
