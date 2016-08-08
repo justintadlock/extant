@@ -1,0 +1,1957 @@
+/********************************************************************************************************
+ * Please do not make edits directly to this file.  You will lose all modifications when the theme is
+ * next updated if you do so.  Please use a child theme.  This theme's styles will automatically be
+ * loaded for you.  You can then overwrite specific style rules in your child theme's `style.css` file.
+ *
+ * This file is only loaded if `SCRIPT_DEBUG` is set to `TRUE` in your `wp-config.php` file.  Otherwise,
+ * the `style.min.css` file is loaded.
+ *
+ * TABLE OF CONTENTS:
+ * 	1 - Danger Zone (things to not modify in your child theme)
+ * 		1.1 - Font Face
+ * 		1.2 - Layout
+ * 		1.3 - Defaults
+ * 		1.4 - Icons
+ * 		1.5 - Header and Footer
+ * 		1.6 - Main and Content
+ * 		1.7 - Media
+ * 		1.8 - Sidebars and Widgets
+ * 		1.9 - Comments Template
+ * 		1.10 - Menus
+ * 		1.11 - Plugins
+ * 	2 - Fun Zone (things you can modify in your child theme)
+ * 		2.1 - Font Family Definitions
+ * 		2.2 - Color Definitions
+ ********************************************************************************************************/
+
+/********************************************************************************************************
+ * 1 - Danger Zone
+ *
+ * This section of the CSS is something I wouldn't recommend overwriting.  It can and most likely will
+ * be changed in the future as the theme receives updates.  Overwriting the below in your child theme
+ * is what I consider dangerous territory and might leave you with some broken styles in a future update.
+ * Basically, do it if you must.  Just be aware of  the consequences.
+ *
+ * The items you'll most likely want to modify (those things dealing with more stylistic elements like
+ * fonts and colors) are located at the bottom of this file.
+ ********************************************************************************************************/
+
+/********************************************************************************************************
+ * 1.1 - Font Face
+ *
+ * This section loads additional fonts needed by the theme.
+ ********************************************************************************************************/
+
+/* See: css/font-awesome.css */
+
+/********************************************************************************************************
+ * ====== End Font Face ======
+ ********************************************************************************************************/
+
+/********************************************************************************************************
+ * 1.2 - Layout
+ *
+ * This section of the stylesheet defines the overall layout of the theme's major structural elements. It
+ * is essentially the foundation for the entire design.
+ ********************************************************************************************************/
+
+body { overflow-x: hidden; }
+
+.below-site-header {
+	width: 100%;
+	margin: 0 auto;
+	overflow-y: hidden;
+}
+
+.breadcrumbs {
+	padding: 0.75rem 1.5rem;
+}
+
+@media only screen and ( min-width: 998px ) {
+
+	.layout-type-boxed .below-site-header { margin-bottom: 3rem; }
+	.layout-type-full .below-site-header  { padding-bottom: 3rem; }
+
+	.layout-type-boxed .below-site-header {
+		margin-top: 3rem;
+		max-width: calc( 950px + 6rem );
+	}
+
+	.layout-type-boxed .breadcrumbs {
+	    text-align: center;
+	    max-width: 950px;
+	    padding: 1.5rem 3rem;
+	    margin: 0 auto;
+	}
+}
+	@media only screen and ( max-width: 998px ) {
+
+		.breadcrumbs { border-bottom: 1px solid; }
+	}
+
+	@media only screen and ( min-width: 481px ) and ( max-width: 998px ) {
+
+		.breadcrumbs {
+		    text-align: center;
+		    padding: 1.5rem 3rem;
+		}
+	}
+	@media screen and ( max-width: 480px ) {
+		.below-site-header { margin-bottom: 54px; }
+	}
+
+
+.layout-type-boxed .breadcrumbs { border-bottom: 1px solid; }
+
+.main {
+	max-width: 100%;
+	margin: 0 auto;
+	padding: 3rem 1.5rem;
+}
+
+	.content {
+		max-width: 750px;
+		margin: 0 auto;
+	}
+	.plural .content { max-width: 950px; }
+
+	.plural .entry-title {
+		font-size: 1.5rem;
+	}
+
+	@media only screen and ( min-width: 640px ) {
+		.main {
+			padding-right: 3rem;
+			padding-left:  3rem;
+		}
+
+		.plural .entry-title { font-size: 1rem; }
+
+		.layout-grid-landscape .entry.odd,
+		.layout-grid-landscape .entry.even {
+			width: calc( 50% - 20px );
+		}
+
+		.layout-grid-portrait .one,
+		.layout-grid-portrait .two,
+		.layout-grid-portrait .three {
+			width: 29%;
+		}
+
+		.layout-grid-landscape .entry.odd,
+		.layout-grid-portrait .one {
+			float: left;
+			clear: both;
+		}
+
+		.layout-grid-landscape .entry.even,
+		.layout-grid-portrait .three {
+			float: right;
+			clear: none;
+		}
+
+		.layout-grid-portrait .two {
+			float: left;
+			clear: none;
+			margin-left: 6.5%;
+		}
+	}
+
+	@media only screen and ( min-width: 380px ) and ( max-width: 640px ) {
+
+		.plural.layout-grid-portrait .entry-title { font-size: 1.125rem; }
+
+		.plural.layout-grid-portrait .entry.odd,
+		.plural.layout-grid-portrait .entry.even {
+			width: calc( 50% - 20px );
+		}
+
+		.plural.layout-grid-portrait .entry.odd {
+			float: left;
+			clear: both;
+		}
+
+		.plural.layout-grid-portrait .entry.even {
+			float: right;
+			clear: none;
+		}
+	}
+
+/********************************************************************************************************
+ * ====== End Layout ======
+ ********************************************************************************************************/
+
+/********************************************************************************************************
+ * 1.3 - Defaults
+ *
+ * This section handles the default style rules for the majority of possible HTML elements and other
+ * WordPress-specific classes.
+ ********************************************************************************************************/
+
+html {
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+}
+
+	@media only screen and ( min-width: 480px ) {
+		html { font-size: 15px; }
+	}
+
+	@media only screen and ( min-width: 640px ) {
+		html { font-size: 16px; }
+	}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #333;
+	font-family: 'Roboto Slab', serif;
+	font-weight: bold;
+}
+
+a {}
+
+a:hover time { cursor: pointer; }
+
+.menu-super a { text-shadow: none; }
+
+@media screen and ( max-width: 480px ) {
+	.site-header a { text-shadow: none; }
+}
+
+.site-title a:hover,
+.site-title a:focus { text-decoration: underline; }
+
+.site-footer a,
+.breadcrumbs a,
+.main a {
+	border: none;
+	text-decoration: underline;
+}
+
+a.button { text-decoration: none; }
+
+
+	.main .entry-title a,
+	.entry-byline a,
+	.entry-footer a,
+	.comment-meta a,
+	.site-footer a,
+	.breadcrumbs a { text-decoration: none; }
+
+.main a:hover,
+.main a:focus,
+.site-footer a:hover,
+.site-footer a:focus,
+.button:hover,
+.button:focus,
+.breadcrumbs a:hover,
+.breadcrumbs a:focus { text-decoration: underline; }
+
+a.has-svg { position: relative; display: inline-block; }
+
+/* Lists */
+
+ul { list-style: square; }
+
+/* Code */
+
+body pre,
+body code {
+	font-family: Monaco, Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+}
+
+pre {
+	padding:     1.875rem 1.5rem;
+	font-size:   1rem;
+	line-height: 1.875rem;
+	border:      1px solid;
+	box-sizing:  border-box;
+
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(255, 255, 255, 0.5)), color-stop(.5, transparent), to(transparent));
+	background-image: -webkit-linear-gradient( rgba( 255, 255, 255, 0.5 ) 50%, transparent 50%, transparent );
+	background-image:    -moz-linear-gradient( rgba( 255, 255, 255, 0.5 ) 50%, transparent 50%, transparent );
+	background-image:      -o-linear-gradient( rgba( 255, 255, 255, 0.5 ) 50%, transparent 50%, transparent );
+	background-image:         linear-gradient( rgba( 255, 255, 255, 0.5 ) 50%, transparent 50%, transparent );
+
+	-webkit-background-size: 3.75rem 3.75rem;
+	   -moz-background-size: 3.75rem 3.75rem;
+	        background-size: 3.75rem 3.75rem;
+}
+
+code {
+	font-size: 1rem;
+	padding: 2px 3px;
+	background: #f8f8f8;
+}
+
+	pre code {
+		padding:    0;
+		font-size:  1em;
+		background: transparent;
+		border:     none;
+	}
+
+/* Quotes */
+
+blockquote {
+	padding-left: 1.5rem;
+	border-left:  2px dashed;
+	font-family:  'Roboto Slab', serif;
+	font-size:    1.125rem;
+	font-style:   normal;
+}
+
+/* ins */
+
+ins {
+	display: inline-block;
+	border: none;
+	border-bottom: 1px dashed;
+	font-style: normal;
+	padding: 0 5px;
+}
+
+
+.line-through { text-decoration: line-through; }
+
+	.line-through del,
+	.line-through strike,
+	.line-through s {
+		opacity: 0.5;
+		text-decoration: none;
+	}
+
+/* ====== Tables ====== */
+
+table {
+	width:           100%;
+	border-collapse: collapse;
+}
+
+	caption {
+		margin:       0 0 5px;
+		font-variant: small-caps;
+	}
+
+
+		tr:last-child { border: none; }
+
+	th,
+	td {
+		padding:         10px;
+		-moz-box-sizing: border-box;
+		     box-sizing: border-box;
+		vertical-align: top;
+	}
+
+	th {
+		font-size:      0.8125rem;
+		font-weight:    700;
+		text-transform: uppercase;
+	}
+
+		.ltr th { text-align: left;  }
+		.rtl th { text-align: right; }
+
+	td { border: 1px solid; }
+
+		th:empty,
+		td:empty,
+		th.pad,
+		td.pad { opacity: 0; }
+
+/* === Forms === */
+
+	fieldset {
+		margin:  0 0 1.5rem;
+		padding: 1.5rem 1.5rem 0;
+		border:  1px solid;
+	}
+
+		legend {
+			padding:     0.375rem 1.5rem;
+			border:      1px solid;
+			font-size:   1rem;
+			font-weight: 600;
+		}
+
+
+		label {
+			font-size:      15px;
+			font-weight:    400;
+			cursor:         pointer;
+		}
+
+			.label-checkbox,
+			.label-radio { font-size: 1.125rem; }
+
+		input { display: block; }
+
+		input[type="checkbox"],
+		input[type="radio"] { display: inline-block; }
+
+		input[type="number"],
+		input[type="date"],
+		input[type="datetime"],
+		input[type="datetime-local"],
+		input[type="email"],
+		input[type="month"],
+		input[type="password"],
+		input[type="search"],
+		input[type="tel"],
+		input[type="text"],
+		input[type="time"],
+		input[type="url"],
+		input[type="week"],
+		textarea,
+		select {
+			padding:    0.5rem 0.75rem;
+			font-size:  15px;
+			border:     2px solid;
+			opacity:    0.75;
+			box-sizing: border-box;
+
+			-webkit-transition: all 0.5s ease-in-out;
+			   -moz-transition: all 0.5s ease-in-out;
+			      -o-transition:  all 0.5s ease-in-out;
+			        transition: all 0.5s ease-in-out;
+		}
+
+		input[type="date"],
+		input[type="datetime"],
+		input[type="datetime-local"],
+		input[type="email"],
+		input[type="month"],
+		input[type="password"],
+		input[type="search"],
+		input[type="tel"],
+		input[type="text"],
+		input[type="time"],
+		input[type="url"],
+		input[type="week"],
+		textarea,
+		select { width: 100%; }
+
+		input[name="post_password"] { margin-bottom: 1.5rem; }
+
+		input[type="date"]:focus,
+		input[type="datetime"]:focus,
+		input[type="datetime-local"]:focus,
+		input[type="email"]:focus,
+		input[type="month"]:focus,
+		input[type="number"]:focus,
+		input[type="password"]:focus,
+		input[type="search"]:focus,
+		input[type="tel"]:focus,
+		input[type="text"]:focus,
+		input[type="time"]:focus,
+		input[type="url"]:focus,
+		input[type="week"]:focus,
+		textarea:focus,
+		select:focus { opacity: 1; }
+
+		input[type="submit"],
+		input[type="reset"],
+		input[type="button"],
+		button,
+		.edd-page a.edd-submit.button {
+			display:        inline-block;
+			padding:        0.75rem 1rem;
+			font-size:      15px;
+			font-weight:    400;
+			border:         none;
+			border-radius:  0;
+			box-sizing:     border-box;
+			text-shadow:    none;
+
+			-webkit-transition: all 0.5s ease-in-out;
+			   -moz-transition: all 0.5s ease-in-out;
+			      -o-transition:  all 0.5s ease-in-out;
+			        transition: all 0.5s ease-in-out;
+		}
+
+		input[type="submit"]:focus,
+		input[type="submit"]:hover,
+		input[type="reset"]:focus,
+		input[type="reset"]:hover,
+		input[type="button"]:focus,
+		input[type="button"]:hover,
+		button:focus,
+		button:hover,
+		.media-info-toggle:hover {
+			text-decoration: underline;
+		}
+
+		select {
+			font-size: 1rem;
+			padding:   7px;
+		}
+
+		textarea {
+			min-height:  300px;
+			padding:     0.75rem;
+		}
+
+
+/* ====== Images ====== */
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+	img.emoji {
+		vertical-align: text-bottom;
+		border:         none;
+		padding:        0 !important;
+		box-shadow:     none !important;
+	}
+
+	.wp-caption a img { margin-bottom: 12px; }
+
+	img.alignleft,
+	img.alignright { max-width: 50%; }
+
+	@media only screen and ( max-width: 480px ) {
+
+		img.alignleft,
+		img.alignright {
+			max-width:     100%;
+			margin-bottom: 1rem;
+		}
+
+		p img.alignleft,
+		p img.alignright { margin-bottom: 0; }
+	}
+
+.svg-featured {
+	max-width: 100%;
+	height: auto;
+	margin-bottom: 0.75rem;
+}
+
+	.svg-featured .svg-icon {
+		font-family:    FontAwesome;
+		font-size:      72px;
+		line-height:    1;
+		vertical-align: middle;
+	}
+
+.entry .extant-sticky,
+.entry .extant-landscape,
+.entry .extant-portrait {
+	display: block;
+	margin: 0 auto 1.5rem;
+}
+
+
+/* Galleries */
+
+.featured-media { position: relative; }
+
+.gallery-count {
+	position: absolute;
+	bottom: 0.5rem;
+	width: 100%;
+	margin: 0;
+	padding: 0.75rem 1.5rem;
+	box-sizing: border-box;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.gallery { margin-bottom: 1.125rem; }
+
+	.gallery-item { margin-bottom: 1.0625rem; }
+
+		.gallery-icon a img { margin-top: 0.625rem; }
+
+		.gallery-caption {
+			margin-top: 1.0625rem;
+			font-size:  14px;
+		}
+
+/* Captions */
+
+.wp-caption {
+	max-width:  100%;
+	text-align: center;
+}
+
+	.wp-caption-text { font-size: 15px; }
+
+/********************************************************************************************************
+ * ====== End Defaults ======
+ ********************************************************************************************************/
+
+/********************************************************************************************************
+ * 1.4 - Icons
+ *
+ * This section defines the CSS rules for handling Genericons, the icon font used in this theme.
+ ********************************************************************************************************/
+
+/* Menus */
+.site-title i::before,
+.menu-toggle button i::before,
+.menu li a::after,
+.menu-primary li li a::before,
+
+/* Posts */
+.protected .label-password::before,
+.chat-author cite::before,
+.entry-terms::before,
+
+/* Respond */
+.comment-respond label[for="author"]::before,
+.comment-respond label[for="email"]::before,
+.comment-respond label[for="url"]::before,
+.comment-respond label[for="comment"]::before,
+
+/* Breadcrumbs */
+.trail-items a[rel="home"]::before,
+
+.nav-links .prev::before,
+.nav-links .next::after,
+
+.featured-media .post-format-link::after,
+
+/*.comment-reply-link::after,*/
+.prev-comments-link::before,
+.next-comments-link::after,
+.comment-parent-link::before,
+#cancel-comment-reply-link::after {
+
+	display:        inline-block;
+	font-family:    FontAwesome;
+	font-size:      16px;
+	font-style:     normal;
+	font-weight:    normal;
+	font-variant:   normal;
+	line-height:    1;
+	vertical-align: middle;
+
+	-webkit-font-smoothing: antialiased;
+	 -moz-osx-font-smoothing: grayscale;
+}
+
+
+	.site-title i::before {
+		vertical-align: middle;
+		font-size: 24px;
+	}
+
+
+		.rtl .site-title i::before { padding: 0 0 5px 8px; }
+		.ltr .site-title i::before { padding: 0 8px 5px 0; }
+
+	@media only screen and ( min-width: 481px ) {
+
+		.hide-header-icon .site-title i::before { content: ''; padding: 0; }
+	}
+
+	/* Menu Primary */
+
+	.menu-toggle-primary button i::before {
+		font-size: 24px;
+		text-decoration: none;
+	}
+
+	.menu-toggle-secondary button i::before {
+		font-size: 24px;
+		text-decoration: none;
+	}
+
+	.menu-toggle-search button i::before {
+		font-size: 24px;
+		text-decoration: none;
+	}
+
+
+		.menu-toggle {
+			width: 84px;
+			height: 54px;
+		}
+		.menu-toggle button {
+			width: 100%;
+			height: 100%;
+		}
+
+
+		.menu-open .menu-toggle button.selected i::before { content: '\f00d'; }
+
+
+	.menu-primary li li a::before {
+		content:   '\f068';
+		padding:   0 0 2px;
+		font-size: 8px;
+	}
+
+		.ltr .menu-primary li li a::before { padding-right: 0.5rem; }
+		.rtl .menu-primary li li a::before { padding-left:  0.5rem; }
+
+	.menu-primary li a,
+	.menu-secondary li a { position: relative; }
+
+	.menu-primary li a::after,
+	.menu-secondary li a::after {
+		position:   absolute;
+		top:        1rem;
+		opacity:    0.95;
+		width:      20px;
+		text-align: center;
+	}
+
+		.ltr .menu-primary li a::after,
+		.ltr .menu-secondary li a::after { right: 1.5rem; }
+		.rtl .menu-primary li a::after,
+		.rtl .menu-secondary li a::after { left:  1.5rem; }
+
+		.menu-primary li a:hover::after,
+		.menu-primary li a:focus::after,
+		.menu-secondary li a:hover::after,
+		.menu-secondary li a:focus::after { opacity: 1; }
+
+	.menu li a[href*="codepen.io"]::after      { content: '\f1cb'; }
+	.menu li a[href*="digg.com"]::after        { content: '\f1a6'; }
+	.menu li a[href*="dribbble.com"]::after    { content: '\f17d'; }
+	.menu li a[href*="dropbox.com"]::after     { content: '\f16b'; }
+	.menu li a[href*="facebook.com"]::after    { content: '\f09a'; }
+	.menu li a[href*="flickr.com"]::after      { content: '\f16e'; }
+	.menu li a[href*="plus.google.com"]::after { content: '\f0d5'; }
+	.menu li a[href*="github.com"]::after      { content: '\f09b'; }
+	.menu li a[href*="instagram.com"]::after   { content: '\f16d'; }
+	.menu li a[href*="linkedin.com"]::after    { content: '\f0e1'; }
+	.menu li a[href*="pinterest.com"]::after   { content: '\f0d2'; }
+	.menu li a[href*="reddit.com"]::after      { content: '\f1a1'; }
+	.menu li a[href*="skype.com"]::after,
+	.menu li a[href*="skype:"]::after          { content: '\f17e'; }
+	.menu li a[href*="stumbleupon.com"]::after { content: '\f1a4'; }
+	.menu li a[href*="tumblr.com"]::after      { content: '\f173'; }
+	.menu li a[href*="twitter.com"]::after     { content: '\f099'; }
+	.menu li a[href*="vimeo.com"]::after       { content: '\f194'; }
+	.menu li a[href*="wordpress.org"]::after,
+	.menu li a[href*="wordpress.com"]::after   { content: '\f19a'; }
+	.menu li a[href*="youtube.com"]::after     { content: '\f16a'; }
+
+	/* Breadcrumbs */
+	.trail-items a[rel="home"]::before { content: "\f015"; }
+
+	/* Nav links */
+	.nav-links .prev::before { content: "\f137"; font-size: 14px; margin: -3px 5px 0 0; }
+	.nav-links .next::after { content: "\f138"; font-size: 14px; margin: -3px 0 0 5px; }
+
+	.prev-comments-link::before { content: "\f137"; font-size: 14px; margin: -1px 5px 0 0; }
+	.next-comments-link::after { content: "\f138"; font-size: 14px; margin: -1px 0 0 5px; }
+
+	.ltr .entry-terms::before { margin: -2px 5px 0 0; }
+	.rtl .entry-terms::before { margin: -2px 0 0 5px; }
+
+	.entry-terms.category::before,
+	.entry-terms.portfolio_category::before,
+	.entry-terms.download_category::before { content: '\f07c'; }
+
+	.entry-terms.post_tag::before,
+	.entry-terms.portfolio_tag::before,
+	.entry-terms.download_tag::before { content: '\f02c'; }
+
+	/* Comments */
+
+	.protected .label-password::before,
+	.comment-respond label[for="author"]::before,
+	.comment-respond label[for="email"]::before,
+	.comment-respond label[for="url"]::before,
+	.comment-respond label[for="comment"]::before {
+		margin-bottom: 3px;
+		padding:       0 8px;
+	}
+
+	.protected .label-password::before { content: '\f023'; }
+
+	.comment-respond label[for="author"]::before  { content: '\f007'; }
+	.comment-respond label[for="email"]::before   { content: '\f0e0'; }
+	.comment-respond label[for="url"]::before     { content: '\f0ac'; }
+	.comment-respond label[for="comment"]::before { content: '\f075'; }
+
+	.comment-parent-link::before {
+		content: '\f0d9';
+		padding-bottom: 3px;
+	}
+		.ltr .comment-parent-link::before { padding-right: 5px; }
+		.rtl .comment-parent-link::before { padding-left: 5px; }
+
+/********************************************************************************************************
+ * ====== End Icons ======
+ ********************************************************************************************************/
+
+/********************************************************************************************************
+ * 1.5 - Header and Footer
+ *
+ * Handles the output of the main site header and footer content.
+ ********************************************************************************************************/
+
+.site-header {
+	border-bottom: 1px solid;
+	vertical-align: middle;
+}
+
+.site-branding {
+	float: left;
+	max-width: calc( 100% - 254px ); /* 3 menu columns */
+	line-height: 54px;
+	height: 54px;
+	overflow: hidden;
+}
+
+.site-title {
+	margin: 0;
+	padding: 0 1.5rem;
+	vertical-align: middle;
+	float: left;
+	font-size: 21px;
+	text-transform: uppercase;
+	border-right: 1px solid;
+}
+
+@media only screen and ( max-width: 480px ) {
+
+	.site-header {
+		border-top: 1px solid;
+		border-bottom: none;
+	}
+
+	.site-branding {
+		max-width: calc( 100% - 203px );
+	}
+
+	.site-title { padding: 0; }
+
+	.site-title a {
+		display: inline-block;
+		height: 100%;
+		padding: 0 1.5rem;
+	}
+}
+
+.site-description {
+	position: absolute;
+	top:      -9999em;
+}
+
+	.ltr .site-description,
+	.ltr .menu-toggle-primary .menu-name { left:  -9999em; }
+
+	.rtl .site-description,
+	.rtl .menu-toggle-primary .menu-name { right: -9999em; }
+
+
+	@media only screen and ( min-width: 768px ) {
+
+		.ltr .site-description { float: left;  left:  0; }
+		.rtl .site-description { float: right; right: 0; }
+
+		.site-description {
+			position: relative;
+			top: 0;
+			margin: 0;
+			padding: 0 5px 0 1.5rem;
+			vertical-align: middle;
+			font-size: 15px;
+			font-weight: normal;
+		}
+	}
+
+	@media only screen and ( max-width: 480px ) {
+
+		.site-header {
+			z-index:  999999;
+			position: fixed;
+			bottom:   0;
+			width:    100%;
+		}
+
+		.site-branding,
+		.menu-super,
+		.menu-super > ul { float: left !important; }
+
+		.menu-super > ul { width: 100%; }
+
+		.menu-col-3 .site-branding { width: 25%; max-width: 25%; }
+		.menu-col-2 .site-branding { width: 33.33%; max-width: 33.33%; }
+		.menu-col-1 .site-branding { width: 50%; max-width: 50%; }
+
+		.menu-col-3 .menu-super { width: 75%; }
+		.menu-col-2 .menu-super { width: 66.67%; }
+		.menu-col-1 .menu-super { width: 50%; }
+
+			.menu-col-3 .menu-super > ul > li { width: 33.33%; box-sizing: border-box; }
+			.menu-col-2 .menu-super > ul > li { width: 50%; box-sizing: border-box; }
+			.menu-col-1 .menu-super > ul > li { width: 100%; box-sizing: border-box; }
+
+		.site-title { border: none; }
+		.site-title a { border-right: 1px solid; }
+
+		.site-title,
+		.site-title a,
+		.menu-super > ul > li > a,
+		.menu-super > ul > li > h3,
+		.menu-super > ul > li > h3 button,
+		.menu-super > ul > li > a::after,
+		.menu-super > ul > li > h3 button::after {
+			box-sizing:    border-box;
+			width:         100%;
+			text-align:    center;
+			padding-left:  0;
+			padding-right: 0;
+		}
+
+		.site-title a::before { font-size: 28px; }
+
+			.ltr .site-title a::before,
+			.rtl .site-title a::before { padding: 0; }
+
+			.site-title .name {
+				position: absolute;
+				top:      -9999em;
+			}
+
+			.ltr .site-title .name { left:  -9999em; }
+			.rtl .site-title .name { right: -9999em; }
+	}
+
+
+.site-footer {
+	font-family: 'Roboto Slab', serif;
+	font-size: 15px;
+	margin: 0;
+	padding:    1.5rem 0 0;
+	font-size:  15px;
+	text-align: center;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+}
+
+	.layout-type-boxed .site-footer { border-bottom-width: 0; }
+
+	.site-footer > .wrap {
+		max-width: 880px;
+		margin:    0 auto;
+		padding:   0 1.5rem;
+		box-sizing: border-box;
+	}
+
+/********************************************************************************************************
+ * ====== End Header and Footer ======
+ ********************************************************************************************************/
+
+/********************************************************************************************************
+ * 1.6 - Main and Content
+ *
+ * This section deals with the #main section of the site, which wraps the content and primary sidebar.
+ * Sidebars have their own section in this stylesheet.
+ ********************************************************************************************************/
+
+
+.main { font-size: 1.1875rem; }
+
+.entry { clear: both; margin-bottom: 1.5rem; }
+
+.entry-header { text-align: center; }
+
+	.entry-title { font-size: 1.9375rem; }
+
+		.plural .entry-title,
+		.singular-post .entry-title { margin-bottom: 0.25rem; }
+
+
+	.entry-byline,
+	.entry-footer {
+		text-align:    center;
+		margin-bottom: 1.5rem;
+		font-size:     15px;
+	}
+
+		.plural .entry-byline {
+			margin-bottom: 0.75rem;
+			margin-bottom: 0;
+		}
+
+		.entry-byline .sep,
+		.entry-footer .sep,
+		.comment-meta .sep { margin: 0 5px; }
+
+		/* No comments / comments off */
+		span.comments-link { display: none; }
+
+	@media screen and ( min-width: 640px ) {
+
+		.sticky { position: relative; margin-bottom: 2.25rem; }
+
+		.sticky .entry-header {
+			position:   absolute;
+			bottom:     2.5rem;
+			width:      100%;
+			margin:     0;
+			padding:    0.75rem 1.5rem;
+			box-sizing: border-box;
+		}
+
+			.sticky .entry-title {
+				font-size:     2rem;
+				display:       block; /* can't use inline or inline-block */
+				overflow:      hidden;
+				white-space:   nowrap;
+				text-overflow: ellipsis;
+			}
+
+		.sticky .gallery-count {
+			top:    0;
+			bottom: auto;
+			width:  auto;
+		}
+
+			.ltr .sticky .gallery-count { right: 0; }
+			.rtl .sticky .gallery-count { left:  0; }
+	}
+
+	.ltr .entry-terms + .entry-terms { margin-left: 1rem; }
+	.rtl .entry-terms + .entry-terms { margin-right: 1rem; }
+
+	.format-status .entry-content,
+	.format-aside .entry-content,
+	.format-quote blockquote {
+		overflow: hidden;
+		margin:   0 0 1.5rem;
+		padding:  1.5rem 1.5rem 0;
+	}
+
+	.format-quote blockquote {
+		font-family: 'Roboto', sans-serif;
+		font-weight: 400;
+		font-style:  normal;
+		font-size:   1.125rem;
+		border:      none;
+	}
+
+		.format-quote cite { font-size: 1rem; }
+
+/* ====== Archive Header ====== */
+
+.archive-header {
+	margin-bottom: 0.75rem;
+	text-align:    center;
+}
+
+	.archive-title {
+		font-size:     1.9375rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.archive-description {
+		font-size:     0.9375rem;
+		margin-top:    -0.75rem;
+		margin-bottom: 0.75rem;
+	}
+
+/* ====== Attachment Pages ====== */
+
+.attachment-meta-title { text-align: center; }
+
+	.attachment-meta .image-gallery { padding-top: 1.5rem; }
+
+	.media-info .media-meta {
+		list-style: none;
+		margin:     0 0 1.5rem;
+	}
+
+		.media-meta li {
+			overflow:      hidden;
+			clear:         both;
+			padding:       0.375rem 0.75rem;
+			text-align:    center;
+			border-bottom: 1px dotted;
+		}
+
+			.media-meta li:first-child { padding-top: 0; }
+			.media-meta li:last-child { padding-bottom: 0; border: none; }
+
+		.media-meta .prep {
+			display:        block;
+			text-transform: uppercase;
+			font-size:      14px;
+			font-weight:   700;
+		}
+
+		.media-meta .data { display: block; font-size: 16px; }
+
+		@media only screen and ( min-width: 480px ) {
+
+			.media-meta .prep { padding-top: 3px; }
+
+			.ltr .media-meta .prep,
+			.rtl .media-meta .data { float: left; }
+
+			.ltr .media-meta .data,
+			.rtl .media-meta .prep { float: right; }
+		}
+
+	.attachment-meta .gallery-caption { position: absolute; top: -9999em; }
+
+		.ltr .attachment-meta .gallery-caption { left:  -9999em; }
+		.rtl .attachment-meta .gallery-caption { right: -9999em; }
+
+
+/* ====== Nav Links ====== */
+
+.page-links {
+	clear: both;
+	text-align: center;
+	font-size: 1rem;
+}
+
+	.page-links .page-numbers,
+	.page-links a {
+		border: 2px solid #333;
+		border-radius: 50%;
+		padding: 3px 8px;
+		font-size: 1rem;
+		margin: 0 0.25rem
+	}
+
+	.page-links a {
+		background: #fff;
+		color: #333;
+		text-decoration: none;
+	}
+
+	.page-links span.page-numbers,
+	.main .page-links a:hover,
+	.main .page-links a:focus {
+		background: #333;
+		color: #fff;
+	}
+
+.navigation {
+	clear:    both;
+	overflow: hidden;
+}
+
+.nav-links {
+	margin:      0 auto;
+	text-align:  center;
+	margin-top:  3rem;
+	font-family: 'Roboto Slab', serif;
+	font-size:   0px; /* Gets rid of whitespace between inline-block elements. */
+}
+
+	.nav-links ul {
+		list-style: none;
+		margin:     0;
+	}
+
+		.nav-links li {
+			display:   inline-block;
+			margin:    0 -1px 0 0;
+			font-size: 15px;
+		}
+
+			.nav-links li .page-numbers {
+				display:      inline-block;
+				padding:      0.625rem 1.25rem;
+				background:   none;
+				border:       1px solid;
+				text-shadow:  none;
+			}
+
+		.nav-links li:first-child { margin-left:  0; }
+		.nav-links li:last-child  { margin-right: 0; }
+
+			.nav-links li:first-child,
+			.nav-links li:first-child a,
+			.nav-links li:first-child span {
+				border-top-left-radius:    20px;
+				border-bottom-left-radius: 20px;
+			}
+
+			.nav-links li:last-child,
+			.nav-links li:last-child a,
+			.nav-links li:last-child span {
+				border-top-right-radius:    20px;
+				border-bottom-right-radius: 20px;
+			}
+
+	@media only screen and ( max-width: 640px ) {
+
+		.nav-links li { display: none; }
+
+		.nav-links li.nav-item-prev,
+		.nav-links li.nav-item-next { display: inline-block; }
+	}
+
+
+/********************************************************************************************************
+ * ====== End Main ======
+ ********************************************************************************************************/
+
+/********************************************************************************************************
+ * 1.7 - Media
+ *
+ * This section deals with handling media and the output of media-related elements.
+ ********************************************************************************************************/
+
+.wp-audio-shortcode, .wp-video-shortcode, audio, video, object, embed, iframe {
+	width: 100%;
+}
+
+p > iframe {
+	margin-bottom: 0;
+}
+
+/* ====== Embeds ====== */
+
+	.twitter-tweet { width: 100% !important; }
+
+	.embed-wrap {
+		position:       relative;
+		margin-bottom:  1.5rem;
+		padding-bottom: 56.25%;
+		padding-top:    30px;
+		height:         0;
+		overflow:       hidden;
+	}
+
+	.embed-wrap iframe,
+	.embed-wrap object,
+	.embed-wrap embed {
+		position:  absolute;
+		top:       0;
+		left:      0;
+		width:     100%;
+		max-width: 100%;
+		height:    100%;
+	}
+
+/********************************************************************************************************
+ * ====== End Media ======
+ ********************************************************************************************************/
+
+/********************************************************************************************************
+ * 1.8 - Sidebars and Widgets
+ *
+ * This section handles the output of sidebars and widgets.  Note that the layout of sidebars is handled
+ * in the layout section.  There's also a few style rules for non-sidebar elements that have the same
+ * design.
+ ********************************************************************************************************/
+
+
+/********************************************************************************************************
+ * ====== End Sidebars and Widgets ======
+ ********************************************************************************************************/
+
+/********************************************************************************************************
+ * 1.9 - Comments Template
+ *
+ * This section handles the output of the comments template.  In particular, it styles the output of the
+ * comments section (comments list) and the respond section (comment form).
+ ********************************************************************************************************/
+
+/* ====== Comment List ====== */
+
+#comments {
+	position:      relative;
+	margin-bottom: 1.5rem;
+	border:        1px solid;
+}
+
+	@media only screen and ( max-width: 480px ) {
+
+		#comments {
+			width:              calc( 100% + 3rem );
+			margin-left:        -1.5rem;
+			border-left-width:  0px;
+			border-right-width: 0px;
+		}
+	}
+
+	/* Comments Number */
+
+	#comments-number {
+		padding:       1.5rem;
+		font-size:     22px;
+		border-bottom: 1px solid;
+		text-align:    center;
+	}
+
+		.ltr .has-comments-nav #comments-number { text-align: left;  }
+		.rtl .has-comments-nav #comments-number { text-align: right; }
+
+	/* Comments Nav */
+
+	.comments-nav {
+		position:       absolute;
+		top:            1.75rem;
+		font-size:      13px;
+		text-transform: uppercase;
+		line-height:    22px;
+		vertical-align: middle;
+	}
+
+		.ltr .comments-nav { right: 1.5rem; }
+		.rtl .comments-nav { left:  1.5rem; }
+
+	/* Comment List */
+
+	ol.comment-list {
+		list-style: none;
+		margin: 0 1.5rem;
+		font-size: 17px;
+	}
+
+		.comment-list ol.children {
+			list-style:  none;
+			margin-left: 0;
+		}
+
+		.comment-list .depth-1 > ol.children { margin-left: 4.5rem; }
+
+		@media screen and ( max-width: 480px ) {
+
+			.comment-list .depth-1 > ol.children { margin-left: 1.5rem; }
+		}
+
+		/* Individual comments */
+
+		.comment,
+		.ping { clear: both; }
+
+		.ping { margin-bottom: 1.5rem; }
+
+			.comment .avatar {
+				width:         3rem;
+				margin-bottom: 1.5rem;
+				border:        1px solid;
+				padding:       2px;
+				border-radius: 3px;
+				box-sizing:    border-box;
+			}
+
+			.children .comment .avatar { width: 2.25rem; }
+
+				.ltr .comment .avatar { float: left; margin-right: 1.5rem; }
+				.rtl .comment .avatar { float: right; margin-left: 1.5rem; }
+
+				.ltr .children .comment .avatar { margin-right: 1.125rem; }
+				.rtl .children .comment .avatar { margin-left:  1.125rem; }
+
+			.comment-meta {
+				margin:    -1.5rem 0 1.5rem;
+				font-size: 15px;
+			}
+
+			.comment-parent {
+				font-size:    14px;
+				margin-bottom: 0.5rem;
+			}
+
+			.comment-author {
+				font-style:  normal;
+				font-weight: 700;
+			}
+
+				.comment-author a { text-decoration: none; }
+
+			.comment .wrap { overflow: hidden; }
+
+			.comment-content {
+				overflow: hidden;
+				margin:   0 0 0.5rem;
+			}
+
+		.comment-reply-login {
+			position: absolute;
+			top:      -9999em;
+		}
+
+			.ltr .comment-reply-login { left:  -9999em; }
+			.rtl .comment-reply-login { right: -9999em; }
+
+/* ====== Respond ====== */
+
+.comment-respond { border: 1px solid; }
+
+#comments + .comment-respond { margin-top: 3rem; }
+
+	.comment-list .comment-respond { margin-bottom: 1.5rem; }
+
+	@media only screen and ( max-width: 480px ) {
+
+		.comment-respond {
+			width:              calc( 100% + 3rem );
+			margin-left:        -1.5rem;
+			border-left-width:  0;
+			border-right-width: 0;
+		}
+
+		.comment-list .comment-respond {
+			width:              100%;
+			margin-left:        0;
+			border-left-width:  1px;
+			border-right-width: 1px;
+		}
+	}
+
+	/* Comment reply title */
+
+	.comment-reply-title {
+		position:      relative;
+		padding:       1.5rem;
+		font-size:     22px;
+		text-align:    center;
+		border-bottom: 1px solid;
+	}
+
+		#cancel-comment-reply-link {
+			position:    absolute;
+			top:         0;
+			right:       0;
+			text-shadow: none;
+			background:  none;
+		}
+
+		#cancel-comment-reply-link::after {
+			content:     '\f00d';
+			width:       30px;
+			height:      30px;
+			line-height: 30px;
+			font-size:   14px;
+
+			border-bottom-left-radius: 5px;
+		}
+
+	/* Comment Form */
+
+	.comment-form { margin: 0 1.5rem; }
+
+		#edd-login-account-wrap,
+		#edd-new-account-wrap,
+		.comments-closed,
+		.comment-respond .logged-in-as,
+		.comment-respond .must-log-in,
+		.comment-notes {
+			text-align: center;
+			font-size:  15px;
+		}
+
+		#email-notes { display: block; }
+
+		.comment-respond .required,
+		.edd-required-indicator {
+			font-size:   1.125em;
+			font-weight: bold;
+		}
+
+		.comment-respond textarea { min-height: 200px; }
+
+		.comment-respond .submit {
+			width:  100%;
+			border: 2px solid;
+		}
+
+		@media screen and ( min-width: 641px ) {
+
+			.comment-form-author,
+			.comment-form-email {
+				width:      50%;
+				box-sizing: border-box;
+			}
+
+				.ltr .comment-form-author,
+				.rtl .comment-form-email {
+					float:         left;
+					padding-right: 0.75rem;
+				}
+
+				.rtl .comment-form-author,
+				.ltr .comment-form-email {
+					float:        right;
+					padding-left: 0.75rem;
+				}
+		}
+
+
+/********************************************************************************************************
+ * ====== End Comments Template ======
+ ********************************************************************************************************/
+
+/********************************************************************************************************
+ * 1.10 - Menus
+ *
+ * This section of the CSS is for handling the design of the various menus used within the theme.
+ ********************************************************************************************************/
+
+.menu-super { float: right; }
+
+.menu-super > ul {
+	list-style: none;
+	margin:     0;
+	float:      right;
+	font-size:  0;
+}
+
+.menu-super > ul > li {
+	display:     inline-block;
+	border-left: 1px solid;
+	font-size:   1rem;
+}
+
+	.menu-super > ul > li:first-of-type { border-left: none; }
+
+.menu-toggle {
+	display:    inline-block;
+	margin:     0;
+	text-align: center;
+}
+
+	.menu-toggle button {
+		margin:      0;
+		padding:     0 1.5rem;
+		height:      54px;
+		line-height: 1em;
+		font-size:   16px;
+		font-weight: bold;
+		background:  transparent;
+		border:      none;
+			-webkit-transition: none;
+			   -moz-transition: none;
+			      -o-transition:  none;
+			        transition: none;
+	}
+
+		.menu-toggle button {
+			padding-left:  1.5rem;
+			padding-right: 1.5rem;
+		}
+
+	@media screen and ( max-width: 480px ) {
+
+		.menu-open .below-site-header {
+			margin-left: -100%;
+			transition:  all .4s ease-in-out 0s;
+		}
+	}
+
+	/* Note: transition jumps when coming back in due to the position. */
+	.below-site-header { transition: normal; }
+
+	body.menu-open {
+		overflow-y: scroll;
+		width:      100%;
+	}
+
+		.menu-open .below-site-header {
+			position: fixed;
+			z-index:  90;
+			height:   100%;
+			left:     0;
+			right:    0;
+		}
+
+		.menu-open .overlay {
+			width:    100%;
+			height:   100%;
+			z-index:  90;
+			position: absolute;
+		}
+
+	.menu-super,
+	.below-site-header { position: relative; }
+
+		.menu > .wrap {
+			top:         54px;
+			bottom:      0;
+			z-index:     999999;
+			overflow-y:  auto;
+			width:       400px;
+		}
+
+		.admin-bar .menu > .wrap { top: 86px; }
+
+		@media screen and ( max-width: 782px ) {
+
+			.admin-bar .menu > .wrap { top: 100px; }
+		}
+
+		@media screen and ( max-width: 480px ) {
+
+			.menu > .wrap {
+				bottom: 54px;
+				top:    0;
+			}
+			.admin-bar .menu > .wrap { top: 0; }
+		}
+
+	.menu > .wrap {
+		display:    block;
+		visibility: hidden;
+		position:   fixed;
+		right:      -400px;
+		transition: all .4s ease-in-out 0s;
+	}
+
+
+
+	.menu.is-open > .wrap {
+		right:      0;
+		visibility: visible;
+	}
+
+
+
+			.ltr .menu > .wrap { text-align: left;  }
+			.rtl .menu > .wrap { text-align: right; }
+
+
+		@media only screen and ( max-width: 768px ) {
+
+			.menu > .wrap { width: 100%; }
+
+			.menu > .wrap { right: -100%; }
+		}
+
+	.menu-primary ul,
+	.menu-secondary ul {
+		list-style: none;
+		margin:     0;
+	}
+
+	.menu-primary li a,
+	.menu-secondary li a {
+		display:       block;
+		line-height:   1.5;
+		padding:       8px 1.5rem;
+		font-size:     16px;
+		border-top:    1px dashed;
+		border-bottom: 1px dashed;
+	}
+
+	@media screen and ( max-width: 480px ) {
+		.menu-primary li a,
+		.menu-secondary li a {
+			padding: 10px 1.5rem;
+		}
+	}
+
+
+		.menu-primary li a:hover,
+		.menu-primary li a:focus,
+		.menu-secondary li a:hover,
+		.menu-secondary li a:focus { text-decoration: underline; }
+
+		.ltr .menu-primary li li a,
+		.ltr .menu-secondary li li a             { padding-left: 1.75rem; }
+		.ltr .menu-primary li li li a,
+		.ltr .menu-secondary li li li a          { padding-left: 3rem;    }
+		.ltr .menu-primary li li li li a,
+		.ltr .menu-secondary li li li li a       { padding-left: 4.25rem; }
+		.ltr .menu-primary li li li li li a,
+		.ltr .menu-secondary li li li li li a    { padding-left: 5.5rem;  }
+
+		.rtl .menu-primary li li a,
+		.rtl .menu-secondary li li a             { padding-right: 1.75rem; }
+		.rtl .menu-primary li li li a,
+		.rtl .menu-secondary li li li a          { padding-right: 3rem;    }
+		.rtl .menu-primary li li li li a,
+		.rtl .menu-secondary li li li li a       { padding-right: 4.25rem; }
+		.rtl .menu-primary li li li li li a,
+		.rtl .menu-secondary li li li li li a    { padding-right: 5.5rem;  }
+
+.menu-search .search-form {
+	padding:    1.5rem;
+	box-sizing: border-box;
+}
+
+.menu-search .search-field {
+	border:        none;
+	border-bottom: 1px solid;
+	opacity:       1;
+	margin:        0 0 1.5rem;
+	padding:       0.75rem 0;
+	font-size:     1rem;
+}
+
+	.menu-search .search-field::-webkit-input-placeholder { opacity: 1; color: inherit; }
+	.menu-search .search-field::-moz-placeholder          { opacity: 1; color: inherit; }
+	.menu-search .search-field:-ms-input-placeholder      { opacity: 1; color: inherit; }
+	.menu-search .search-field:-moz-placeholder           { opacity: 1; color: inherit; }
+
+.menu-search .search-submit {
+	border:    2px solid;
+	font-size: 1rem;
+	width:     100%;
+	padding:   0.75rem;
+}
+
+	@media screen and ( max-width: 480px ) {
+
+		.menu-search .search-field  { padding:  1rem 0; font-size: 1.125rem; }
+		.menu-search .search-submit { padding: 1rem;    font-size: 1.125rem; }
+	}
+
+/********************************************************************************************************
+ * ====== End Menus ======
+ ********************************************************************************************************/
+
+/********************************************************************************************************
+ * 1.11 - Plugins
+ *
+ * This section handles the output of specific plugins that the theme supports.  The theme isn't limited
+ * to these plugins.  It merely gives some extra love to these plugins.
+ ********************************************************************************************************/
+
+/* ====== Breadcrumb Trail ====== */
+
+
+ul.trail-items {
+	list-style: none;
+	margin:     0;
+	font-size:  14px;
+}
+
+	.trail-items li { display: inline-block; }
+
+		.ltr .trail-items li { margin-left:  0.75rem; }
+		.rtl .trail-items li { margin-right: 0.75rem; }
+
+		.ltr .trail-items li:first-of-type,
+		.rtl .trail-items li:last-of-type { margin-left: 0; }
+
+		.ltr .trail-items li:last-of-type,
+		.rtl .trail-items li:first-of-type { margin-right: 0; }
+
+		.trail-items li::before {
+			content:      "\00b7";
+			margin-right: 0.75rem;
+		}
+
+			.trail-items li:first-of-type::before { display: none; }
+
+		.trail-items a { color: #888; background-image: none; }
+
+		.trail-items a[rel="home"] span {
+			position: absolute;
+			top:      -9999em;
+		}
+
+			.ltr .trail-items a[rel="home"] span { left:  -9999em; }
+			.rtl .trail-items a[rel="home"] span { right: -9999em; }
+
+	@media only screen and ( max-width: 640px ) {
+
+		.breadcrumbs { text-align: center; }
+	}
+
+/* ====== Custom Content Portfolio ====== */
+
+.singular-portfolio_project .project-meta {
+	display: table;
+	width: 100%;
+	border: 2px solid;
+	margin: 1.5rem 0;
+}
+
+.singular-portfolio_project .project-meta li {
+	display: table-row;
+	width: 100%;
+}
+
+.singular-portfolio_project .project-key {
+	display:       table-cell;
+	text-align:    left;
+	font-weight:   bold;
+	padding:       0.75rem 1.5rem;
+	border-bottom: 1px solid;
+}
+
+.singular-portfolio_project .project-data {
+	display: table-cell;
+	text-align: right;
+	width: 100%;
+	max-width: 65%;
+	padding: 0.75rem 1.5rem;
+	border-bottom: 1px solid;
+}
+
+	.project-meta li:last-of-type .project-data,
+	.project-meta li:last-of-type .project-key { border-bottom: none; }
+
+.singular-portfolio_project .project-link {
+	display: inline-block;
+	padding: 0.75rem 3rem;
+}
+
+/* ====== Easy Digital Downloads ====== */
+
+.archive-download .edd-download { text-align: center; }
+
+.archive-download .edd_price { font-size: 15px; }
+
+@media screen and ( min-width: 641px ) {
+
+	.edd_cart_item_image img {
+		max-width:    106px;
+		float:        left;
+		margin-right: 0.75rem;
+	}
+}
+
+.edd_download_quantity_wrapper { display: inline-block; float: right; }
+.edd_download_quantity_wrapper + .edd_purchase_submit_wrapper { display: inline-block; }
+
+	.edd_download_quantity_wrapper .edd-item-quantity { padding: 0.75rem; font-size: 0.9375rem; }
+
+	.edd_multi_mode .edd-item-quantity { padding: 0.125rem; }
+
+	@media only screen and ( min-width: 641px ) {
+
+		.singular-download.layout-grid-portrait .featured-media {
+			width: 50%;
+		}
+		.singular-download.layout-grid-portrait .featured-media + .edd_download_purchase_form {
+			width: 50%;
+			box-sizing: border-box;
+		}
+
+		.ltr.singular-download.layout-grid-portrait .featured-media { float: left; }
+		.rtl.singular-download.layout-grid-portrait .featured-media { float: right; }
+
+		.ltr.singular-download.layout-grid-portrait .featured-media + .edd_download_purchase_form {
+			float:        right;
+			padding-left: 1.5rem;
+		}
+		.rtl.singular-download.grid-portrait .featured-media + .edd_download_purchase_form {
+			float:         left;
+			padding-right: 1.5rem;
+		}
+	}
+
+.edd_purchase_submit_wrapper .edd-add-to-cart,
+.edd_purchase_submit_wrapper .edd-submit {
+	width:      100%;
+	text-align: center;
+}
+
+.entry-content { clear: both; }
+
+.singular-download a.edd-add-to-cart.button {
+	width:      100%;
+	text-align: center;
+	border:     2px solid;
+}
+
+.edd_purchase_submit_wrapper .edd-cart-ajax-alert {
+	text-align: center;
+	display:    block;
+	font-size:  1rem;
+}
+
+.edd_purchase_submit_wrapper .edd-cart-added-alert {
+	display:    inline-block;
+	margin-top: 0.75rem;
+}
+
+.edd_price_options ul {
+	list-style:   none;
+	margin-left:  0;
+	margin-right: 0;
+	margin:       0 0 0.75rem;
+	border:       2px solid;
+}
+
+.edd_price_options ul li {
+	overflow:      hidden;
+	padding:       0.75rem;
+	font-size:     1rem;
+	border-bottom: 1px solid;
+}
+
+	.edd_price_options ul li label { font-size: 1rem; }
+
+	.edd_price_options ul li:last-of-type { border-bottom: none; }
+
+.edd_download_purchase_form { margin-bottom: 1.5rem; }
+
+.edd_form .edd-label,
+.edd_form label[for="edd_user_login"],
+.edd_form label[for="edd_user_pass"],
+.edd_form label[for="edd_user_pass_confirm"] {
+	font-weight: 700;
+}
+
+.edd_form .edd-description {
+	display:        block;
+	width:          100%;
+	padding-bottom: 4px;
+	font-size:      0.9375rem;
+}
+
+.edd_cart_item { font-size: 1rem; }
+
+.edd_cart_item_name { width: 45%; }
+
+input.edd-item-quantity { display: inline-block; max-width: 75px; margin-right: 0.75rem; }
+
+#edd-purchase-button { margin-bottom: 1.5rem; }
+#edd_final_total_wrap { float: left; width: 50%; margin-bottom: 1.125 }
+#edd-purchase-button { float: right; margin-top: -0.375rem; margin-bottom: 1.125rem; }
+
+/********************************************************************************************************
+ * ====== End Plugins ======
+ ********************************************************************************************************/
+
+/********************************************************************************************************
+ * 2 - Fun Zone
+ *
+ * This section of the stylesheet is what I call the fun area.  For the most part, you should feel free
+ * to overwrite the following in your child theme's `style.css` file if your design calls for it.
+ * Specifically, this deals with fonts and colors.  Those things are really the things that give your
+ * child theme its uniqueness.  Have fun with it.  Go wild!
+ ********************************************************************************************************/
+
+
+/**
+ * 2.2 - Color Definitions
+ *
+ * The following are all of the colors defined by the theme.  The only other colors are part of the theme
+ * customizer options and should not be overwritten.  If needed, copy the specific sections below into
+ * your child theme and make the necessary changes there.
+ */
+
+/* =/=/=/=/=/= End colors danger zone. =/=/=/=/=/= */
+
+/********************************************************************************************************
+ * This concludes the fun area for making your child theme unique.
+ ********************************************************************************************************/
+
+
+
+
+
+
+
+
+
+
+/* === Clearing Floats === */
+
+.clearfix::after,
+.site-footer > .wrap::after,
+.content::after,
+.entry::after,
+.archive-header::after,
+.site-header::after,
+.sidebar-subsidiary::after {
+	content:    ".";
+	display:    block;
+	height:     0;
+	clear:      both;
+	visibility: hidden;
+}

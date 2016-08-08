@@ -266,8 +266,12 @@ final class Extant_Theme {
 		hybrid_register_font( 'extant', array( 'family' => extant_get_font_families(), 'subset' => extant_get_font_subsets() ) );
 
 		// Register styles.
-		wp_register_style( 'font-awesome',        hybrid_get_style_uri( 'font-awesome' ) );
-		wp_register_style( 'extant-mediaelement', hybrid_get_style_uri( 'mediaelement' ) );
+		wp_register_style( 'font-awesome',       hybrid_get_style_uri( 'font-awesome' ) );
+
+		wp_register_style( 'extant-style',        hybrid_get_style_uri( 'style',        'css/src' ) );
+		wp_register_style( 'extant-mediaelement', hybrid_get_style_uri( 'mediaelement', 'css/src' ) );
+		wp_register_style( 'extant-colors',       hybrid_get_style_uri( 'colors',       'css/src' ) );
+
 		wp_register_style( 'extant-embed',        hybrid_get_style_uri( 'embed' ) );
 
 		if ( is_child_theme() )

@@ -62,16 +62,23 @@ function extant_enqueue() {
 	wp_enqueue_script( 'extant' );
 
 	// Load fonts.
-	hybrid_enqueue_font( 'extant' );
+	//hybrid_enqueue_font( 'extant' );
 
 	// Load styles.
 	wp_enqueue_style( 'font-awesome'        );
 	wp_enqueue_style( 'hybrid-one-five'     );
 	wp_enqueue_style( 'hybrid-gallery'      );
-	wp_enqueue_style( 'hybrid-style'        );
-	wp_enqueue_style( 'extant-mediaelement' );
 
-	wp_enqueue_style( 'extant-colors', get_template_directory_uri() . '/css/_colors.css' );
+	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+
+		wp_enqueue_style( 'extant-style'        );
+		wp_enqueue_style( 'extant-mediaelement' );
+		wp_enqueue_style( 'extant-colors'       );
+
+	} else {
+
+		is_child_theme() ? wp_enqueue_style( 'hybrid-parent' ) : wp_enqueue_style( 'hybrid-style' );
+	}
 }
 
 /**
