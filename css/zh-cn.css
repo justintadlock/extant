@@ -1,0 +1,13 @@
+﻿/* Chinese stylesheet */
+/* http://www.kendraschaefer.com/2012/06/chinese-standard-web-fonts-the-ultimate-guide-to-css-font-family-declarations-for-web-design-in-simplified-chinese/ */
+
+q { quotes: '\201C' '\201D' '\2018' '\2019'; }
+
+h1, h2, h3, h4, h5, h6,
+.site-footer {
+	font-family: 'Noto Sans SC', "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+}
+
+body {
+	font-family: 'Noto Sans SC', "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+}

@@ -106,7 +106,7 @@ body { overflow-x: hidden; }
 .main {
 	max-width: 100%;
 	margin: 0 auto;
-	padding: 3rem 1.5rem;
+	padding: 3rem 1.5rem 1.5rem;
 }
 
 	.content {
@@ -298,6 +298,12 @@ blockquote {
 	font-family:  'Roboto Slab', serif;
 	font-size:    1.125rem;
 	font-style:   normal;
+}
+
+.comment-content blockquote {
+	font-size: 1rem;
+	margin-left: 0;
+	margin-right: 0;
 }
 
 /* ins */
@@ -598,7 +604,6 @@ img {
 
 /* Posts */
 .protected .label-password::before,
-.chat-author cite::before,
 .entry-terms::before,
 
 /* Respond */
@@ -951,9 +956,15 @@ img {
  ********************************************************************************************************/
 
 
-.main { font-size: 1.1875rem; }
+.main {
+	font-size: 1.1875rem;
+	word-wrap:   break-word;
+	word-break:  normal;
+}
 
 .entry { clear: both; margin-bottom: 1.5rem; }
+
+	.singular .entry { margin-bottom: 0; }
 
 .entry-header { text-align: center; }
 
@@ -1018,13 +1029,16 @@ img {
 
 	.format-status .entry-content,
 	.format-aside .entry-content,
-	.format-quote blockquote {
+	.format-link .entry-content,
+	.format-quote .entry-content {
 		overflow: hidden;
 		margin:   0 0 1.5rem;
 		padding:  1.5rem 1.5rem 0;
 	}
 
 	.format-quote blockquote {
+		margin: 0;
+		padding: 0;
 		font-family: 'Roboto', sans-serif;
 		font-weight: 400;
 		font-style:  normal;
@@ -1033,6 +1047,35 @@ img {
 	}
 
 		.format-quote cite { font-size: 1rem; }
+
+	.chat-text {
+		position: relative;
+		margin-bottom: 1.5rem;
+		padding: 1.5rem 1.5rem 0;
+	}
+
+	.chat-text:first-child { margin-top: -1.5rem; padding-top: 0; }
+
+	.chat-author + .chat-text::before {
+		content: " ";
+		position: absolute;
+		top: -7px;
+		border-left: 6px solid transparent;
+		border-right: 6px solid transparent;
+		border-bottom: 7px solid;
+	}
+
+		.ltr .chat-author + .chat-text::before { left: calc( 1.5rem + 8px ); }
+		.rtl .chat-author + .chat-text::before { right: calc( 1.5rem + 8px ); }
+
+	.chat-author { margin-bottom: 0.5rem; padding: 0 1.5rem; }
+
+		.chat-author cite {
+			font-family: 'Roboto Slab', serif;
+			font-style:  normal;
+			font-weight: bold;
+			font-size:   1rem;
+		}
 
 /* ====== Archive Header ====== */
 
@@ -1136,9 +1179,8 @@ img {
 }
 
 .nav-links {
-	margin:      0 auto;
+	margin:      1.5rem auto;
 	text-align:  center;
-	margin-top:  3rem;
 	font-family: 'Roboto Slab', serif;
 	font-size:   0px; /* Gets rid of whitespace between inline-block elements. */
 }
@@ -1179,6 +1221,8 @@ img {
 				border-bottom-right-radius: 20px;
 			}
 
+		.nav-links a { text-decoration: none; }
+
 	@media only screen and ( max-width: 640px ) {
 
 		.nav-links li { display: none; }
@@ -1209,6 +1253,11 @@ p > iframe {
 /* ====== Embeds ====== */
 
 	.twitter-tweet { width: 100% !important; }
+
+		.EmbeddedTweet,
+		.EmbeddedTweet-tweet {
+			width: 100% !important;
+		}
 
 	.embed-wrap {
 		position:       relative;
@@ -1253,6 +1302,8 @@ p > iframe {
  * This section handles the output of the comments template.  In particular, it styles the output of the
  * comments section (comments list) and the respond section (comment form).
  ********************************************************************************************************/
+
+#comments-template { margin-top: 1.5rem; }
 
 /* ====== Comment List ====== */
 
@@ -1342,10 +1393,9 @@ p > iframe {
 				.ltr .children .comment .avatar { margin-right: 1.125rem; }
 				.rtl .children .comment .avatar { margin-left:  1.125rem; }
 
-			.comment-meta {
-				margin:    -1.5rem 0 1.5rem;
-				font-size: 15px;
-			}
+			.comment-meta { font-size: 15px; }
+
+			.comment .comment-meta { margin: -1.5rem 0 1.5rem; }
 
 			.comment-parent {
 				font-size:    14px;
@@ -1376,7 +1426,7 @@ p > iframe {
 
 /* ====== Respond ====== */
 
-.comment-respond { border: 1px solid; }
+.comment-respond { margin-bottom: 1.5rem; border: 1px solid; }
 
 #comments + .comment-respond { margin-top: 3rem; }
 
@@ -1709,6 +1759,10 @@ p > iframe {
 
 /* ====== Breadcrumb Trail ====== */
 
+.breadcrumbs {
+	word-wrap:   break-word;
+	word-break:  normal;
+}
 
 ul.trail-items {
 	list-style: none;
@@ -1716,7 +1770,7 @@ ul.trail-items {
 	font-size:  14px;
 }
 
-	.trail-items li { display: inline-block; }
+	.trail-items li { display: inline; }
 
 		.ltr .trail-items li { margin-left:  0.75rem; }
 		.rtl .trail-items li { margin-right: 0.75rem; }
@@ -1945,6 +1999,7 @@ input.edd-item-quantity { display: inline-block; max-width: 75px; margin-right: 
 .clearfix::after,
 .site-footer > .wrap::after,
 .content::after,
+.chat-text::after,
 .entry::after,
 .archive-header::after,
 .site-header::after,

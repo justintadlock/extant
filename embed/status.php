@@ -1,10 +1,6 @@
 <div <?php post_class( 'wp-embed' ); ?>>
 
 	<div class="wp-embed-content">
-			<?php if ( get_option( 'show_avatars' ) ) : // If avatars are enabled. ?>
-				<span class="avatar-wrap"><?php echo get_avatar( get_the_author_meta( 'email' ) ); ?></span>
-			<?php endif; ?>
-
 		<?php the_content(); ?>
 	</div><!-- .wp-embed-content -->
 

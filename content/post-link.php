@@ -2,27 +2,16 @@
 
 	<?php if ( is_single( get_the_ID() ) ) : // If viewing a single post. ?>
 
-		<header class="entry-header">
-
-			<h1 <?php hybrid_attr( 'entry-title' ); ?>><?php single_post_title(); ?></h1>
-
-			<div class="entry-byline">
-				<?php hybrid_post_format_link(); ?>
-				<span class="sep"><?php _ex( '&middot;', 'post meta separator', 'extant' ); ?></span>
-				<time <?php hybrid_attr( 'entry-published' ); ?>><?php echo get_the_date(); ?></time>
-				<span class="sep"><?php _ex( '&middot;', 'post meta separator', 'extant' ); ?></span>
-				<?php comments_popup_link( false, false, false, 'comments-link' ); ?>
-			</div><!-- .entry-byline -->
-
-		</header><!-- .entry-header -->
-
 		<div <?php hybrid_attr( 'entry-content' ); ?>>
 			<?php the_content(); ?>
 			<?php wp_link_pages(); ?>
 		</div><!-- .entry-content -->
 
 		<footer class="entry-footer">
-			<?php hybrid_post_terms( array( 'taxonomy' => 'category' ) ); ?>
+			<?php hybrid_post_format_link(); ?>
+			<span class="sep"><?php _ex( '&middot;', 'post meta separator', 'extant' ); ?></span>
+			<time <?php hybrid_attr( 'entry-published' ); ?>><?php echo get_the_date(); ?></time>
+			<?php hybrid_post_terms( array( 'taxonomy' => 'category', 'before' => '<br />' ) ); ?>
 			<?php hybrid_post_terms( array( 'taxonomy' => 'post_tag' ) ); ?>
 		</footer><!-- .entry-footer -->
 

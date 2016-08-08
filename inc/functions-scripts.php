@@ -10,8 +10,43 @@
  */
 
 # Load scripts, styles, and fonts.
-add_action( 'wp_enqueue_scripts',    'extant_enqueue'        );
+add_action( 'wp_enqueue_scripts',    'extant_enqueue', 5        );
 add_action( 'enqueue_embed_scripts', 'extant_enqueue_embed'  );
+
+/**
+ * Returns the font args for the theme's Google Fonts call.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return array
+ */
+function extant_get_locale_font_args() {
+
+	$fonts  = extant_get_locale_fonts();
+	$locale = strtolower( get_locale() );
+	$args   = isset( $fonts[ $locale ] ) ? $fonts[ $locale ] : $fonts['default'];
+
+	return apply_filters( "extant_{$locale}_font_args", $args );
+}
+
+/**
+ * Returns an array of locale-specific font arguments
+ *
+ * @since  1.0.0
+ * @access public
+ * @return array
+ */
+function extant_get_locale_fonts() {
+
+	$fonts = array(
+		'default' => array( 'family' => extant_get_font_families(), 'subset' => extant_get_font_subsets() ),
+		'ja'      => array( 'src' => '//fonts.googleapis.com/earlyaccess/notosansjapanese.css' ),
+		'ko_kr'   => array( 'src' => '//fonts.googleapis.com/earlyaccess/notosanskr.css' ),
+		'zh_cn'   => array( 'src' => '//fonts.googleapis.com/earlyaccess/notosanssc.css' )
+	);
+
+	return apply_filters( 'extant_get_locale_fonts', $fonts );
+}
 
 /**
  * Returns an array of the font families to load from Google Fonts.
@@ -23,10 +58,8 @@ add_action( 'enqueue_embed_scripts', 'extant_enqueue_embed'  );
 function extant_get_font_families() {
 
 	return array(
-	//	'noto-sans'    => 'Noto Sans:400,400i,700,700i',
-		'roboto'    => 'Roboto:400,400i,700,700i',
-		'roboto-slab'  => 'Roboto+Slab:400,700',
-	//	'crimson' => 'Crimson Text:400,400italic,600'
+		'roboto'      => 'Roboto:400,400i,700,700i',
+		'roboto-slab' => 'Roboto+Slab:400,700'
 	);
 }
 
@@ -62,7 +95,7 @@ function extant_enqueue() {
 	wp_enqueue_script( 'extant' );
 
 	// Load fonts.
-	//hybrid_enqueue_font( 'extant' );
+	hybrid_enqueue_font( 'extant' );
 
 	// Load styles.
 	wp_enqueue_style( 'font-awesome'        );

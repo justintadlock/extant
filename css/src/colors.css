@@ -114,6 +114,10 @@ button,
 .singular-download  a.edd-add-to-cart.button:focus,
 .format-quote blockquote,
 .format-status .entry-content,
+.format-link .entry-content,
+.format-link .entry-content a,
+.format-link .entry-content a:hover,
+.format-link .entry-content a:focus,
 .singular-portfolio_project .project-link,
 .singular-portfolio_project .project-link:hover,
 .singular-portfolio_project .project-link:focus,
@@ -199,9 +203,10 @@ button:hover,
 
 .main a img,
 a .svg-featured,
-.format-quote blockquote,
+.format-quote .entry-content,
 .format-status .entry-content,
-.format-aside .entry-content {
+.format-aside .entry-content,
+.format-link .entry-content {
 	box-shadow: 0 0 0 9px #fff, 0 0 0 10px #eee, 0 0 0 12px #fafafa;
 }
 
@@ -209,8 +214,9 @@ a .svg-featured,
 
 .format-status .entry-content { background: #d95b43; }
 .format-aside .entry-content  { background: #f7f7f7; }
+.format-link .entry-content { background: #111; }
 
-.format-quote blockquote { background: #53777a; }
+.format-quote .entry-content { background: #53777a; }
 
 		.format-quote cite { color: #97c0c3; }
 
@@ -242,6 +248,20 @@ ins {
 	background:   rgba( 236, 238, 20, 0.05 );
 	border-color: rgba( 0, 153, 51, 0.5 );
 }
+
+.chat-speaker-1 .chat-author { color: #43b4d9; }
+.chat-speaker-2 .chat-author { color: #436dd9; }
+.chat-speaker-3 .chat-author { color: #9f43d9; }
+.chat-speaker-4 .chat-author { color: #d943d4; }
+.chat-speaker-5 .chat-author { color: #d9435f; }
+.chat-speaker-6 .chat-author { color: #43d9d7; }
+.chat-speaker-7 .chat-author { color: #43d947; }
+.chat-speaker-8 .chat-author { color: #d9c643; }
+.chat-speaker-9 .chat-author { color: #d99443; }
+
+.chat-text { background: #f7f7f7; }
+
+.chat-author + .chat-text::before { border-bottom-color: #f7f7f7; }
 
 /* === Media Player Colors === */
 

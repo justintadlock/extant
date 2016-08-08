@@ -263,7 +263,7 @@ final class Extant_Theme {
 		wp_register_script( 'extant', extant_get_script_uri( 'theme' ), array( 'jquery' ), null, true );
 
 		// Register fonts.
-		hybrid_register_font( 'extant', array( 'family' => extant_get_font_families(), 'subset' => extant_get_font_subsets() ) );
+		hybrid_register_font( 'extant', extant_get_locale_font_args() );
 
 		// Register styles.
 		wp_register_style( 'extant-style',        extant_get_style_uri( 'style',        'css/src' ) );
