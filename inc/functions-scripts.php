@@ -76,8 +76,10 @@ function extant_enqueue() {
 		wp_enqueue_style( 'extant-colors'       );
 
 	} else {
+		if ( is_child_theme() )
+			wp_enqueue_style( 'hybrid-parent' );
 
-		is_child_theme() ? wp_enqueue_style( 'hybrid-parent' ) : wp_enqueue_style( 'hybrid-style' );
+		wp_enqueue_style( 'hybrid-style' );
 	}
 }
 
