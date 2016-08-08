@@ -122,6 +122,76 @@ function extant_get_mediaelement_inline_script() {
 }
 
 /**
+ * Returns a stylesheet file.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $name   Name of the stylesheet file (without the extension).
+ * @param  string  $path   The folder to look for the stylesheet in.
+ * @param  string  $where  template|stylesheet
+ * @return string
+ */
+function extant_get_style_uri( $name, $path = 'css', $where = 'template' ) {
+
+	$suffix = hybrid_get_min_suffix();
+	$path   = 'stylesheet' === $where ? '%2$s/' . $path : '%1$s/' . $path;
+
+	$dir = trailingslashit( hybrid_sprintf_theme_dir( $path ) );
+	$uri = trailingslashit( hybrid_sprintf_theme_uri( $path ) );
+
+	return $suffix && file_exists( "{$dir}{$name}{$suffix}.css" ) ? "{$uri}{$name}{$suffix}.css" : "{$uri}{$name}.css";
+}
+
+/**
+ * Returns a stylesheet file from the child theme.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $name   Name of the stylesheet file (without the extension).
+ * @param  string  $path   The folder to look for the stylesheet in.
+ * @return string
+ */
+function extant_get_child_style_uri( $name, $path = 'css' ) {
+
+	return extant_get_style_uri( $name, $path, 'stylesheet' );
+}
+
+/**
+ * Returns a script file.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $name   Name of the script file (without the extension).
+ * @param  string  $path   The folder to look for the script in.
+ * @param  string  $where  template|stylesheet
+ * @return string
+ */
+function extant_get_script_uri( $name, $path = 'js', $where = 'template' ) {
+
+	$suffix = hybrid_get_min_suffix();
+	$path   = 'stylesheet' === $where ? '%2$s/' . $path : '%1$s/' . $path;
+
+	$dir = trailingslashit( hybrid_sprintf_theme_dir( $path ) );
+	$uri = trailingslashit( hybrid_sprintf_theme_uri( $path ) );
+
+	return $suffix && file_exists( "{$dir}{$name}{$suffix}.js" ) ? "{$uri}{$name}{$suffix}.js" : "{$uri}{$name}.js";
+}
+
+/**
+ * Returns a script file from the child theme.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string  $name   Name of the script file (without the extension).
+ * @param  string  $path   The folder to look for the script in.
+ * @return string
+ */
+function extant_get_child_script_uri( $name, $path = 'js' ) {
+
+	return extant_get_script_uri( $name, $path, 'stylesheet' );
+}
+
+/**
  * This is a fix for when a user sets a custom background color with no custom background image.  What
  * happens is the theme's background image hides the user-selected background color.  If a user selects a
  * background image, we'll just use the WordPress custom background callback.  This also fixes WordPress

@@ -356,10 +356,10 @@ final class Extant_Customize {
 	 */
 	public function register_control_scripts() {
 
-		wp_register_script( 'extant-customize-controls', hybrid_get_script_uri( 'customize-controls' ), array( 'customize-controls' ), null, true );
+		wp_register_script( 'extant-customize-controls', extant_get_script_uri( 'customize-controls' ), array( 'customize-controls' ), null, true );
 
-		wp_register_style( 'font-awesome',              hybrid_get_style_uri( 'font-awesome' ) );
-		wp_register_style( 'extant-customize-controls', hybrid_get_style_uri( 'customize-controls' ) );
+		wp_register_style( 'font-awesome',              extant_get_style_uri( 'font-awesome'       ) );
+		wp_register_style( 'extant-customize-controls', extant_get_style_uri( 'customize-controls' ) );
 	}
 
 	/**
@@ -371,7 +371,7 @@ final class Extant_Customize {
 	 */
 	public function preview_enqueue() {
 
-		wp_enqueue_script( 'extant-customize-preview', hybrid_get_script_uri( 'customize-preview' ), array( 'jquery' ), null, true );
+		wp_enqueue_script( 'extant-customize-preview', extant_get_script_uri( 'customize-preview' ), array( 'jquery' ), null, true );
 	}
 }
 
