@@ -79,7 +79,7 @@ final class Extant_Theme {
 	private function includes() {
 
 		// Load the Hybrid Core framework and theme files.
-		require_once( $this->dir_path . 'library/hybrid.php'    );
+		require_once( $this->dir_path . 'lib/hybrid.php'       );
 		require_once( $this->dir_path . 'inc/hybrid-x.php'     );
 		require_once( $this->dir_path . 'inc/hybrid-fonts.php' );
 
