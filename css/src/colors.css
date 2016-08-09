@@ -86,6 +86,7 @@ select,
 /* color - #333 */
 
 .breadcrumbs a,
+h1, h2, h3, h4, h5, h6,
 .main h1 a,
 .main h2 a,
 .main h3 a,
@@ -247,6 +248,8 @@ a .svg-featured,
 .portfolio_project .svg-featured { background: #43b4d9; }
 
 /* misc. */
+
+code { background: #f8f8f8; }
 
 ins {
 	background:   rgba( 236, 238, 20, 0.05 );

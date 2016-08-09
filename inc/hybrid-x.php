@@ -40,6 +40,19 @@ function hybrid_is_layout( $layout ) {
 }
 
 /**
+ * Conditional check to determine if we are in script debug mode.  This is generally used 
+ * to decide whether to load development versions of scripts/styles.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return bool
+ */
+function hybrid_is_script_debug() {
+
+	return apply_filters( 'hybrid_is_script_debug', defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG );
+}
+
+/**
  * Replaces `%1$s` and `%2$s` with the template and stylesheet directory paths.
  *
  * @since  1.0.0

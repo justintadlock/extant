@@ -102,10 +102,11 @@ function extant_enqueue() {
 	wp_enqueue_style( 'hybrid-one-five'     );
 	wp_enqueue_style( 'hybrid-gallery'      );
 
-	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+	if ( hybrid_is_script_debug() ) {
 
 		wp_enqueue_style( 'extant-style'        );
 		wp_enqueue_style( 'extant-mediaelement' );
+		wp_enqueue_style( 'extant-font-family'  );
 		wp_enqueue_style( 'extant-colors'       );
 
 	} else {
