@@ -15,14 +15,19 @@
 			<?php hybrid_post_terms( array( 'taxonomy' => 'portfolio_category' ) ); ?>
 			<?php hybrid_post_terms( array( 'taxonomy' => 'portfolio_tag' ) ); ?>
 
-			<ul class="project-meta">
-				<?php ccp_project_client(     array( 'wrap' => '<li %s><span class="project-key">' . __( 'Client',    'extant' ) . '</span> %s</li>' ) ); ?>
-				<?php ccp_project_location(   array( 'wrap' => '<li %s><span class="project-key">' . __( 'Location',  'extant' ) . '</span> %s</li>' ) ); ?>
-				<?php ccp_project_start_date( array( 'wrap' => '<li %s><span class="project-key">' . __( 'Started',   'extant' ) . '</span> %s</li>' ) ); ?>
-				<?php ccp_project_end_date(   array( 'wrap' => '<li %s><span class="project-key">' . __( 'Completed', 'extant' ) . '</span> %s</li>' ) ); ?>
-			</ul>
+			<?php
+				$meta = '';
+				$meta .= ccp_get_project_client(     array( 'wrap' => '<li %s><span class="project-key">' . __( 'Client',    'extant' ) . '</span> %s</li>' ) );
+				$meta .= ccp_get_project_location(   array( 'wrap' => '<li %s><span class="project-key">' . __( 'Location',  'extant' ) . '</span> %s</li>' ) );
+				$meta .= ccp_get_project_start_date( array( 'wrap' => '<li %s><span class="project-key">' . __( 'Started',   'extant' ) . '</span> %s</li>' ) );
+				$meta .= ccp_get_project_end_date(   array( 'wrap' => '<li %s><span class="project-key">' . __( 'Completed', 'extant' ) . '</span> %s</li>' ) );
+			?>
 
-			<?php ccp_project_link( array( 'text' => __( 'View Project Site', 'extant' ) ) ); ?>
+			<?php if ( $meta ) : ?>
+				<ul class="project-meta"><?php echo $meta; ?></ul>
+			<?php endif; ?>
+
+			<?php ccp_project_link( array( 'text' => __( 'View Project Site', 'extant' ), 'before' => '<div class="project-link-wrap">', 'after' => '</div>' ) ); ?>
 		</footer><!-- .entry-footer -->
 
 	<?php else : // If not viewing a single post. ?>
