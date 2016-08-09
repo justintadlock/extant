@@ -44,7 +44,7 @@ add_filter( 'post_class', 'extant_post_class' );
 add_filter( 'embed_oembed_html', 'extant_maybe_wrap_embed', 10, 2 );
 
 # Add author to front of comment text.
-add_filter( 'comment_text', 'extant_add_comment_author', 0 );
+add_filter( 'comment_text', 'extant_add_comment_author', 0, 2 );
 
 # Prev/Next comments link attributes.
 add_filter( 'previous_comments_link_attributes', 'extant_prev_comments_link_attr' );
@@ -179,11 +179,12 @@ function extant_maybe_wrap_embed( $html, $url ) {
  * @since  1.0.0
  * @access public
  * @param  string  $text
+ * @param  object  $comment
  * @return string
  */
-function extant_add_comment_author( $text ) {
+function extant_add_comment_author( $text, $comment ) {
 
-	if ( ! is_singular() )
+	if ( '' !== $comment->comment_type && 'comment' !== $comment->comment_type )
 		return $text;
 
 	return '<cite ' . hybrid_get_attr( 'comment-author' ) . '>' . get_comment_author_link() . '</cite> ' . $text;
