@@ -15,6 +15,9 @@ remove_action( 'edd_after_download_content', 'edd_append_purchase_link' );
 # Filter the checkout image size.
 add_filter( 'edd_checkout_image_size', 'extant_edd_checkout_image_size' );
 
+# Disable plugin styles.
+add_filter( 'edd_get_option_disable_styles', '__return_true' );
+
 /**
  * Overwrites the checkout image size with the theme-defined `post-thumbnail` size.
  *
