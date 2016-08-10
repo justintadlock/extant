@@ -474,10 +474,6 @@
 			text-align:  center;
 		}
 
-			.mejs-long-video .mejs-time-rail .mejs-time-float {
-				width: 48px;
-			}
-
 			/* Current time position hovering. */
 			.mejs-time-rail .mejs-time-float-current {
 				display:    block;
@@ -486,10 +482,6 @@
 				width:      30px;
 				text-align: center;
 			}
-
-				.mejs-long-video .mejs-time-rail .mejs-time-float-current {
-					width: 44px;
-				}
 
 			/* Pointer at the botton of the time float. */
 			.mejs-time-float-corner {
@@ -509,9 +501,6 @@
 				border-radius: 0;
 			}
 
-				.mejs-long-video .mejs-time-rail .mejs-time-float-corner {
-					left: 18px;
-				}
 
 	/* === Fullscreen === */
 
@@ -1142,22 +1131,22 @@
 
 
 		.mejs-time-rail .mejs-time-float {
-			top:         -38px;
-			height:      27px;
-			width:       50px;
-			margin-left: -25px;
+			top:         -46px;
+			height:      35px;
+			width:       80px;
+			margin-left: -40px;
 		}
 
 		.mejs-time-rail .mejs-time-float-current {
 			width:      100%;
-			margin:     8px 0;
-			font-size:  0.75rem;
+			margin:     12px 0;
+			font-size:  14px;
 			box-sizing: border-box;
 		}
 
 		.mejs-time-rail .mejs-time-float-corner {
-			top:  28px;
-			left: 20px;
+			top:  36px;
+			left: 35px;
 		}
 
 		.mejs-controls .mejs-playpause-button { margin-left: 0.75rem; }

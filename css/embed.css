@@ -7,24 +7,33 @@ body { font-family: 'Roboto', sans-serif; line-height: 1.5; }
 
 img { max-width: 100%; height: auto; }
 
-.wp-embed > a img,
-a .svg-featured {
+a .extant-portrait {
 	/* Using box-shadow so that the image will fit just outside the container. */
 	box-shadow: 0 0 0 9px #fff, 0 0 0 10px #eee, 0 0 0 12px #fafafa;
 }
-	.wp-embed > a:hover img,
-	.wp-embed > a:focus img,
-	a:hover .svg-featured,
-	a:focus .svg-featured {
+	a:hover .extant-portrait,
+	a:focus .extant-portrait {
 		/* Note rgba() color is the same as #c02942 */
 		box-shadow: 0 0 0 9px #fff,
                           0 0 0 10px rgba( 192, 41, 66, 0.25 ),
                           0 0 0 12px rgba( 192, 41, 66, 0.05 );
 	}
+
+.extant-portrait { margin: 0 0 1.5rem; }
+
+@media screen and ( min-width: 481px ) {
+
+	.extant-portrait { max-width: 40%; }
+
+	.ltr .extant-portrait { float: left; margin-right: 1.5rem; }
+	.rtl .extant-portrait { float: right; margin-left: 1.5rem; }
+}
+
+.extant-landscape,
 .svg-featured {
-	max-width: 213px;
+	max-width: calc( 100% + 3rem );
 	height: auto;
-	margin-bottom: 0.75rem;
+	margin: -1.5rem 0 1.5rem -1.5rem;
 }
 
 	.format-aside .svg-featured    { background: #f7f7f7; }
@@ -49,7 +58,7 @@ a .svg-featured {
 	font-size:   72px;
 	line-height: 1;
 	vertical-align:middle;
-	fill:#fff;
+	fill: #fff;
 }
 
 .post-thumbnail { max-width: 213px; }
@@ -63,7 +72,7 @@ a .svg-featured {
 	border:     1px solid #f2f2f2;
 	box-sizing: border-box;
 	font-family: 'Roboto', sans-serif;
-	font-size: 1rem;
+	font-size: 1.0625rem;
 	color: #666;
 }
 
@@ -75,6 +84,17 @@ a .svg-featured {
 	border-top: 1px solid #f2f2f2;
 	box-sizing: border-box;
 }
+
+	@media screen and ( max-width: 640px ) {
+
+		.wp-embed-site-title,
+		.wp-embed-meta {
+			display: block;
+			text-align: center;
+		}
+
+		.wp-embed-site-title { margin-bottom: 0.75rem; }
+	}
 
 	.wp-embed .wp-embed-heading,
 	.wp-embed-site-title {
@@ -93,18 +113,36 @@ a .svg-featured {
 		text-transform: uppercase;
 	}
 
-	.wp-embed-site-title a { color: #333; }
+	.wp-embed-meta { color: #bbb; }
 
-	.wp-embed-site-title a:hover,
-	.wp-embed-site-title a:focus { color: #c02942; }
+	.wp-embed-meta .sep { margin: 0 5px; }
 
-	.wp-embed .post-thumbnail,
-	.svg-featured {
-		float: left;
-		margin: 0 1.5rem 1.5rem 0;
+	.wp-embed-meta,
+	.wp-embed-share-dialog-open {
+		font-size: 15px;
 	}
 
+	.wp-embed-excerpt a { text-decoration: underline; }
+
+	.wp-embed a,
+	.wp-embed .wp-embed-excerpt a,
+	.wp-embed-meta a,
+	.wp-embed-meta button { color: #666; }
+
+	.wp-embed-heading a,
+	.wp-embed-site-title a { color: #333; }
+
+	.wp-embed a:hover,
+	.wp-embed a:focus,
+	.wp-embed-meta a:hover,
+	.wp-embed-meta a:focus,
+	.wp-embed-meta button:hover,
+	.wp-embed-meta button:focus,
+	.wp-embed-site-title a:hover,
+	.wp-embed-site-title a:focus { color: #c02942; text-decoration: underline; }
+
 	.format-aside .wp-embed-content,
+	.format-link .wp-embed-content,
 	.format-quote .wp-embed-content,
 	.format-status .wp-embed-content {
 		overflow:   hidden;
@@ -122,6 +160,15 @@ a .svg-featured {
 	.format-aside .wp-embed-content {
 		background: #f7f7f7;
 	}
+
+	.format-link .wp-embed-content {
+		color: #fff;
+		background: #111;
+	}
+
+		.format-link .wp-embed-content a,
+		.format-link .wp-embed-content a:hover,
+		.format-link .wp-embed-content a:focus { color: #fff; }
 
 	.format-quote .wp-embed-content {
 		color: #fff;

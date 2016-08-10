@@ -18,6 +18,9 @@ add_filter( 'cleaner_gallery_defaults', 'extant_gallery_defaults', 5 );
 # Filter the image sizes to choose from.
 add_filter( 'image_size_names_choose', 'extant_image_size_names_choose', 5 );
 
+remove_action( 'embed_content_meta',     'print_embed_comments_button'           );
+remove_action( 'embed_content_meta',     'print_embed_sharing_button'            );
+
 /**
  * Adds a class to the site title to handle the header icon.
  *

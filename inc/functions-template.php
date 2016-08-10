@@ -96,6 +96,38 @@ function extant_post_format_permalink() {
 }
 
 /**
+ * Prints the the post comments link.  Wrapper for `comments_popup_link()`.  This function
+ * doesn't output anything if there are no comments and comments are closed.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function extant_comments_link( $args = array() ) {
+
+	if ( ! get_comments_number() && ! comments_open() )
+		return;
+
+	$defaults = array(
+		'zero'      => false,
+		'one'       => false,
+		'more'      => false,
+		'css_class' => 'comments-link',
+		'none'      => false,
+		'before'    => '',
+		'after'     => ''
+	);
+
+	$args = wp_parse_args( $args, $defaults );
+
+	echo $args['before'];
+
+	comments_popup_link( $args['zero'], $args['one'], $args['more'], $args['css_class'], $args['none'] );
+
+	echo $args['after'];
+}
+
+/**
  * Returns the post permalink (URL) with the post format as the link text.
  *
  * @since  1.0.0

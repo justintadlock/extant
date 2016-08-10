@@ -130,12 +130,10 @@ function extant_enqueue_embed() {
 	hybrid_enqueue_font( 'extant' );
 
 	// Load styles.
-	wp_enqueue_style( 'font-awesome' );
+	wp_enqueue_style( 'extant-embed' );
 
 	if ( is_child_theme() )
-		wp_enqueue_style( 'extant-parent-embed' );
-
-	wp_enqueue_style( 'extant-embed' );
+		wp_enqueue_style( 'extant-child-embed' );
 }
 
 /**

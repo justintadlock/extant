@@ -2,9 +2,10 @@
 
 	<?php $image = get_the_image(
 		array(
-			'size'  => 'post-thumbnail',
-			'order' => array( 'featured' ),
-			'echo'  => false
+			'size'      => extant_get_featured_size(),
+			'order'     => array( 'featured' ),
+			'min_width' => extant_get_featured_min_width(),
+			'echo'      => false
 		)
 	); ?>
 
@@ -25,7 +26,12 @@
 		<?php the_embed_site_title() ?>
 
 		<div class="wp-embed-meta">
-			<?php extant_post_format_permalink(); ?>
+
+			<a class="entry-permalink" href="<?php the_permalink(); ?>" rel="bookmark" itemprop="url"><time <?php hybrid_attr( 'entry-published' ); ?>><?php echo get_the_date(); ?></time></a>
+			<?php extant_comments_link( array( 'before' => sprintf( '<span class="sep">%s</span> ', _x( '&middot;', 'post meta separator', 'extant' ) ) ) ); ?>
+			<span class="sep"><?php _ex( '&middot;', 'post meta separator', 'extant' ); ?></span>
+			<button type="button" class="wp-embed-share-dialog-open" aria-label="<?php esc_attr_e( 'Open sharing dialog', 'extant' ); ?>"><?php _e( 'Share', 'extant' ); ?></button>
+
 			<?php do_action( 'embed_content_meta' ); ?>
 		</div><!-- .wp-embed-meta -->
 
