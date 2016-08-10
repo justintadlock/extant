@@ -140,7 +140,8 @@ function hybrid_font_is_enqueued( $handle ) {
 }
 
 /**
- * Helper function for creating the Google Fonts URL.
+ * Helper function for creating the Google Fonts URL.  Note that `add_query_arg()` will call
+ * `urlencode_deep()`, so we're going to leaving the encoding to that function.
  *
  * @since  1.0.0
  * @access public
@@ -162,20 +163,20 @@ function hybrid_get_font_url( $handle, $args ) {
 
 		if ( $family ) {
 
-			$query_args['family'] = urlencode( implode( '|', (array) $family ) );
+			$query_args['family'] = implode( '|', (array) $family );
 
 			if ( $subset )
-				$query_args['subset'] = urlencode( implode( ',', (array) $subset ) );
+				$query_args['subset'] = implode( ',', (array) $subset );
 
 			if ( $text )
-				$query_args['text'] = urlencode( $text );
+				$query_args['text'] = $text;
 
 			if ( $effect )
-				$query_args['effect'] = urlencode( implode( '|', (array) $effect ) );
+				$query_args['effect'] = implode( '|', (array) $effect );
 
 			$font_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
 		}
 	}
 
-	return apply_filters( "{$handle}_font_url", $font_url, $args, $query_args );
+	return esc_url( apply_filters( "{$handle}_font_url", $font_url, $args, $query_args ) );
 }
