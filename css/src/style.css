@@ -211,7 +211,7 @@ a { text-decoration: underline; }
 	a:hover,
 	a:focus { text-decoration: underline; }
 
-a.has-svg { position: relative; display: inline-block; }
+a.has-svg { position: relative; display: block; }
 
 /* Lists */
 

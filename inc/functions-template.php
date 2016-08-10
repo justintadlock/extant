@@ -205,7 +205,7 @@ function extant_get_featured_fallback() {
 			<?xml version="1.0"?>
 			<svg class="svg-featured" width="%s" height="%s" viewBox="0 0 950 534">
 				<rect class="svg-shape" x="400" y="192.5" rx="8" ry="8" width="150" height="150" transform="rotate(45 475 267.5)" />
-				<text class="svg-icon" x="475" y="267.5" text-anchor="middle" alignment-baseline="central">%s</text>
+				<text class="svg-icon" x="475" y="267.5" text-anchor="middle" alignment-baseline="central" dominant-baseline="central">%s</text>
 			</svg>
 		</a></div>',
 		esc_url( get_permalink() ),
