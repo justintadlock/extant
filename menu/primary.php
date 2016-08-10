@@ -4,7 +4,7 @@
 		<?php printf(
 			'<button>%s<span class="screen-reader-text">%s</span></button>',
 			extant_get_menu_primary_i(),
-			hybrid_get_menu_name( 'primary' )
+			has_nav_menu( 'primary' ) ? hybrid_get_menu_name( 'primary' ) : hybrid_get_menu_location_name( 'primary' )
 		); ?>
 	</h3><!-- .menu-primary-toggle -->
 
