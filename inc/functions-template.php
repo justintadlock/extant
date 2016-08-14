@@ -28,6 +28,45 @@ function extant_is_sticky() {
 }
 
 /**
+ * Outputs the featured image.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array   $args
+ * @return void
+ */
+function extant_featured_image( $args = array() ) {
+
+	echo extant_get_featured_image( $args );
+}
+
+/**
+ * Returns the featured image.  This is just a wrapper for the `get_the_image()` function
+ * with our custom defaults for this theme setup.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  array   $args
+ * @return string
+ */
+function extant_get_featured_image( $args = array() ) {
+
+	$defaults = array(
+		'size'         => extant_get_featured_size(),
+		'srcset_sizes' => array( extant_get_featured_size_2x() => '2x' ),
+		'order'        => array( 'featured' ),
+		'min_width'    => extant_get_featured_min_width(),
+		'before'       => '<div class="featured-media">',
+		'after'        => '</div>',
+		'echo'         => false
+	);
+
+	$image = get_the_image( wp_parse_args( $args, $defaults ) );
+
+	return $image ? $image : extant_get_featured_fallback();
+}
+
+/**
  * Returns the featured image size to use.
  *
  * @since  1.0.0

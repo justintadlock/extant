@@ -28,20 +28,7 @@
 
 	<?php else : // If not viewing a single post. ?>
 
-		<?php $image = get_the_image(
-			array(
-				'scan'         => true,
-				'size'         => extant_get_featured_size(),
-				'srcset_sizes' => array( extant_get_featured_size_2x() => '2x' ),
-				'order'        => array( 'featured', 'scan', 'attachment', 'default' ),
-				'min_width'    => extant_get_featured_min_width(),
-				'before'       => '<div class="featured-media">',
-				'after'        => '</div>',
-				'echo'         => false
-			)
-		); ?>
-
-		<?php echo $image ? $image : extant_get_featured_fallback(); ?>
+		<?php extant_featured_image( array( 'order' => array( 'featured', 'scan', 'attachment' )  ) ); ?>
 
 		<header class="entry-header">
 

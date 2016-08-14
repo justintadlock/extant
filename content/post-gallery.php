@@ -31,19 +31,7 @@
 		<?php $count = hybrid_get_gallery_item_count(); ?>
 		<?php $gallery_count = '<p class="gallery-count">' . sprintf( _n( '%s gallery item', '%s gallery items', $count, 'extant' ), $count ) . '</p>'; ?>
 
-		<?php $image = get_the_image(
-			array(
-				'size'         => extant_get_featured_size(),
-				'srcset_sizes' => array( extant_get_featured_size_2x() => '2x' ),
-				'order'        => array( 'featured' ),
-				'min_width'    => extant_get_featured_min_width(),
-				'before'       => '<div class="featured-media">',
-				'after'        => $gallery_count . '</div>',
-				'echo'         => false
-			)
-		); ?>
-
-		<?php echo $image ? $image : extant_get_featured_fallback(); ?>
+		<?php extant_featured_image( array( 'after' => $gallery_count . '</div>' ) ); ?>
 
 		<header class="entry-header">
 
