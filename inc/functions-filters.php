@@ -12,14 +12,29 @@
 # Handle the header icon.
 add_filter( 'hybrid_site_title', 'extant_site_title' );
 
+# Custom body and post classes.
+add_filter( 'body_class', 'extant_body_class' );
+add_filter( 'post_class', 'extant_post_class' );
+
 # Overwrite default image size for galleries.
 add_filter( 'cleaner_gallery_defaults', 'extant_gallery_defaults', 5 );
 
 # Filter the image sizes to choose from.
 add_filter( 'image_size_names_choose', 'extant_image_size_names_choose', 5 );
 
-remove_action( 'embed_content_meta',     'print_embed_comments_button'           );
-remove_action( 'embed_content_meta',     'print_embed_sharing_button'            );
+# Removes core's embed meta. We're rolling our own.
+remove_action( 'embed_content_meta', 'print_embed_comments_button' );
+remove_action( 'embed_content_meta', 'print_embed_sharing_button'  );
+
+# Embed wrap.
+add_filter( 'embed_oembed_html', 'extant_maybe_wrap_embed', 10, 2 );
+
+# Add author to front of comment text.
+add_filter( 'comment_text', 'extant_add_comment_author', 95, 2 );
+
+# Prev/Next comments link attributes.
+add_filter( 'previous_comments_link_attributes', 'extant_prev_comments_link_attr' );
+add_filter( 'next_comments_link_attributes',     'extant_next_comments_link_attr' );
 
 /**
  * Adds a class to the site title to handle the header icon.
@@ -38,20 +53,6 @@ function extant_site_title() {
 		get_bloginfo( 'name' )
 	);
 }
-
-# Custom body and post classes.
-add_filter( 'body_class', 'extant_body_class' );
-add_filter( 'post_class', 'extant_post_class' );
-
-# Embed wrap.
-add_filter( 'embed_oembed_html', 'extant_maybe_wrap_embed', 10, 2 );
-
-# Add author to front of comment text.
-add_filter( 'comment_text', 'extant_add_comment_author', 95, 2 );
-
-# Prev/Next comments link attributes.
-add_filter( 'previous_comments_link_attributes', 'extant_prev_comments_link_attr' );
-add_filter( 'next_comments_link_attributes',     'extant_next_comments_link_attr' );
 
 /**
  * Adds custom body classes.
