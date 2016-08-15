@@ -1,11 +1,31 @@
 <?php
+/**
+ * "No power in the 'verse can stop me." - River Tam (Firefly)
+ *
+ * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
+ * General Public License as published by the Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+ * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * You should have received a copy of the GNU General Public License along with this program; if not, write
+ * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ *
+ * @package    Extant
+ * @subpackage Functions
+ * @author     Justin Tadlock <justin@justintadlock.com>
+ * @copyright  Copyright (c) 2014, Justin Tadlock
+ * @link       http://themehybrid.com/themes/extant
+ * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ */
 
-/* Images
-https://unsplash.com/photos/jUNuMQvBwGc
-https://unsplash.com/photos/TMOeGZw9NY4
-https://unsplash.com/photos/6cOUbEdwG24
-*/
-
+/**
+ * Singleton class for launching the theme and setup configuration.
+ *
+ * @since  1.0.0
+ * @access public
+ */
 final class Extant_Theme {
 
 	/**

@@ -10,8 +10,8 @@
  */
 
 # Load scripts, styles, and fonts.
-add_action( 'wp_enqueue_scripts',    'extant_enqueue', 5        );
-add_action( 'enqueue_embed_scripts', 'extant_enqueue_embed'  );
+add_action( 'wp_enqueue_scripts',    'extant_enqueue',      5 );
+add_action( 'enqueue_embed_scripts', 'extant_enqueue_embed'   );
 
 /**
  * Returns the font args for the theme's Google Fonts call.

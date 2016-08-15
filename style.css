@@ -1,7 +1,7 @@
 /**
  * Theme Name:  Extant
  * Theme URI:   http://themehybrid.com/themes/extant
- * Description: Something special.
+ * Description: No power in the 'verse can stop me.
  * Version:     1.0.0-dev
  * Author:      Justin Tadlock
  * Author URI:  http://themehybrid.com
@@ -23,4 +23,3 @@ body{overflow-x:hidden}.below-site-header{width:100%;margin:0 auto;overflow-y:hi
 
 /* `css/src/font-family.css` */
 html,.format-quote blockquote{font-family:Roboto,sans-serif}h1,h2,h3,h4,h5,h6,blockquote,.site-footer,.nav-links,.page-links,.chat-author cite{font-family:'Roboto Slab',serif}body pre,body code{font-family:Monaco,Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L","Courier New",Courier,monospace}
-

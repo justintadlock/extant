@@ -14,7 +14,7 @@
 				'min_width'    => extant_get_featured_min_width(),
 				'before'       => '<div class="featured-media">',
 				'after'        => '</div>',
-				'link_to_post' => false
+				'link'         => false
 			)
 		); ?>
 
@@ -39,10 +39,14 @@
 		<?php extant_featured_image(); ?>
 
 		<header class="entry-header">
-			<?php the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . esc_url( get_permalink() ) . '" rel="bookmark" itemprop="url">', '</a></h2>' ); ?>
-		</header><!-- .entry-header -->
 
-		<?php if ( function_exists( 'edd_price' ) ) edd_price(); ?>
+			<?php the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . esc_url( get_permalink() ) . '" rel="bookmark" itemprop="url">', '</a></h2>' ); ?>
+
+			<div class="entry-byline">
+				<?php if ( function_exists( 'edd_price' ) ) edd_price(); ?>
+			</div><!-- .entry-byline -->
+
+		</header><!-- .entry-header -->
 
 	<?php endif; // End single post check. ?>
 

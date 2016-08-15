@@ -33,6 +33,16 @@ function extant_is_portrait() {
 	return hybrid_is_layout( 'grid-portrait' );
 }
 
+function extant_is_full_width() {
+
+	return 'full' === extant_get_layout_type();
+}
+
+function extant_is_boxed() {
+
+	return 'boxed' === extant_get_layout_type();
+}
+
 /**
  * Returns the layout type.
  *

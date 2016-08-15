@@ -9,6 +9,12 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
+/**
+ * Singleton class for handling the theme's customizer integration.
+ *
+ * @since  1.0.0
+ * @access public
+ */
 final class Extant_Customize {
 
 	/**
@@ -102,6 +108,9 @@ final class Extant_Customize {
 		$manager->get_section( 'layout' )->panel           = 'theme_options';
 		$manager->get_section( 'colors' )->panel           = 'theme_options';
 
+		// Change active callback of sections.
+		$manager->get_section( 'background_image' )->active_callback = 'extant_is_boxed';
+
 		$manager->add_section(
 			'icons',
 			array(
@@ -117,7 +126,7 @@ final class Extant_Customize {
 				array(
 					'panel'           => 'theme_options',
 					'priority'        => 995,
-					'title'           => esc_html__( 'Pro Options', 'extant' ),
+					'title'           => esc_html__( 'Go Pro', 'extant' ),
 					'button'          => esc_html__( 'Unlock', 'extant' ),
 					'active_callback' => array( $this, 'show_pro_options' )
 				)
@@ -209,6 +218,9 @@ final class Extant_Customize {
 		// Register custom control types.
 		$manager->register_control_type( 'Extant_Customize_Control_Select_Icon' );
 		$manager->register_control_type( 'Extant_Customize_Control_Custom_HTML' );
+
+		// Change active callback of controls.
+		$manager->get_control( 'background_color' )->active_callback = 'extant_is_boxed';
 
 		/* == Layouts == */
 
@@ -338,10 +350,10 @@ final class Extant_Customize {
 		$html = sprintf(
 			'<p>%s</p>
 			 <p>%s</p>
-			 <p><a class="button button-primary" href="http://themehybrid.com/themes/extant" target="_blank">%s</a></p>',
-			__( 'Extant Pro is an add-on that gives you the ability to pick and choose icons, change up your color scheme, and more without ever having to leave the customizer.', 'extant' ),
-			__( 'In addition to extra customizer options, you get a full year of dedicated support.', 'extant' ),
-			__( 'Find Out More', 'extant' )
+			 <p><a class="button button-primary" href="http://themehybrid.com/club" target="_blank">%s</a></p>',
+			__( 'I have never been a fan of crippleware (i.e., "lite" themes) that upsell you all the cool stuff. With the Extant theme, you get the full theme.', 'extant' ),
+			__( 'Instead, let me offer you a full year of dedicated support (forums and live chat). This includes support for all of my themes and plugins.', 'extant' ),
+			__( 'Join The Club', 'extant' )
 		);
 
 		return $html;

@@ -82,18 +82,20 @@ function extant_body_class( $classes ) {
  */
 function extant_post_class( $classes ) {
 
-	if ( function_exists( 'ccp_is_project_archive' ) && ccp_is_project_archive() && ccp_is_project_sticky() ) {
+	if ( is_singular() )
+		return $classes;
 
-		if ( ! in_array( 'sticky', $classes ) )
-			$classes[] = 'sticky';
+	if ( extant_is_sticky() && ! in_array( 'sticky', $classes ) ) {
 
-	} else  if (  ! is_singular() && ! ( is_home() && is_sticky() ) ) {
+		$classes[] = 'sticky';
+
+	} else  if ( ! extant_is_sticky() ) {
 		static $extant_post_alt;
 		++$extant_post_alt;
 
 		$classes[] = ( $extant_post_alt % 2 ) ? 'odd' : 'even';
 
-		if ( extant_is_portrait() && ! is_singular() && ! is_sticky() ) {
+		if ( extant_is_portrait() ) {
 
 			$remainder = $extant_post_alt % 3;
 

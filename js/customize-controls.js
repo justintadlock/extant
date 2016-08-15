@@ -1,5 +1,23 @@
 ( function( $, api ) {
 
+	// Shows or hides sections and controls based on the layout type.
+	api( 'layout_type', function( value ) {
+		value.bind(
+			function( to ) {
+
+				if ( 'boxed' === to ) {
+					wp.customize.section( 'background_image' ).activate();
+					wp.customize.control( 'background_color' ).activate();
+
+				} else if ( 'full' == to ) {
+					wp.customize.section( 'background_image' ).deactivate();
+					wp.customize.control( 'background_color' ).deactivate();
+				}
+			}
+		);
+	} );
+
+	// Extends our custom "locked" section.
 	api.sectionConstructor['locked'] = api.Section.extend( {
 
 		// No events for this type of section.
@@ -27,6 +45,7 @@
 		}
 	} );
 
+	// Extends the core control constructor so that it handles a setting change.
 	api.controlConstructor['select-icon'] = api.Control.extend( {
 		ready: function() {
 			var control = this;

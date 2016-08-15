@@ -71,32 +71,46 @@ jQuery( window ).ready( function() {
 	jQuery( '.nav-links li .prev' ).parent().addClass( 'nav-item-prev' );
 	jQuery( '.nav-links li .next' ).parent().addClass( 'nav-item-next' );
 
-	/* Menu toggle. */
+	/* === Menu toggle. === */
 
+	// Adds our overlay div.
 	jQuery( '.below-site-header' ).prepend( '<div class="overlay">' );
 
+	// Assume the initial scroll position is 0.
 	var scroll = 0;
 
+	// Wait for a click on one of our menu toggles.
 	jQuery( '.menu-toggle button' ).click( function() {
 
-		var parent = jQuery( this ).parents( '.menu' );
+		// Assign this (the button that was clicked) to a variable.
+		var button = this;
 
-		jQuery( '.menu-toggle button' ).not( this ).removeClass( 'selected' );
-		jQuery( '.menu' ).not( parent ).removeClass( 'is-open' );
+		// Gets the actual menu (parent of the button that was clicked).
+		var menu = jQuery( this ).parents( '.menu' );
 
-		jQuery( this ).toggleClass( 'selected' );
-		jQuery( parent ).toggleClass( 'is-open' );
+		// Remove selected classes from other menus.
+		jQuery( '.menu-toggle button' ).not( button ).removeClass( 'selected' );
+		jQuery( '.menu' ).not( menu ).removeClass( 'is-open' );
 
-		var is_open = jQuery( parent ).hasClass( 'is-open' );
+		// Toggle the selected classes for this menu.
+		jQuery( button ).toggleClass( 'selected' );
+		jQuery( menu ).toggleClass( 'is-open' );
 
+		// Is the menu in an open state?
+		var is_open = jQuery( menu ).hasClass( 'is-open' );
+
+		// If the menu is open and there wasn't a menu already open when clicking.
 		if ( is_open && ! jQuery( 'body' ).hasClass( 'menu-open' ) ) {
 
+			// Get the scroll position if we don't have one.
 			if ( 0 === scroll ) {
 				scroll = jQuery( 'body' ).scrollTop();
 			}
 
+			// Add a custom body class.
 			jQuery( 'body' ).addClass( 'menu-open' );
 
+		// If we're closing the menu.
 		} else if ( ! is_open ) {
 
 			jQuery( 'body' ).removeClass( 'menu-open' );
@@ -105,6 +119,7 @@ jQuery( window ).ready( function() {
 		}
 	} );
 
+	// Close menus when somewhere else in the document is clicked.
 	jQuery( document ).click( function() {
 
 		jQuery( 'body' ).removeClass( 'menu-open' );
@@ -112,7 +127,8 @@ jQuery( window ).ready( function() {
 		jQuery( '.menu' ).removeClass( 'is-open' );
 	} );
 
-	jQuery( '.menu-primary, .menu-search, .menu-secondary' ).on( 'click', function( e ) {
+	// Stop propagation if clicking inside of our main menu.
+	jQuery( '.menu-super' ).on( 'click', function( e ) {
 
 		e.stopPropagation();
 	} );
