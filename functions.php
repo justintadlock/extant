@@ -13,9 +13,8 @@
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
  * @package    Extant
- * @subpackage Functions
  * @author     Justin Tadlock <justin@justintadlock.com>
- * @copyright  Copyright (c) 2014, Justin Tadlock
+ * @copyright  Copyright (c) 2016, Justin Tadlock
  * @link       http://themehybrid.com/themes/extant
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */

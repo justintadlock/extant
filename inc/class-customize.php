@@ -4,7 +4,7 @@
  *
  * @package    Extant
  * @author     Justin Tadlock <justin@justintadlock.com>
- * @copyright  Copyright (c) 2013-2016, Justin Tadlock
+ * @copyright  Copyright (c) 2016, Justin Tadlock
  * @link       http://themehybrid.com/themes/extant
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
@@ -111,6 +111,8 @@ final class Extant_Customize {
 
 		// Change active callback of sections.
 		$manager->get_section( 'background_image' )->active_callback = 'extant_is_boxed';
+
+		/* === Custom Sections === */
 
 		$manager->add_section(
 			'icons',

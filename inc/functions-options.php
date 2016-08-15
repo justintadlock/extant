@@ -4,7 +4,7 @@
  *
  * @package    Extant
  * @author     Justin Tadlock <justin@justintadlock.com>
- * @copyright  Copyright (c) 2015, Justin Tadlock
+ * @copyright  Copyright (c) 2016, Justin Tadlock
  * @link       http://themehybrid.com/themes/extant
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
@@ -33,11 +33,25 @@ function extant_is_portrait() {
 	return hybrid_is_layout( 'grid-portrait' );
 }
 
+/**
+ * Checks whether the chosen layout type is 'full'.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return bool
+ */
 function extant_is_full_width() {
 
 	return 'full' === extant_get_layout_type();
 }
 
+/**
+ * Checks whether the chosen layout type is 'boxed'.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return bool
+ */
 function extant_is_boxed() {
 
 	return 'boxed' === extant_get_layout_type();
@@ -64,7 +78,7 @@ function extant_get_layout_type() {
  */
 function extant_get_header_icon() {
 
-	return hybrid_get_theme_mod( 'header_icon', 'icon-home' );
+	return hybrid_get_theme_mod( 'header_icon', 'fa-home' );
 }
 
 /**
@@ -76,7 +90,7 @@ function extant_get_header_icon() {
  */
 function extant_get_menu_primary_icon() {
 
-	return hybrid_get_theme_mod( 'menu_primary_icon', 'icon-bars' );
+	return hybrid_get_theme_mod( 'menu_primary_icon', 'fa-bars' );
 }
 
 /**
@@ -88,7 +102,7 @@ function extant_get_menu_primary_icon() {
  */
 function extant_get_menu_secondary_icon() {
 
-	return hybrid_get_theme_mod( 'menu_secondary_icon', 'icon-circle-o' );
+	return hybrid_get_theme_mod( 'menu_secondary_icon', 'fa-circle-o' );
 }
 
 /**
@@ -100,7 +114,7 @@ function extant_get_menu_secondary_icon() {
  */
 function extant_get_menu_search_icon() {
 
-	return hybrid_get_theme_mod( 'menu_search_icon', 'icon-search' );
+	return hybrid_get_theme_mod( 'menu_search_icon', 'fa-search' );
 }
 
 /**

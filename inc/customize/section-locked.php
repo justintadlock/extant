@@ -4,7 +4,7 @@
  *
  * @package    Extant
  * @author     Justin Tadlock <justin@justintadlock.com>
- * @copyright  Copyright (c) 2015, Justin Tadlock
+ * @copyright  Copyright (c) 2016, Justin Tadlock
  * @link       http://themehybrid.com/themes/extant
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
@@ -77,7 +77,7 @@ class Extant_Customize_Section_Locked extends WP_Customize_Section {
 				{{ data.title }}
 
 				<# if ( data.button ) { #>
-					<button type="button" class="button button-primary">{{ data.button }}</button>
+					<button type="button" class="button button-secondary">{{ data.button }}</button>
 				<# } #>
 			</h3>
 

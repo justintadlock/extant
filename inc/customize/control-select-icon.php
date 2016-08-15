@@ -4,7 +4,7 @@
  *
  * @package    Extant
  * @author     Justin Tadlock <justin@justintadlock.com>
- * @copyright  Copyright (c) 2015, Justin Tadlock
+ * @copyright  Copyright (c) 2016, Justin Tadlock
  * @link       http://themehybrid.com/themes/extant
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */

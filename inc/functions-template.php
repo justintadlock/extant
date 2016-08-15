@@ -4,7 +4,7 @@
  *
  * @package    Extant
  * @author     Justin Tadlock <justin@justintadlock.com>
- * @copyright  Copyright (c) 2015, Justin Tadlock
+ * @copyright  Copyright (c) 2016, Justin Tadlock
  * @link       http://themehybrid.com/themes/extant
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
@@ -302,22 +302,22 @@ function extant_map_featured_icons() {
 
 	$icons = array(
 		// Post type.
-		'attachment'        => 'icon-picture-o',
-		'download'          => 'icon-download',
-		'page'              => 'icon-file-text-o',
-		'portfolio_project' => 'icon-picture-o',
+		'attachment'        => 'fa-picture-o',
+		'download'          => 'fa-download',
+		'page'              => 'fa-file-text-o',
+		'portfolio_project' => 'fa-picture-o',
 
 		// Post format.
-		'aside'             => 'icon-paperclip',
-		'audio'             => 'icon-volume-up',
-		'chat'              => 'icon-comments',
-		'gallery'           => 'icon-picture-o',
-		'image'             => 'icon-camera-retro',
-		'link'              => 'icon-link',
-		'quote'             => 'icon-quote-right',
-		'standard'          => 'icon-pencil',
-		'status'            => 'icon-map-pin',
-		'video'             => 'icon-play-circle'
+		'aside'             => 'fa-paperclip',
+		'audio'             => 'fa-volume-up',
+		'chat'              => 'fa-comments',
+		'gallery'           => 'fa-picture-o',
+		'image'             => 'fa-camera-retro',
+		'link'              => 'fa-link',
+		'quote'             => 'fa-quote-right',
+		'standard'          => 'fa-pencil',
+		'status'            => 'fa-map-pin',
+		'video'             => 'fa-play-circle'
 	);
 
 	// Developers, array key can be `{$type}-{$format}`, `{$format}`, or `{$type}`.
