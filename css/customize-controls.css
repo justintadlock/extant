@@ -58,6 +58,7 @@
 	#accordion-section-colors > .accordion-section-title::before {
 		content: "\f540";
 	}
+	#accordion-section-header_image > .accordion-section-title::before,
 	#accordion-section-background_image > .accordion-section-title::before {
 		content: "\f128";
 	}

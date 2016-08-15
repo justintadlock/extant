@@ -104,6 +104,7 @@ final class Extant_Customize {
 		$manager->register_section_type( 'Extant_Customize_Section_Locked' );
 
 		// Move theme-specific sections to our theme options panel.
+		$manager->get_section( 'header_image' )->panel     = 'theme_options';
 		$manager->get_section( 'background_image' )->panel = 'theme_options';
 		$manager->get_section( 'layout' )->panel           = 'theme_options';
 		$manager->get_section( 'colors' )->panel           = 'theme_options';
