@@ -2,11 +2,16 @@
 
 q { quotes: '\201C' '\201D' '\2018' '\2019'; }
 
-h1, h2, h3, h4, h5, h6,
-.site-footer {
+html,
+.format-quote blockquote {
 	font-family: 'Noto Sans KR', 'Malgun Gothic', 'Gulim', 'Batang', "돋움", 'Dotum', 'Hangangche', sans-serif;
 }
 
-body {
+h1, h2, h3, h4, h5, h6,
+blockquote,
+.site-footer,
+.nav-links,
+.page-links,
+.chat-author cite {
 	font-family: 'Noto Sans KR', 'Malgun Gothic', 'Gulim', 'Batang', "돋움", 'Dotum', 'Hangangche', sans-serif;
 }
