@@ -219,6 +219,8 @@ ul { list-style: square; }
 
 /* Code */
 
+pre, code { direction: ltr; text-align: left; }
+
 pre {
 	padding:     1.875rem 1.5rem;
 	font-size:   1rem;
@@ -671,11 +673,17 @@ img {
 	.trail-items a[rel="home"]::before { content: "\f015"; }
 
 	/* Nav links */
-	.nav-links .prev::before { content: "\f137"; font-size: 14px; margin: -3px 5px 0 0; }
-	.nav-links .next::after { content: "\f138"; font-size: 14px; margin: -3px 0 0 5px; }
+	.ltr .nav-links .prev::before,
+	.rtl .nav-links .next::after { content: "\f137"; font-size: 14px; margin: -3px 5px 0 0; }
 
-	.prev-comments-link::before { content: "\f137"; font-size: 14px; margin: -1px 5px 0 0; }
-	.next-comments-link::after { content: "\f138"; font-size: 14px; margin: -1px 0 0 5px; }
+	.ltr .nav-links .next::after,
+	.rtl .nav-links .prev::before { content: "\f138"; font-size: 14px; margin: -3px 0 0 5px; }
+
+	.ltr .prev-comments-link::before,
+	.rtl .next-comments-link::after { content: "\f137"; font-size: 14px; margin: -1px 5px 0 0; }
+
+	.ltr .next-comments-link::after,
+	.rtl .prev-comments-link::before { content: "\f138"; font-size: 14px; margin: -1px 0 0 5px; }
 
 	.ltr .entry-terms::before { margin: -2px 5px 0 0; }
 	.rtl .entry-terms::before { margin: -2px 0 0 5px; }
@@ -706,12 +714,10 @@ img {
 	.comment-respond label[for="url"]::before     { content: '\f0ac'; }
 	.comment-respond label[for="comment"]::before { content: '\f075'; }
 
-	.comment-parent-link::before {
-		content: '\f0d9';
-		padding-bottom: 3px;
-	}
-		.ltr .comment-parent-link::before { padding-right: 5px; }
-		.rtl .comment-parent-link::before { padding-left: 5px; }
+	.comment-parent-link::before { padding-bottom: 3px; }
+
+		.ltr .comment-parent-link::before { content: '\f0d9'; padding-right: 5px; }
+		.rtl .comment-parent-link::before { content: '\f0da'; padding-left: 5px; }
 
 /********************************************************************************************************
  * ====== End Icons ======
@@ -810,7 +816,7 @@ img {
 
 		.rtl .site-branding,
 		.rtl .menu-super,
-		.rtl .menu-super > ul { float: left !important; }
+		.rtl .menu-super > ul { float: right !important; }
 
 		.menu-super > ul { width: 100%; }
 
@@ -955,6 +961,8 @@ img {
 			.ltr .sticky .gallery-count { right: 0; }
 			.rtl .sticky .gallery-count { left:  0; }
 	}
+
+	.entry-terms { display: inline-block; }
 
 	.ltr .entry-terms + .entry-terms { margin-left: 1rem; }
 	.rtl .entry-terms + .entry-terms { margin-right: 1rem; }
@@ -1122,19 +1130,25 @@ img {
 				text-shadow:  none;
 			}
 
-		.nav-links li:first-child { margin-left:  0; }
-		.nav-links li:last-child  { margin-right: 0; }
+		.ltr .nav-links li:first-child { margin-left:  0; }
+		.rtl .nav-links li:last-child  { margin-right: 0; }
 
-			.nav-links li:first-child,
-			.nav-links li:first-child a,
-			.nav-links li:first-child span {
+			.ltr .nav-links li:first-child,
+			.ltr .nav-links li:first-child a,
+			.ltr .nav-links li:first-child span,
+			.rtl .nav-links li:last-child,
+			.rtl .nav-links li:last-child a,
+			.rtl .nav-links li:last-child span {
 				border-top-left-radius:    20px;
 				border-bottom-left-radius: 20px;
 			}
 
-			.nav-links li:last-child,
-			.nav-links li:last-child a,
-			.nav-links li:last-child span {
+			.ltr .nav-links li:last-child,
+			.ltr .nav-links li:last-child a,
+			.ltr .nav-links li:last-child span,
+			.rtl .nav-links li:first-child,
+			.rtl .nav-links li:first-child a,
+			.rtl .nav-links li:first-child span {
 				border-top-right-radius:    20px;
 				border-bottom-right-radius: 20px;
 			}
@@ -1349,14 +1363,17 @@ p > iframe {
 
 		.comment-respond {
 			width:              calc( 100% + 3rem );
-			margin-left:        -1.5rem;
 			border-left-width:  0;
 			border-right-width: 0;
 		}
 
+			.ltr .comment-respond { margin-left: -1.5rem; }
+			.rtl .comment-respond { margin-right: -1.5rem; }
+
 		.comment-list .comment-respond {
 			width:              100%;
 			margin-left:        0;
+			margin-right:       0;
 			border-left-width:  1px;
 			border-right-width: 1px;
 		}
@@ -1451,7 +1468,8 @@ p > iframe {
  * This section of the CSS is for handling the design of the various menus used within the theme.
  ********************************************************************************************************/
 
-.menu-super { float: right; }
+.ltr .menu-super { float: right; }
+.rtl .menu-super { float: left;  }
 
 .menu-super > ul {
 	list-style: none;
@@ -1459,6 +1477,9 @@ p > iframe {
 	float:      right;
 	font-size:  0;
 }
+
+	.ltr .menu-super > ul { float: right; }
+	.rtl .menu-super > ul { float: left;  }
 
 .menu-super > ul > li {
 	display:     inline-block;
@@ -1537,9 +1558,11 @@ p > iframe {
 			display:    block;
 			visibility: hidden;
 			position:   fixed;
-			right:      -400px;
 			transition: all .4s ease-in-out 0s;
 		}
+
+			.ltr .menu > .wrap { right: -400px; }
+			.rtl .menu > .wrap { left:  -400px; }
 
 			.admin-bar .menu > .wrap { top: 86px; }
 
@@ -1564,20 +1587,22 @@ p > iframe {
 
 				.menu > .wrap { width: 500px; }
 
-				.menu > .wrap { right: -500px; }
+				.ltr .menu > .wrap { right: -500px; }
+				.rtl .menu > .wrap { left:  -500px; }
 			}
 
 			@media only screen and ( max-width: 768px ) {
 
 				.menu > .wrap { width: 100%; }
 
-				.menu > .wrap { right: -100%; }
+				.ltr .menu > .wrap { right: -100%; }
+				.rtl .menu > .wrap { left:  -100%; }
 			}
 
-			.menu.is-open > .wrap {
-				right:      0;
-				visibility: visible;
-			}
+			.menu.is-open > .wrap { visibility: visible; }
+
+				.ltr .menu.is-open > .wrap { right: 0; }
+				.rtl .menu.is-open > .wrap { left:  0; }
 
 	.menu-primary ul,
 	.menu-secondary ul {
