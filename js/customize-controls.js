@@ -6,12 +6,12 @@
 			function( to ) {
 
 				if ( 'boxed' === to ) {
-					wp.customize.section( 'background_image' ).activate();
-					wp.customize.control( 'background_color' ).activate();
+					api.section( 'background_image' ).activate();
+					api.control( 'background_color' ).activate();
 
 				} else if ( 'full' == to ) {
-					wp.customize.section( 'background_image' ).deactivate();
-					wp.customize.control( 'background_color' ).deactivate();
+					api.section( 'background_image' ).deactivate();
+					api.control( 'background_color' ).deactivate();
 				}
 			}
 		);
