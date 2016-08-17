@@ -6,6 +6,7 @@ Extant is a primarily built for artists, photographers, and designers to showcas
 
 Extant makes use of standard WordPress features and should require little instruction for standard usage.  However, some items should be noted.
 
+* Mark a post as sticky to get the "large" post at the top of the home/blog page.
 * Featured images are only displayed if they are at minimum 750px in width (950px for sticky posts).  This is to maintain an aesthetic consistency throughout the theme.
 * Inputting a social profile link in the Primary or Secondary menu will automatically display an icon for the particular social network on the front end.
 
