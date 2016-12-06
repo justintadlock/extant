@@ -1,4 +1,4 @@
-#accordion-panel-theme_options .accordion-section-title::before {
+#sub-accordion-panel-theme_options .accordion-section-title::before {
 	content: "\f111"; /* default */
 	margin-right: 8px;
 	margin-top: 1px;
@@ -22,10 +22,10 @@
 	#accordion-panel-theme_options > .accordion-section-title::before,
 	#accordion-panel-theme_options .panel-meta .accordion-section-title::before { display: none; }
 
-	#accordion-panel-theme_options .accordion-section-title:hover::before,
-	#accordion-panel-theme_options .accordion-section-title:focus::before { color: inherit; }
+	#sub-accordion-panel-theme_options .accordion-section-title:hover::before,
+	#sub-accordion-panel-theme_options .accordion-section-title:focus::before { color: inherit; }
 
-	.rtl #accordion-panel-theme_options .accordion-section-title::before {
+	.rtl #sub-accordion-panel-theme_options .accordion-section-title::before {
 		margin-right: 0;
 		margin-left: 8px;
 	}
@@ -41,13 +41,11 @@
 	#accordion-section-header_image > .accordion-section-title::before,
 	#accordion-section-background_image > .accordion-section-title::before { content: "\f128"; }
 
+#accordion-panel-theme_options {
+	margin:        15px 0;
+}
 #accordion-panel-theme_options > .accordion-section-title {
 	padding:       15px;
-	margin:        15px 0;
-	color:         #fff;
-	background:    #c02942;
-	border-top:    1px solid rgba( 192, 41, 66, 0.25 );
-	border-bottom: 1px solid rgba( 192, 41, 66, 0.25 );
 }
 
 #accordion-panel-theme_options .control-section-locked > .accordion-section-title,
@@ -56,6 +54,10 @@
 	margin:     15px 0;
 	color:      rgba( 192, 41, 66, 0.65 );
 	background: #fff;
+}
+
+#accordion-panel-theme_options + .control-section {
+    border-top: 1px solid #ddd;
 }
 
 #accordion-panel-theme_options .control-section-locked + .control-section-locked > .accordion-section-title {
@@ -67,13 +69,6 @@
 	#accordion-panel-theme_options > .accordion-section-title:focus::after {
 		color: inherit !important;
 		top:   15px;
-	}
-
-	#accordion-panel-theme_options.accordion-section > .accordion-section-title:hover,
-	#accordion-panel-theme_options.accordion-section > .accordion-section-title:focus {
-		border-color: #333;
-		color:        #fff;
-		background:   #333;
 	}
 
 	.control-section-locked .accordion-section-title {
