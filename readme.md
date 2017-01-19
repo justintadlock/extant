@@ -20,7 +20,7 @@ The following resources are included within the theme package.
 
 * Design Concept by Tung Do - [GPL 2+](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
 * [Hybrid Core Framework](http://themehybrid.com/hybrid-core) by Justin Tadlock - [GPL  2+](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
-* [Font Awesome](http://fontawesome.io) by Dave Gandy - Licensed under the [SIL Open Font License, version 1.1](http://scripts.sil.org/OFL).
+* [Font Awesome](http://fontawesome.io) by Dave Gandy - Font licensed under the [SIL Open Font License, version 1.1](http://scripts.sil.org/OFL) and CSS licensed under the [MIT License](http://opensource.org/licenses/mit-license.html).
 * [Theme Mediaelement](https://github.com/justintadlock/theme-mediaelement) by John Dyer, Justin Tadlock - [MIT License](http://opensource.org/licenses/MIT).
 * [Image: Laptop](https://unsplash.com/photos/jUNuMQvBwGc) - by Luis Llerena - [CC0](http://creativecommons.org/publicdomain/zero/1.0/)
 * [Image: MP3 Player](https://unsplash.com/photos/TMOeGZw9NY4) - by William Iven - [CC0](http://creativecommons.org/publicdomain/zero/1.0/)
