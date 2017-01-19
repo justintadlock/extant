@@ -255,7 +255,7 @@ function extant_custom_background_callback() {
 		return;
 
 	/* Use 'background' instead of 'background-color'. */
-	$style = "background: #{$color};";
+	$style = sprintf( 'background: #%s;', sanitize_hex_color_no_hash( $color ) );
 
 ?>
 <style type="text/css" id="custom-background-css">body.custom-background { <?php echo trim( $style ); ?> }</style>
