@@ -392,11 +392,11 @@ function extant_get_layout_types() {
  *
  * @since  1.0.0
  * @access public
- * @return bool
+ * @return string
  */
 function extant_validate_layout_type( $type ) {
 
 	$types = extant_get_layout_types();
 
-	return isset( $types[ $type ] );
+	return isset( $types[ $type ] ) ? $type : 'full';
 }
