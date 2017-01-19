@@ -20,7 +20,7 @@
 }
 
 	#accordion-panel-theme_options > .accordion-section-title::before,
-	#accordion-panel-theme_options .panel-meta .accordion-section-title::before { display: none; }
+	#sub-accordion-panel-theme_options .panel-meta .accordion-section-title::before { display: none; }
 
 	#sub-accordion-panel-theme_options .accordion-section-title:hover::before,
 	#sub-accordion-panel-theme_options .accordion-section-title:focus::before { color: inherit; }
