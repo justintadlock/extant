@@ -1904,6 +1904,10 @@ input.edd-item-quantity { display: inline-block; max-width: 75px; margin-right: 
 .customize-partial-edit-shortcut-menu_secondary_icon,
 .customize-partial-edit-shortcut-menu_search_icon { display: none !important; }
 
+@media screen and (max-width: 320px) {
+	body.customize-partial-edit-shortcuts-shown .site-title { padding: 0 !important; }
+}
+
 /********************************************************************************************************
  * ====== End Customizer ======
  ********************************************************************************************************/

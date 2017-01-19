@@ -15,6 +15,7 @@
 
 * Broken customizer icons.
 * `extant_validate_layout_type()` was returning a `bool` instead of a `string`.
+* Fixes padding customizer adds to site title icon.
 
 ### Removed
 
